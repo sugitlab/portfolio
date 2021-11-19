@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 // resources
-import en from "../../resources/en";
-import ja from "../../resources/ja";
+import en from "../resources/en"; 
+import ja from "../resources/ja";
 
 export const useLocale = () => {
   const { locale } = useRouter();
