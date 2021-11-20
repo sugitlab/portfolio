@@ -1,21 +1,20 @@
-import { Html, Head, Main, NextScript, DocumentProps } from "next/document";
-import { CssBaseline } from "@nextui-org/react";
+import { Html, Head, Main, NextScript } from "next/document";
 
-export default function Document(props: DocumentProps) {
+export default function Document() {
   return (
     <Html>
       <Head>
-        <title>SugitLab.</title>
         <meta
           name="viewport"
           property="og:title"
           content="initial-scale=1.0, width=device-width"
         />
       </Head>
-      <CssBaseline />
       <body>
-        <Main />
-        <NextScript />
+        <div className="bg-gray-200 dark:bg-gray-600 h-screen w-screen">
+          <Main />
+          <NextScript />
+        </div>
       </body>
     </Html>
   );

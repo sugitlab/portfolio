@@ -1,5 +1,6 @@
 const ja = {
-  PROFILE_NAME: "杉本 真二",
+  PROFILE_NAME: "Shinji Sugimoto",
+  INTRODUCTION: "フルペラットエンジニア @ 京都",
 };
 
 export default ja;
