@@ -39,7 +39,7 @@ const SkillIcons = () => {
 const Profile = () => {
   const { t } = useLocale();
   return (
-    <div className="container w-4/5 md:w-1/3 h-full px-8 py-4 rounded-3xl bg-gray-200 mx-auto dark:bg-gray-600">
+    <div className="container max-w-sm w-4/5 md:w-1/3 h-full px-8 py-4 rounded-3xl bg-gray-200 mx-auto dark:bg-gray-600">
       <div className="flex items-center pb-4">
         <Image
           className="block mx-auto rounded-full bg-gray-100"
@@ -96,6 +96,9 @@ const ArticleCard = () => {
 const Articles = () => {
   return (
     <div className="container w-4/5 md:w-1/2 mx-auto">
+      <p className="py-2 text-center text-2xl font-bold text-indigo-700 dark:text-indigo-400">
+        Articles
+      </p>
       <div className="divide-solid divide-gray-200 divide-y-2 dark:divide-gray-800 flex flex-col">
         <ArticleCard />
         <ArticleCard />
@@ -111,10 +114,6 @@ const Articles = () => {
 const Home: NextPage = () => {
   return (
     <div className="flex flex-col md:flex-row">
-      <p className="text-center text-xl font-bold text-indigo-700 dark:text-indigo-400">
-        {" "}
-        Articles{" "}
-      </p>
       <Articles />
       <div className="h-10" />
       <Profile />
