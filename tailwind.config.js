@@ -7,7 +7,7 @@ module.exports = {
     "./hooks/**/*.{ts,tsx}",
     "./resources/**/*.{ts,tsx}",
   ],
-  darkMode: "media", // 't/f' or 'media' or 'class'
+  darkMode: "class", // 't/f' or 'media' or 'class'
   theme: {
     extend: {},
   },

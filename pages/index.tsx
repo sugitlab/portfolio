@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { useLocale } from "../hooks/locale";
 
-const Home: NextPage = () => {
+const Profile = () => {
   const { t } = useLocale();
   return (
     <>
@@ -19,6 +19,14 @@ const Home: NextPage = () => {
         </p>
         <p className="text-gray-500 dark:text-gray-300">{t.INTRODUCTION}</p>
       </div>
+    </>
+  );
+};
+
+const Home: NextPage = () => {
+  return (
+    <>
+      <Profile />
     </>
   );
 };
