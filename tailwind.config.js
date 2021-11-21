@@ -1,0 +1,20 @@
+module.exports = {
+  mode: "jit",
+  purge: [
+    "./components/**/*.{ts,tsx}",
+    "./pages/**/*.{ts,tsx}",
+    "./public/**/*.html",
+    "./hooks/**/*.{ts,tsx}",
+    "./resources/**/*.{ts,tsx}",
+  ],
+  darkMode: "class", // 't/f' or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+  ],
+};
