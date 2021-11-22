@@ -1,5 +1,4 @@
 module.exports = {
-  mode: "jit",
   purge: [
     "./components/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}",
