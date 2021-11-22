@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useLocale } from "../../hooks/locale";
+import { useLocale } from "../hooks/locale";
 // ICONS
 import {
   SiDotnet,

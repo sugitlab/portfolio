@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Chip from "./chip";
-import { Article, ArticleType } from "../../lib/posts";
+import { Article, ArticleType } from "../lib/posts";
 
 type CardHeaderProps = {
   height: number;

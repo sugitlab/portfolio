@@ -1,8 +1,8 @@
 import React from "react";
 import type { NextPage, GetStaticProps } from "next";
 import { useLocale } from "../hooks/locale";
-import Profile from "./components/profile_card";
-import ArticleCard from "./components/article_card";
+import Profile from "../components/profile_card";
+import ArticleCard from "../components/article_card";
 import { Article, getPosts } from "../lib/posts";
 
 const Articles = ({ posts }: { posts: Article[] }) => {
