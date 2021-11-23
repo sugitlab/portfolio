@@ -57,7 +57,11 @@ const ArticleCard = (props: Article) => {
               <p className="text-sm text-gray-500 dark:text-gray-300">
                 {props.published}
               </p>
-              <Chip title="Flutter" tw_color="bg-blue-500" />
+              <div className="flex flex-row gap-2 flex-wrap">
+                {props.categories.map((ca, id) => {
+                  return <Chip key={id} title={ca} tw_color="bg-blue-500" />;
+                })}
+              </div>
             </div>
           </div>
         </a>
