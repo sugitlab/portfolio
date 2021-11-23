@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useLocale } from "../hooks/locale";
+import Link from "next/link";
 // ICONS
 import {
   SiDotnet,
@@ -11,16 +11,20 @@ import {
   SiTypescript,
   SiJavascript,
   SiPython,
+  SiGithub,
+  SiTwitter,
+  SiLinkedin,
 } from "react-icons/si";
+import { useLocale } from "../hooks/locale";
 
 const SkillIcons = () => {
-  const size = "20";
+  const size = "15";
   return (
     <div>
-      <div className="flex flex-row flex-wrap items-center justify-center w-4/5 mx-auto py-2 gap-4">
+      <div className="flex flex-row flex-wrap items-center justify-center mx-auto py-2 gap-4">
         <SiFlutter size={size} className="text-gray-600 dark:text-white" />
         <SiReact size={size} className="text-gray-600 dark:text-white" />
-        <SiDotnet size="30" className="text-gray-600 dark:text-white" />
+        <SiDotnet size="25" className="text-gray-600 dark:text-white" />
         <SiDart size={size} className="text-gray-600 dark:text-white" />
         <SiTypescript size={size} className="text-gray-600 dark:text-white" />
         <SiJavascript size={size} className="text-gray-600 dark:text-white" />
@@ -28,6 +32,35 @@ const SkillIcons = () => {
         <SiCplusplus size={size} className="text-gray-600 dark:text-white" />
         <SiPython size={size} className="text-gray-600 dark:text-white" />
       </div>
+    </div>
+  );
+};
+
+const TechLinks = () => {
+  const { t } = useLocale();
+  const size = "20";
+  const github = "https://github.com/sugitlab";
+  const linkedin = "https://www.linkedin.com/in/shinjisugimoto";
+  return (
+    <div className="flex flex-row gap-2">
+      <a href={github}>
+        <SiGithub
+          size={size}
+          className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
+        />
+      </a>
+      <a href={t.TWITTER}>
+        <SiTwitter
+          size={size}
+          className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
+        />
+      </a>
+      <a href={linkedin}>
+        <SiLinkedin
+          size={size}
+          className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
+        />
+      </a>
     </div>
   );
 };
@@ -44,9 +77,12 @@ const Profile = () => {
           src="/avatar.png"
           alt="Icon"
         />
-        <p className="px-4 text-2xl font-semibold dark:text-gray-100">
-          {t.PROFILE_NAME}
-        </p>
+        <div className="flex flex-col px-4">
+          <p className="py-2 text-2xl font-semibold dark:text-gray-100">
+            {t.PROFILE_NAME}
+          </p>
+          <TechLinks />
+        </div>
       </div>
       <p className="text-sm dark:text-gray-100">{t.INTRODUCTION}</p>
       <SkillIcons />

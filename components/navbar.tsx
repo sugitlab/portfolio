@@ -103,7 +103,7 @@ const MenuButton = () => {
 
 export default function Navbar() {
   return (
-    <nav className="flex flex-rows py-4 px-8 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
+    <nav className="z-50 flex flex-rows py-4 px-8 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
       <Link href="/" passHref>
         <a className="flex flex-1 font-bold text-xl dark:text-gray-100">
           SugitLab.
