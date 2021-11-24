@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Chip from "./chip";
-import { Article, ArticleType } from "../lib/posts";
+import { Article, ArticleType } from "../lib/article";
 
 type CardHeaderProps = {
   height: number;
@@ -42,26 +42,25 @@ const CardHeader = (props: CardHeaderProps) => {
 };
 
 const ArticleCard = (props: Article) => {
+  // 雑に YYYY-MM-DD で切り取る
+  const dateStr = props.published.slice(0, 10);
+
   return (
     <div>
       <Link href={props.url} passHref>
         <a>
           <div className="flex flex-row items-center container h-28 rounded-xl p-2">
-            <div className="flex justify-center box-content w-20 h-20 bg-gray-200 dark:bg-white rounded-2xl">
-              <CardHeader height={50} width={50} type={props.type} />
+            <div className="flex justify-center min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl">
+              <CardHeader height={40} width={40} type={props.type} />
             </div>
-            <div className="flex flex-1 flex-col px-4">
-              <p className="flex-1 line-clamp-2 text-lg font-bold dark:text-gray-200">
+            <div className="flex flex-col px-4 gap-1">
+              <p className="flex-1 line-clamp-2 leading-tight text-md font-bold dark:text-gray-200">
                 {props.title}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-300">
-                {props.published}
+                {dateStr}
               </p>
-              <div className="flex flex-row gap-2 flex-wrap">
-                {props.categories.map((ca, id) => {
-                  return <Chip key={id} title={ca} tw_color="bg-blue-500" />;
-                })}
-              </div>
+              <Chip category={props.category} />
             </div>
           </div>
         </a>

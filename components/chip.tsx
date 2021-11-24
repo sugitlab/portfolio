@@ -1,15 +1,17 @@
+import { CategoryType, getCategoryColor } from "../lib/category";
+
 type ChipProps = {
-  title: string;
-  tw_color: string;
+  category: CategoryType;
 };
 
 const Chip = (props: ChipProps) => {
+  const category_color = getCategoryColor(props.category);
   return (
     <div className="flex flex-row">
       <p
-        className={`w-auto text-xs px-2 text-gray-100 text-center rounded-full ${props.tw_color}`}
+        className={`w-auto text-xs px-2 text-gray-100 text-center rounded-full ${category_color}`}
       >
-        {props.title}
+        {props.category}
       </p>
     </div>
   );

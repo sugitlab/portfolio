@@ -5,119 +5,119 @@
       "title": "Flutterのテンプレートにlinterが入りますよ",
       "published": "2021-09-11T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/flutter_linter_recommend_sugitlab",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutter の BuildContext って何？",
       "published": "2021-06-16T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/606b658825792e",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutter の AppBar で遊んだら楽しかったよ",
       "published": "2021-06-09T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/e68b2fce02e50f",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutter の primarySwatch は奥が深い",
       "published": "2021-05-24T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/bef3a05963680a",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "FlutterはなぜButtonを一新したのか",
       "published": "2021-03-10T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/772e107b515908",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutter公式から広告用パッケージがでましたね",
       "published": "2021-03-08T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/c38ef8d3035289",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutterで有名なパン🍞をつくってみよう",
       "published": "2021-02-25T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/7f6a5c258e8873",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutterでこなれた感じのUIを作るコツ",
       "published": "2020-12-15T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/d49a056941d511",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Zenn",
       "title": "Flutterを大好きになってしまうカラクリ",
       "published": "2020-09-30T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/d0b3858b300b0af64ed9",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Qiita",
       "title": "【楽しい個人開発】FlutterでiOSアプリを作るときに通った全工程",
       "published": "2020-12-17T00:00:00.000Z",
       "url": "https://qiita.com/sugitlab/items/99ff1daa61f173baf130",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Medium",
       "title": "VIMTTER(neoVIM + fluTTER)",
       "published": "2021-05-01T00:00:00.000Z",
       "url": "https://sugitlab.medium.com/vimtter-neovim-flutter-2d1eaf768294",
-      "categories": ["Flutter", "Neovim"]
+      "category": "Tech"
     },
     {
       "type": "Medium",
       "title": "Flutter New Linter Package will introduce to Flutter Template",
       "published": "2021-07-26T00:00:00.000Z",
       "url": "https://sugitlab.medium.com/flutter-new-linter-package-will-introduce-to-flutter-create-template-8ce2421591ce",
-      "categories": ["Flutter"]
+      "category": "Tech"
     },
     {
       "type": "Medium",
       "title": "Engineer Desk Setup",
       "published": "2021-02-08T00:00:00.000Z",
       "url": "https://sugitlab.medium.com/engineers-desk-setup-ddfa0b47cc32",
-      "categories": ["LifeHack"]
+      "category": "LifeHack"
     },
     {
       "type": "note",
       "title": "2021年やりたいことリスト100",
       "published": "2021-01-01T00:00:00.000Z",
       "url": "https://note.com/sugitlab/n/n0ff95484f1fc",
-      "categories": ["App"]
+      "category": "Other"
     },
     {
       "type": "note",
       "title": "のらりNotion#0 - Notion先生の育て方",
       "published": "2021-01-17T00:00:00.000Z",
       "url": "https://note.com/sugitlab/n/n736b866f050d",
-      "categories": ["Notion", "LifeHack"]
+      "category": "LifeHack"
     },
     {
       "type": "note",
       "title": "のらりNotion #1 - Web積ん読のすゝめ",
       "published": "2021-01-26T00:00:00.000Z",
       "url": "https://note.com/sugitlab/n/na90bf929c270",
-      "categories": ["Notion", "LifeHack"]
+      "category": "LifeHack"
     },
     {
       "type": "note",
       "title": "のらりNotion #2 - インスピレーションギャラリーの作り方",
       "published": "2021-02-15T00:00:00.000Z",
       "url": "https://note.com/sugitlab/n/n867eb5d5a60a",
-      "categories": ["Notion", "LifeHack"]
+      "category": "LifeHack"
     }
   ]
 }
