@@ -38,7 +38,7 @@ const TranslateButton = () => {
               <Popover.Button as={Link} href="/" locale="en">
                 <a
                   onClick={() => close()}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-500"
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                 >
                   English
                 </a>
@@ -46,7 +46,7 @@ const TranslateButton = () => {
               <Popover.Button as={Link} href="/" locale="ja">
                 <a
                   onClick={() => close()}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-500"
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                 >
                   日本語
                 </a>
@@ -78,17 +78,17 @@ const MenuButton = () => {
                   <Popover.Button as={Link} href="/">
                     <a
                       onClick={() => close()}
-                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-500"
+                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
                       Home
                     </a>
                   </Popover.Button>
-                  <Popover.Button as={Link} href="/test">
+                  <Popover.Button as={Link} href="/history">
                     <a
                       onClick={() => close()}
-                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-500"
+                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
-                      Test
+                      History
                     </a>
                   </Popover.Button>
                 </div>
@@ -103,7 +103,7 @@ const MenuButton = () => {
 
 export default function Navbar() {
   return (
-    <nav className="z-50 flex flex-rows py-4 px-8 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
+    <nav className="z-50 flex flex-rows py-4 px-4 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
       <Link href="/" passHref>
         <a className="flex flex-1 font-bold text-xl dark:text-gray-100">
           SugitLab.

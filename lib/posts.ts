@@ -1,14 +1,5 @@
 import json from "./articles.json";
-
-export type ArticleType = "Zenn" | "Qiita" | "Medium" | "note" | "Post";
-
-export type Article = {
-  type: ArticleType;
-  title: string;
-  published: string;
-  url: string;
-  categories: string[];
-};
+import { Article } from "./article";
 
 export function getPosts(): Article[] {
   const articles = json.articles as Article[];

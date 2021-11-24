@@ -8,6 +8,10 @@ module.exports = {
   ],
   darkMode: "class", // 't/f' or 'media' or 'class'
   theme: {
+    minWidth: {
+      "mw": "4rem",
+      "chip": "8rem",
+    },
     extend: {},
   },
   variants: {
