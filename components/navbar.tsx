@@ -35,7 +35,7 @@ const TranslateButton = () => {
         {({ close }) => (
           <div className="w-24 rounded-lg bg-white dark:bg-gray-600">
             <div className="grid grid-col-2">
-              <Popover.Button as={Link} href="/" locale="en">
+              <Popover.Button as={Link} href="" locale="en">
                 <a
                   onClick={() => close()}
                   className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
@@ -43,7 +43,7 @@ const TranslateButton = () => {
                   English
                 </a>
               </Popover.Button>
-              <Popover.Button as={Link} href="/" locale="ja">
+              <Popover.Button as={Link} href="" locale="ja">
                 <a
                   onClick={() => close()}
                   className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
