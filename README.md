@@ -6,7 +6,8 @@ This page has built by Next.js
 
 - React
 - Next.js
-- [NextUI](https://nextui.org/)
+- Tailwindcss
+- HeadlessUI
 
 ## Coding
 
