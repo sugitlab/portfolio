@@ -20,13 +20,13 @@ const HistoryContent = (props: HistoryContentProps) => {
   return (
     <TimelineItem>
       <TimelineOppositeContent
-        style={{ flex: 0, marginLeft: -40 }}
+        style={{ flex: 0, marginLeft: -70 }}
       ></TimelineOppositeContent>
       <TimelineSeparator>
         <TimelineDot className={props.color} />
         <TimelineConnector />
       </TimelineSeparator>
-      <TimelineContent>
+      <TimelineContent style={{ marginRight: -40 }}>
         <span className="text-gray-900 dark:text-gray-100">
           <div className="text-lg font-bold">{props.title}</div>
           <div className="text-md">{props.body}</div>
@@ -64,13 +64,12 @@ const HistoryLine = () => {
         element={
           <div className="flex flex-col gap-2">
             <div className="flex flex-row items-center gap-2">
-              <div className="relative filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
+              <div className="static filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
                 <a href={yaruhyaku_url}>
                   <Image
                     alt="yaruhyaku"
                     objectFit="cover"
                     layout="fill"
-                    priority
                     src="/media/yaruhyaku.png"
                   />
                 </a>
@@ -78,17 +77,16 @@ const HistoryLine = () => {
               <p className="text-md font-bold"> {t.YARUHYAKU} </p>
             </div>
             <div className="flex flex-row items-center gap-2">
-              <div className="relative filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
-                <a href={seriousballoon_url}>
+              <a href={seriousballoon_url}>
+                <div className="static filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
                   <Image
                     alt="siribal"
                     objectFit="cover"
                     layout="fill"
-                    priority
                     src="/media/siribal.png"
                   />
-                </a>
-              </div>
+                </div>
+              </a>
               <p className="text-md font-bold"> {t.SIRIBAL} </p>
             </div>
           </div>
