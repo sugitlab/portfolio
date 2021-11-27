@@ -14,7 +14,7 @@ const DarkModeButton = () => {
   const { isDarkMode, toggle } = useDarkMode();
   return (
     <div className="px-2">
-      <button onClick={() => toggle(!isDarkMode)}>
+      <button aria-label="darkmode button" onClick={() => toggle(!isDarkMode)}>
         {isDarkMode ? (
           <SunIcon className="block h-6 w-6 dark:text-gray-100" />
         ) : (
@@ -28,7 +28,7 @@ const DarkModeButton = () => {
 const TranslateButton = () => {
   return (
     <Popover className="relative px-2">
-      <Popover.Button>
+      <Popover.Button aria-label="translate button">
         <TranslateIcon className="block h-6 w-6 dark:text-gray-100" />
       </Popover.Button>
       <Popover.Panel className="origin-top-right absolute right-0 filter drop-shadow-md">
@@ -64,7 +64,7 @@ const MenuButton = () => {
     <Popover className="relative px-2">
       {({ open }) => (
         <>
-          <Popover.Button>
+          <Popover.Button aria-label="menu button">
             {open ? (
               <XIcon className="block h-6 w-6 dark:text-gray-100" />
             ) : (

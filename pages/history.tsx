@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
@@ -114,9 +115,14 @@ const HistoryLine = () => {
 
 const History: NextPage = () => {
   return (
-    <div className="p-1">
-      <HistoryLine />
-    </div>
+    <>
+      <Head>
+        <title>History</title>
+      </Head>
+      <div className="p-1">
+        <HistoryLine />
+      </div>
+    </>
   );
 };
 

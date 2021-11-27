@@ -43,24 +43,24 @@ const TechLinks = () => {
   const linkedin = "https://www.linkedin.com/in/shinjisugimoto";
   return (
     <div className="flex flex-row gap-2">
-      <a href={github}>
+      <Link href={github} passHref>
         <SiGithub
           size={size}
           className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
         />
-      </a>
-      <a href={t.TWITTER}>
+      </Link>
+      <Link href={t.TWITTER} passHref>
         <SiTwitter
           size={size}
           className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
         />
-      </a>
-      <a href={linkedin}>
+      </Link>
+      <Link href={linkedin} passHref>
         <SiLinkedin
           size={size}
           className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
         />
-      </a>
+      </Link>
     </div>
   );
 };

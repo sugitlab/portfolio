@@ -1,5 +1,6 @@
 import React from "react";
 import type { NextPage, GetStaticProps } from "next";
+import Head from "next/head";
 import { useLocale } from "../hooks/locale";
 import ArticleCard from "../components/article_card";
 import { getPosts } from "../lib/posts";
@@ -22,7 +23,14 @@ const Articles = ({ posts }: { posts: Article[] }) => {
 };
 
 const Home = ({ allPosts }: { allPosts: Article[] }) => {
-  return <Articles posts={allPosts} />;
+  return (
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <Articles posts={allPosts} />;
+    </>
+  );
 };
 
 export default Home;

@@ -8,7 +8,7 @@ const Chip = (props: ChipProps) => {
   if (props.category == "Tech") {
     return (
       <div className="flex flex-row">
-        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-blue-500">
+        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-blue-600">
           {props.category}
         </p>
       </div>
@@ -16,7 +16,7 @@ const Chip = (props: ChipProps) => {
   } else if (props.category == "LifeHack") {
     return (
       <div className="flex flex-row">
-        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-green-500">
+        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-green-600">
           {props.category}
         </p>
       </div>
@@ -24,7 +24,7 @@ const Chip = (props: ChipProps) => {
   } else {
     return (
       <div className="flex flex-row">
-        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-gray-500">
+        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-gray-600">
           {props.category}
         </p>
       </div>
