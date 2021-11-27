@@ -117,7 +117,7 @@ const History: NextPage = () => {
   return (
     <>
       <Head>
-        <title>History</title>
+        <title>Profile</title>
       </Head>
       <div className="p-1">
         <HistoryLine />

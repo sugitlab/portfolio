@@ -9,6 +9,7 @@ import {
   TranslateIcon,
 } from "@heroicons/react/outline";
 import { useDarkMode } from "../hooks/dark_mode";
+import { useLocale } from "../hooks/locale";
 
 const DarkModeButton = () => {
   const { isDarkMode, toggle } = useDarkMode();
@@ -60,6 +61,7 @@ const TranslateButton = () => {
 };
 
 const MenuButton = () => {
+  const { t } = useLocale();
   return (
     <Popover className="relative px-2">
       {({ open }) => (
@@ -80,7 +82,7 @@ const MenuButton = () => {
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
-                      Home
+                      {t.ARTICLES}
                     </a>
                   </Popover.Button>
                   <Popover.Button as={Link} href="/history">
@@ -88,7 +90,7 @@ const MenuButton = () => {
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
-                      History
+                      {t.PROFILE}
                     </a>
                   </Popover.Button>
                 </div>

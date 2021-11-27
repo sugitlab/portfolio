@@ -6,6 +6,7 @@ const en = {
   INTRODUCTION:
     "Software Engineer. Make mobile apps with Flutter and make web (apps/pages) with React. Programming is just for my relaxation.",
   ARTICLES: "Articles",
+  PROFILE: "Profile",
   TWITTER: twitter_en,
   YARUHYAKU: "Yaruhyaku",
   SIRIBAL: "SeriousBalloon",
