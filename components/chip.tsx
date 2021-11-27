@@ -16,7 +16,7 @@ const Chip = (props: ChipProps) => {
   } else if (props.category == "LifeHack") {
     return (
       <div className="flex flex-row">
-        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-green-600">
+        <p className="w-auto text-xs px-2 text-gray-100 text-center rounded-full bg-green-700">
           {props.category}
         </p>
       </div>

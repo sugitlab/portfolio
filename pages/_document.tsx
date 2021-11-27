@@ -7,6 +7,10 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="viewport" property="og:title" />
+        <meta
+          name="description"
+          content="Portfolio and tech blog by sugitlab. / Sugitのポートフォリオ兼技術ブログ"
+        />
       </Head>
       <body>
         <div className="bg-gray-100 dark:bg-gray-900 h-full w-full min-h-screen">
