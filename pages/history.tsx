@@ -68,8 +68,8 @@ const HistoryLine = () => {
                 <a href={yaruhyaku_url}>
                   <Image
                     alt="yaruhyaku"
-                    objectFit="cover"
-                    layout="fill"
+                    height={100}
+                    width={100}
                     src="/media/yaruhyaku.png"
                   />
                 </a>
@@ -81,8 +81,8 @@ const HistoryLine = () => {
                 <div className="static filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
                   <Image
                     alt="siribal"
-                    objectFit="cover"
-                    layout="fill"
+                    height={100}
+                    width={100}
                     src="/media/siribal.png"
                   />
                 </div>
