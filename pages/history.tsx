@@ -80,10 +80,10 @@ const HistoryLine = () => {
               <a href={seriousballoon_url}>
                 <div className="static filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
                   <Image
-                    alt="siribal"
+                    alt="seriousballoon"
                     height={100}
                     width={100}
-                    src="/media/siribal.png"
+                    src="/media/seriousballoon.png"
                   />
                 </div>
               </a>
