@@ -2,6 +2,13 @@
   "articles": [
     {
       "type": "Zenn",
+      "title": "[電子書籍] ポケモンから学ぶFlutter",
+      "published": "2021-12-08T00:00:00.000Z",
+      "url": "https://zenn.dev/sugitlab/books/flutter_poke_app_handson",
+      "category": "Tech"
+    },
+    {
+      "type": "Zenn",
       "title": "Flutterのテンプレートにlinterが入りますよ",
       "published": "2021-09-11T00:00:00.000Z",
       "url": "https://zenn.dev/sugitlab/articles/flutter_linter_recommend_sugitlab",
