@@ -1,6 +1,13 @@
 {
   "articles": [
     {
+      "type": "Post",
+      "title": "Flutter Japan LT - FormWidget",
+      "published": "2021-12-26T00:00.000Z",
+      "url": "https://sugitlab.github.io/FlutterJapan_LT_FormWidgetDeepDive",
+      "category": "Tech"
+    },
+    {
       "type": "Zenn",
       "title": "[電子書籍] ポケモンから学ぶFlutter",
       "published": "2021-12-08T00:00:00.000Z",
