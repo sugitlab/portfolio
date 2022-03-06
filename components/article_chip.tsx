@@ -1,4 +1,4 @@
-import { CategoryType, getCategoryColor } from "../lib/category";
+import { CategoryType, getCategoryColor } from "../lib/article";
 
 type ChipProps = {
   category: CategoryType;

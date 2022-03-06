@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Chip from "./chip";
+import Chip from "./article_chip";
 import { Article, ArticleType } from "../lib/article";
 
 type CardHeaderProps = {
