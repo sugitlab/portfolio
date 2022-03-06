@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import Box from "@mui/material/Box";
+import { FcIdea } from "react-icons/fc";
 import Chip from "./article_chip";
 import { Article, ArticleType } from "../lib/article";
 
@@ -10,7 +12,7 @@ type CardHeaderProps = {
 };
 
 const CardHeader = (props: CardHeaderProps) => {
-  let path: string = "/media";
+  let path: string | undefined = "/media";
   switch (props.type) {
     case "Zenn":
       path += "/zenn.svg";
@@ -25,11 +27,22 @@ const CardHeader = (props: CardHeaderProps) => {
       path += "/note.svg";
       break;
     default:
-      path = "/avatar.png";
+      path = undefined;
       break;
   }
 
-  return (
+  return path === undefined ? (
+    <Box
+      sx={{
+        margin: "auto",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <FcIdea size="40" />
+    </Box>
+  ) : (
     <Image
       className="block m-auto"
       height={props.height}

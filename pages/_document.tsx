@@ -11,7 +11,7 @@ export default function Document() {
         />
       </Head>
       <body>
-        <div className="bg-gray-100 dark:bg-gray-900 h-full w-full min-h-screen">
+        <div className="dark:bg-gray-900 h-full w-full min-h-screen">
           <Main />
           <NextScript />
         </div>

@@ -1,6 +1,7 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Layout from "../components/layout";
+// MUI
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -17,6 +18,7 @@ type ProfileContentProps = {
   color: string;
   element?: React.ReactElement;
 };
+
 const ProfileContent = (props: ProfileContentProps) => {
   return (
     <TimelineItem>
@@ -109,11 +111,48 @@ const ProfileLine = () => {
           </div>
         }
       />
+      <ProfileContent
+        title={t.PROFILE_4_HEAD}
+        body={t.PROFILE_4}
+        color="bg-pink-500"
+        element={
+          <div className="px-8">
+            <ul className="list-disc text-lg">
+              <li>
+                <a href="https://kyo-waku.com" className="hover:text-blue-500">
+                  2020 ~ : Kyo-waku
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://techbowl.co.jp/techtrain/mentors/116"
+                  className="hover:text-blue-500"
+                >
+                  2021 ~ : TechTrain
+                </a>
+                ,Mentor (specialities: React, Flutter, C#)
+              </li>
+              <li>2014 ~ : Shimadzu Corp. Software Engineer.</li>
+              <li>
+                <a
+                  href="http://www-optima.amp.i.kyoto-u.ac.jp/"
+                  className="hover:text-blue-500"
+                >
+                  2012 ~ 2014: Graduate School of Kyoto University, Informatics.
+                </a>
+              </li>
+              <li>
+                2008 ~ 2012: Kyoto Institute of Technology, Informatics Science.
+              </li>
+            </ul>
+          </div>
+        }
+      />
     </Timeline>
   );
 };
 
-const Profile: NextPage = () => {
+const Profile = () => {
   return (
     <>
       <Head>
@@ -127,3 +166,7 @@ const Profile: NextPage = () => {
 };
 
 export default Profile;
+
+Profile.getLayout = function getlayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
+};

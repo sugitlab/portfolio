@@ -71,7 +71,7 @@ const Profile = () => {
     <div className="container max-w-sm w-4/5 md:w-1/3 h-full px-8 py-4 rounded-3xl bg-gray-200 mx-auto dark:bg-gray-600">
       <div className="flex items-center pb-4">
         <Image
-          className="block mx-auto rounded-full bg-gray-100"
+          className="block mx-auto rounded-full bg-white"
           height={80}
           width={80}
           src="/avatar.png"

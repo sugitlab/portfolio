@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Popover } from "@headlessui/react";
 import {
   MenuIcon,
@@ -62,16 +63,47 @@ const TranslateButton = () => {
 
 const MenuList = () => {
   const { t } = useLocale();
+  const router = useRouter();
+
   return (
     <div className="hidden md:flex">
       <Link href="/" passHref>
-        <a className="p-2 font-bold text-base dark:text-gray-100">
-          {t.ARTICLES}
+        <a className="px-2 font-bold text-base dark:text-gray-100">
+          {router.pathname === "/" ? (
+            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
+              {t.ARTICLES}
+            </p>
+          ) : (
+            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+              {t.ARTICLES}
+            </p>
+          )}
+        </a>
+      </Link>
+      <Link href="/blog" passHref>
+        <a className="px-2 font-bold">
+          {router.pathname === "/blog" ? (
+            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
+              {t.BLOG}
+            </p>
+          ) : (
+            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+              {t.BLOG}
+            </p>
+          )}
         </a>
       </Link>
       <Link href="/profile" passHref>
-        <a className="p-2 font-bold text-base dark:text-gray-100">
-          {t.PROFILE}
+        <a className="px-2 font-bold text-base dark:text-gray-100">
+          {router.pathname === "/profile" ? (
+            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
+              {t.PROFILE}
+            </p>
+          ) : (
+            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+              {t.PROFILE}
+            </p>
+          )}
         </a>
       </Link>
     </div>
@@ -102,6 +134,14 @@ const MenuButton = () => {
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
                       {t.ARTICLES}
+                    </a>
+                  </Popover.Button>
+                  <Popover.Button as={Link} href="/blog">
+                    <a
+                      onClick={() => close()}
+                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                    >
+                      {t.BLOG}
                     </a>
                   </Popover.Button>
                   <Popover.Button as={Link} href="/profile">

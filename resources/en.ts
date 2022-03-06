@@ -7,6 +7,7 @@ const en = {
     "Software Engineer. Make mobile apps with Flutter and make web (apps/pages) with React. Programming is just for my relaxation.",
   ARTICLES: "Articles",
   PROFILE: "Profile",
+  BLOG: "Blog",
   TWITTER: twitter_en,
   YARUHYAKU: "Yaruhyaku",
   SIRIBAL: "SeriousBalloon",
@@ -18,6 +19,8 @@ const en = {
     "I developed smartphone apps. Yaruhyaku is the simple wish list app developed by Flutter. This app is the first and only one app after I started learning Flutter. My curious is moved from developing apps to watching the architecture of flutter framework itself. Geeky? Nerdy? Yes, right. And, I also develop the Game app SERIOUS-BALLOON, using Unity. This game using ARKit. I've developed this app with my colleagures.",
   PROFILE_3_HEAD: "Motorcycle",
   PROFILE_3: "I love my SR-400",
+  PROFILE_4_HEAD: "Experiences",
+  PROFILE_4: "My history & experiences.",
 };
 
 export default en;

@@ -7,6 +7,7 @@ const ja = {
     "フルペラットエンジニア。京都-滋賀でのんびり自由気ままな田舎暮らしエンジニアをやっています。作りたいものを作りたいときに作る。ワクワクが原動力。",
   ARTICLES: "書いたもの",
   PROFILE: "プロフィール",
+  BLOG: "ブログ",
   TWITTER: twitter_ja,
   YARUHYAKU: "やるひゃく",
   SIRIBAL: "SeriousBalloon",
@@ -18,6 +19,8 @@ const ja = {
     "アプリをちょこちょこと作成したりしています。「やるひゃく」はFlutterで作ったシンプルなやりたいことリスト管理アプリです。Flutterを勉強してちょっとしたころに一度何かリリースして見たいなぁということで作りました。その後はFlutterというフレームワーク自体に興味が移り、FlutterやFlutterパッケージの実装を眺めながらニヤニヤするのが楽しいです。また、少し前にUnityを触ってみようと思い立ち、職場の同僚と遊びで作ったARゲームが「SeriousBalloon」です。結構面白いと思います。",
   PROFILE_3_HEAD: "バイク",
   PROFILE_3: "SR-400が好き",
+  PROFILE_4_HEAD: "経歴",
+  PROFILE_4: "以下の通り",
 };
 
 export default ja;
