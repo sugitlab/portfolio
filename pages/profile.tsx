@@ -11,13 +11,13 @@ import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import { useLocale } from "../hooks/locale";
 import { seriousballoon_url, yaruhyaku_url } from "../lib/constants";
 
-type HistoryContentProps = {
+type ProfileContentProps = {
   title: string;
   body: string;
   color: string;
   element?: React.ReactElement;
 };
-const HistoryContent = (props: HistoryContentProps) => {
+const ProfileContent = (props: ProfileContentProps) => {
   return (
     <TimelineItem>
       <TimelineOppositeContent
@@ -38,11 +38,11 @@ const HistoryContent = (props: HistoryContentProps) => {
   );
 };
 
-const HistoryLine = () => {
+const ProfileLine = () => {
   const { t } = useLocale();
   return (
     <Timeline>
-      <HistoryContent
+      <ProfileContent
         title={t.PROFILE_1_HEAD}
         body={t.PROFILE_1}
         color="bg-indigo-500"
@@ -58,7 +58,7 @@ const HistoryLine = () => {
           </div>
         }
       />
-      <HistoryContent
+      <ProfileContent
         title={t.PROFILE_2_HEAD}
         body={t.PROFILE_2}
         color="bg-yellow-500"
@@ -93,7 +93,7 @@ const HistoryLine = () => {
           </div>
         }
       />
-      <HistoryContent
+      <ProfileContent
         title={t.PROFILE_3_HEAD}
         body={t.PROFILE_3}
         color="bg-green-500"
@@ -113,17 +113,17 @@ const HistoryLine = () => {
   );
 };
 
-const History: NextPage = () => {
+const Profile: NextPage = () => {
   return (
     <>
       <Head>
         <title>Profile</title>
       </Head>
       <div className="p-1">
-        <HistoryLine />
+        <ProfileLine />
       </div>
     </>
   );
 };
 
-export default History;
+export default Profile;

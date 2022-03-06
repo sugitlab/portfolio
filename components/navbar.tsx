@@ -60,10 +60,29 @@ const TranslateButton = () => {
   );
 };
 
-const MenuButton = () => {
+const MenuList = () => {
   const { t } = useLocale();
   return (
-    <Popover className="relative px-2">
+    <div className="hidden md:flex">
+      <Link href="/" passHref>
+        <a className="p-2 font-bold text-base dark:text-gray-100">
+          {t.ARTICLES}
+        </a>
+      </Link>
+      <Link href="/profile" passHref>
+        <a className="p-2 font-bold text-base dark:text-gray-100">
+          {t.PROFILE}
+        </a>
+      </Link>
+    </div>
+  );
+};
+
+const MenuButton = () => {
+  // Menu button willl hide when the media query is wider than "md" by the tailwind css 'md:hidden'
+  const { t } = useLocale();
+  return (
+    <Popover className="relative px-2 md:hidden">
       {({ open }) => (
         <>
           <Popover.Button aria-label="menu button">
@@ -85,7 +104,7 @@ const MenuButton = () => {
                       {t.ARTICLES}
                     </a>
                   </Popover.Button>
-                  <Popover.Button as={Link} href="/history">
+                  <Popover.Button as={Link} href="/profile">
                     <a
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
@@ -111,6 +130,8 @@ export default function Navbar() {
           SugitLab.
         </a>
       </Link>
+      <MenuList />
+      <div className="flex flex-1" />
       <DarkModeButton />
       <TranslateButton />
       <MenuButton />
