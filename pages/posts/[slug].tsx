@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from "../../components/layout";
+import BlogLayout from "../../components/blog_layout";
 import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { getAllPostSlugs, getPostData, PostDataType } from "../../lib/posts";
@@ -23,8 +23,7 @@ export default Post;
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPostSlugs();
-  console.log(paths);
-
+  
   return {
     paths,
     fallback: false,
@@ -48,6 +47,6 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-//Post.getLayout = function getlayout(page: React.ReactElement) {
-//  return <Layout>{page}</Layout>;
-//};
+Post.getLayout = function getlayout(page: React.ReactElement) {
+  return <BlogLayout>{page}</BlogLayout>;
+};

@@ -50,13 +50,15 @@ export function getAllPostsInfo(): PostDataType[] {
 export function getAllPostSlugs() {
   const fileNames = fs.readdirSync(postsDirectory);
 
-  return fileNames.map((fileName) => {
+  const paths = fileNames.map((fileName) => {
     return {
       params: {
         slug: fileName.replace(/\.md$/, ""),
       },
     };
   });
+
+  return paths;
 }
 
 export async function getPostData(slug: string): Promise<PostDataType> {
