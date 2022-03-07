@@ -33,7 +33,7 @@ const Post = (props: PostDataType) => {
       <BackTo />
       <article className="text-gray-900 dark:text-gray-100 znc">
         <div className="flex flex-row justify-center items-center">
-          <div className="w-36">{getIcon(props.icon, 80)}</div>
+          <div className="w-20">{getIcon(props.icon, 80)}</div>
           <div className="flex-row">
             <p className="text-4xl px-4">{props.title}</p>
           </div>
