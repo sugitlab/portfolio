@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import markdownToHtml from "zenn-markdown-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -47,24 +48,6 @@ export function getAllPostsInfo(): PostDataType[] {
   });
 }
 
-export async function getNeighbors(target: string) {
-  const all = await getAllPostSlugs(); // <- このタイミングでreaddirSyncができないっぽい
-  const index = all.findIndex((path) => path.params.slug === target);
-  if (index <= 0 || all.length < 2) {
-    // No Match (Unexpected) or single
-    return {
-      prev: undefined,
-      next: undefined,
-    };
-  } else {
-    // More than 3 posts
-    return {
-      prev: index == 0 ? undefined : all.at(index - 1)?.params.slug,
-      next: index == all.length ? undefined : all.at(index + 1)?.params.slug,
-    };
-  }
-}
-
 export function getAllPostSlugs() {
   const fileNames = fs.readdirSync(postsDirectory);
 
@@ -86,10 +69,11 @@ export async function getPostData(slug: string): Promise<PostDataType> {
   const matterResult = matter(fileContents);
   const matterData = matterResult.data as MatterResultType;
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
+  const contentHtml = markdownToHtml(matterResult.content);
+  // const processedContent = await remark()
+  //   .use(html)
+  //   .process(matterResult.content);
+  // const contentHtml = processedContent.toString();
 
   return {
     slug,
