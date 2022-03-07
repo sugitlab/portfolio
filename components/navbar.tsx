@@ -182,8 +182,14 @@ export default function Navbar(props: NavbarProps) {
         </>
       )}
       <DarkModeButton />
-      <TranslateButton />
-      {props.noLink ? <></> : <MenuButton />}
+      {props.noLink ? (
+        <></>
+      ) : (
+        <>
+          <TranslateButton />
+          <MenuButton />
+        </>
+      )}
     </nav>
   );
 }

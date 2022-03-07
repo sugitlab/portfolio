@@ -10,6 +10,7 @@ const postsDirectory = path.join(process.cwd(), "posts");
 interface MatterResultType {
   title: string;
   date: Date;
+  icon?: string;
 }
 
 export interface PostDataType extends MatterResultType {

@@ -2,17 +2,20 @@ import Head from "next/head";
 import Link from "next/link";
 import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
+import { TiArrowBack } from "react-icons/ti";
 import { getAllPostSlugs, getPostData, PostDataType } from "../../lib/posts";
+import { getIcon } from "../../components/icon";
 import BlogLayout from "../../components/blog_layout";
 import "zenn-content-css";
 
 const BackTo = () => {
   return (
     <>
-      <div className="z-50 flex flex-rows py-4 px-4 sticky top-8">
+      <div className="z-50 flex flex-rows py-4 px-4">
         <Link href={"/blog"} locale="" passHref>
           <a className="flex font-bold text-xl dark:text-gray-100">
-            {"< Back"}
+            <TiArrowBack size={30} />
+            <p className="px-2">Back</p>
           </a>
         </Link>
       </div>
@@ -20,7 +23,7 @@ const BackTo = () => {
   );
 };
 
-const Post = (props: PostDataType, prev: string, next: string) => {
+const Post = (props: PostDataType) => {
   return (
     <>
       <Head>
@@ -28,10 +31,16 @@ const Post = (props: PostDataType, prev: string, next: string) => {
       </Head>
       <BackTo />
       <article className="text-gray-900 dark:text-gray-100 znc">
-        <h1>{props.title}</h1>
-        <h3>{props.date}</h3>
+        <div className="flex flex-row justify-center items-center">
+          <div className="w-36">{getIcon(props.icon, 80)}</div>
+          <div className="flex-row">
+            <p className="text-4xl px-4">{props.title}</p>
+          </div>
+        </div>
+        <div className="flex justify-center p-4 text-md">{props.date}</div>
         <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
       </article>
+      <BackTo />
     </>
   );
 };
