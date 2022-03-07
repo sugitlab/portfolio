@@ -11,8 +11,8 @@
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@headlessui/react": "^1.4.2",
-    "@heroicons/react": "^1.0.5",
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.6",
     "@mui/lab": "^5.0.0-alpha.72",
     "@mui/material": "^5.5.0",
     "@popperjs/core": "^2.10.2",
@@ -24,8 +24,6 @@
     "react-icons": "^4.3.1",
     "react-popper": "^2.2.5",
     "react-use": "^17.3.1",
-    "remark": "^14.0.2",
-    "remark-html": "^15.0.1",
     "zenn-content-css": "^0.1.107",
     "zenn-embed-elements": "^0.1.107",
     "zenn-markdown-html": "^0.1.107"
