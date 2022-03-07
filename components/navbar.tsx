@@ -162,7 +162,10 @@ const MenuButton = () => {
   );
 };
 
-export default function Navbar() {
+type NavbarProps = {
+  noLink?: boolean;
+};
+export default function Navbar(props: NavbarProps) {
   return (
     <nav className="z-50 flex flex-rows py-4 px-4 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
       <Link href="/" passHref>
@@ -170,11 +173,17 @@ export default function Navbar() {
           SugitLab.
         </a>
       </Link>
-      <MenuList />
-      <div className="flex flex-1" />
+      {props.noLink ? (
+        <></>
+      ) : (
+        <>
+          <MenuList />
+          <div className="flex flex-1" />
+        </>
+      )}
       <DarkModeButton />
       <TranslateButton />
-      <MenuButton />
+      {props.noLink ? <></> : <MenuButton />}
     </nav>
   );
 }

@@ -47,6 +47,24 @@ export function getAllPostsInfo(): PostDataType[] {
   });
 }
 
+export async function getNeighbors(target: string) {
+  const all = await getAllPostSlugs(); // <- このタイミングでreaddirSyncができないっぽい
+  const index = all.findIndex((path) => path.params.slug === target);
+  if (index <= 0 || all.length < 2) {
+    // No Match (Unexpected) or single
+    return {
+      prev: undefined,
+      next: undefined,
+    };
+  } else {
+    // More than 3 posts
+    return {
+      prev: index == 0 ? undefined : all.at(index - 1)?.params.slug,
+      next: index == all.length ? undefined : all.at(index + 1)?.params.slug,
+    };
+  }
+}
+
 export function getAllPostSlugs() {
   const fileNames = fs.readdirSync(postsDirectory);
 

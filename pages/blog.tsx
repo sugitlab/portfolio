@@ -1,32 +1,24 @@
 import Head from "next/head";
-import Link from "next/link";
+import { useLocale } from "../hooks/locale";
 import Layout from "../components/layout";
 import { getAllPostsInfo, PostDataType } from "../lib/posts";
+import BlogPostCard from "../components/blogpost_card";
 
 type BlogProps = {
   allPostsData: PostDataType[];
 };
 
 const Blog = (props: BlogProps) => {
+  const { t } = useLocale();
   return (
     <>
       <Head>
         <title>Blog</title>
       </Head>
-      <div className="text-gray-900 dark:text-gray-100">
-        <ul>
-          {props.allPostsData.map((post) => (
-            <li key={post.slug}>
-              <Link href={`/posts/${post.slug}`} passHref>
-                <a>{post.title}</a>
-              </Link>
-              <br />
-              <small>
-                <p>{post.date}</p>
-              </small>
-            </li>
-          ))}
-        </ul>
+      <div className="divide-solid divide-gray-200 divide-y-2 dark:divide-gray-800 flex flex-col">
+        {props.allPostsData.map((data, index) => {
+          return <BlogPostCard key={index} {...data} />;
+        })}
       </div>
     </>
   );
