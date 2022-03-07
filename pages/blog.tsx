@@ -14,6 +14,7 @@ const Blog = (props: BlogProps) => {
     <>
       <Head>
         <title>Blog</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="divide-solid divide-gray-200 divide-y-2 dark:divide-gray-800 flex flex-col">
         {props.allPostsData.length > 0 ? (
