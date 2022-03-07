@@ -1,20 +1,17 @@
 import React from "react";
-import type { NextPage, GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
+import Layout from "../components/layout";
 import { useLocale } from "../hooks/locale";
 import ArticleCard from "../components/article_card";
-import { getPosts } from "../lib/posts";
-import { Article } from "../lib/article";
+import { getArticles, Article } from "../lib/article";
 
-const Articles = ({ posts }: { posts: Article[] }) => {
+const Articles = ({ articles }: { articles: Article[] }) => {
   const { t } = useLocale();
   return (
     <>
-      <p className="py-2 text-center text-2xl font-bold text-indigo-700 dark:text-indigo-400">
-        {t.ARTICLES}
-      </p>
       <div className="divide-solid divide-gray-200 divide-y-2 dark:divide-gray-800 flex flex-col">
-        {posts.map((data, index) => {
+        {articles.map((data, index) => {
           return <ArticleCard key={index} {...data} />;
         })}
       </div>
@@ -22,13 +19,13 @@ const Articles = ({ posts }: { posts: Article[] }) => {
   );
 };
 
-const Home = ({ allPosts }: { allPosts: Article[] }) => {
+const Home = ({ allArticles }: { allArticles: Article[] }) => {
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      <Articles posts={allPosts} />;
+      <Articles articles={allArticles} />;
     </>
   );
 };
@@ -36,10 +33,14 @@ const Home = ({ allPosts }: { allPosts: Article[] }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = getPosts();
+  const allArticles = getArticles();
   return {
     props: {
-      allPosts,
+      allArticles,
     },
   };
+};
+
+Home.getLayout = function getlayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
 };

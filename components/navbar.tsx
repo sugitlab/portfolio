@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Popover } from "@headlessui/react";
 import {
   MenuIcon,
@@ -60,10 +61,60 @@ const TranslateButton = () => {
   );
 };
 
+const MenuList = () => {
+  const { t } = useLocale();
+  const router = useRouter();
+
+  return (
+    <div className="hidden md:flex">
+      <Link href="/" passHref>
+        <a className="px-2 font-bold text-base dark:text-gray-100">
+          {router.pathname === "/" ? (
+            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
+              {t.ARTICLES}
+            </p>
+          ) : (
+            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+              {t.ARTICLES}
+            </p>
+          )}
+        </a>
+      </Link>
+      <Link href="/blog" passHref>
+        <a className="px-2 font-bold">
+          {router.pathname === "/blog" ? (
+            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
+              {t.BLOG}
+            </p>
+          ) : (
+            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+              {t.BLOG}
+            </p>
+          )}
+        </a>
+      </Link>
+      <Link href="/profile" passHref>
+        <a className="px-2 font-bold text-base dark:text-gray-100">
+          {router.pathname === "/profile" ? (
+            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
+              {t.PROFILE}
+            </p>
+          ) : (
+            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+              {t.PROFILE}
+            </p>
+          )}
+        </a>
+      </Link>
+    </div>
+  );
+};
+
 const MenuButton = () => {
+  // Menu button willl hide when the media query is wider than "md" by the tailwind css 'md:hidden'
   const { t } = useLocale();
   return (
-    <Popover className="relative px-2">
+    <Popover className="relative px-2 md:hidden">
       {({ open }) => (
         <>
           <Popover.Button aria-label="menu button">
@@ -85,7 +136,15 @@ const MenuButton = () => {
                       {t.ARTICLES}
                     </a>
                   </Popover.Button>
-                  <Popover.Button as={Link} href="/history">
+                  <Popover.Button as={Link} href="/blog">
+                    <a
+                      onClick={() => close()}
+                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                    >
+                      {t.BLOG}
+                    </a>
+                  </Popover.Button>
+                  <Popover.Button as={Link} href="/profile">
                     <a
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
@@ -103,7 +162,10 @@ const MenuButton = () => {
   );
 };
 
-export default function Navbar() {
+type NavbarProps = {
+  noLink?: boolean;
+};
+export default function Navbar(props: NavbarProps) {
   return (
     <nav className="z-50 flex flex-rows py-4 px-4 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
       <Link href="/" passHref>
@@ -111,9 +173,23 @@ export default function Navbar() {
           SugitLab.
         </a>
       </Link>
+      {props.noLink ? (
+        <></>
+      ) : (
+        <>
+          <MenuList />
+          <div className="flex flex-1" />
+        </>
+      )}
       <DarkModeButton />
-      <TranslateButton />
-      <MenuButton />
+      {props.noLink ? (
+        <></>
+      ) : (
+        <>
+          <TranslateButton />
+          <MenuButton />
+        </>
+      )}
     </nav>
   );
 }
