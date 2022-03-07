@@ -5,7 +5,6 @@ export default function Document() {
     <Html>
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
           content="Portfolio and tech blog by sugitlab. / Sugitのポートフォリオ兼技術ブログ"

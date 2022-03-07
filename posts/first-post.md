@@ -23,6 +23,7 @@ https://twitter.com/sugitlab/status/1500869213824585728?s=20&t=tCdwpb38lu3if-68o
 
 - Analytics は入れておきたい
 - Gist/Dartpad の埋め込み対応
+- 気の利いた OGP
 
 :::message
 自分で読むときにイライラしそうなので広告はいれません（宣言）
