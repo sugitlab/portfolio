@@ -1,10 +1,10 @@
-import Navbar from "./navbar";
-import Footer from "./footer";
-import Profile from "../components/profile_card";
+import Navbar from './navbar'
+import Footer from './footer'
+import Profile from '../components/profile_card'
 
 export type LayoutProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export default function Layout(props: LayoutProps) {
   return (
@@ -17,5 +17,5 @@ export default function Layout(props: LayoutProps) {
       </div>
       <Footer />
     </div>
-  );
+  )
 }

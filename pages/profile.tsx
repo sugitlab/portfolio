@@ -1,23 +1,23 @@
-import Head from "next/head";
-import Image from "next/image";
-import Layout from "../components/layout";
+import Image from 'next/image'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
 // MUI
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import { useLocale } from "../hooks/locale";
-import { seriousballoon_url, yaruhyaku_url } from "../lib/constants";
+import Timeline from '@mui/lab/Timeline'
+import TimelineItem from '@mui/lab/TimelineItem'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import TimelineConnector from '@mui/lab/TimelineConnector'
+import TimelineContent from '@mui/lab/TimelineContent'
+import TimelineDot from '@mui/lab/TimelineDot'
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
+import { useLocale } from '../hooks/locale'
+import { seriousballoon_url, yaruhyaku_url } from '../lib/constants'
 
 type ProfileContentProps = {
-  title: string;
-  body: string;
-  color: string;
-  element?: React.ReactElement;
-};
+  title: string
+  body: string
+  color: string
+  element?: React.ReactElement
+}
 
 const ProfileContent = (props: ProfileContentProps) => {
   return (
@@ -37,11 +37,11 @@ const ProfileContent = (props: ProfileContentProps) => {
         </span>
       </TimelineContent>
     </TimelineItem>
-  );
-};
+  )
+}
 
 const ProfileLine = () => {
-  const { t } = useLocale();
+  const { t } = useLocale()
   return (
     <Timeline>
       <ProfileContent
@@ -149,25 +149,22 @@ const ProfileLine = () => {
         }
       />
     </Timeline>
-  );
-};
+  )
+}
 
 const Profile = () => {
   return (
     <>
-      <Head>
-        <title>Profile</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <Seo pageTitle="Profile" pageDescription="Profile for sugit." />
       <div className="p-1">
         <ProfileLine />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
 
 Profile.getLayout = function getlayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}
