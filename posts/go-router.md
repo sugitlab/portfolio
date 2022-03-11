@@ -159,9 +159,9 @@ initialLocation を設定するだけですね。簡単だ〜。
 サブページが定義できます。
 以下の場合、
 
-- '/page1'
-- '/page1/subpage1'
-- '/page1/subpage2'
+- `/page1`
+- `/page1/subpage1`
+- `/page1/subpage2`
 
 のように、URLを続けてページを作ることができます。
 
