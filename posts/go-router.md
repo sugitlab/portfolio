@@ -156,4 +156,75 @@ initialLocation を設定するだけですね。簡単だ〜。
 
 #### example/lib/sub_routes.dart
 
-また後日つづき書きます。
+サブページが定義できます。
+以下の場合、
+
+- '/page1'
+- '/page1/subpage1'
+- '/page1/subpage2'
+
+のように、URLを続けてページを作ることができます。
+
+```dart
+GoRoute(
+  path: '/page1',
+  builder: (context, state) => const Page2(),
+  routes: [
+    GoRoute(
+      path: 'subpage1',
+      builder: (context, state) => const SubPage1(),
+    ),
+    GoRoute(
+      path: 'subpage2',
+      builder: (context, state) => const SubPage2(),
+    ),
+  ],
+),
+```
+
+サブページは単純に親子を表現するために使ってもいいですが、URLパラメーターを組み合わせることで効果的に使えそうです。たとえば以下のような例です。
+
+```dart
+GoRoute(
+  path: '/',
+  builder: (context, state) => const BookList(),
+  routes: [
+    GoRoute(
+      path: 'book/:id',
+      builder: (context, state) => const Book(state.params['id']),
+    ),
+  ],
+),
+```
+
+この例では、BookListがトップページで、そこから詳細ページへ遷移するパターンを表現しています。
+idとして書籍を特定するものを与えることで、書籍情報の詳細ページを作ることができます。
+このとき、URLで `:id` と、コロン付きで指定した情報は `state.param['id]` で取得することができますので、これを活用することでページにURLの情報を適切に提供することができます。
+
+なお、ページ遷移は `context.go('/book/id01234')` とURLをごそっと渡せばOKです。
+
+#### example/lib/named_route.dart
+
+ルーティングが複雑になってくるとパスを渡して go!! ってやるのもちょっと取り回しにくいケースが出てくるでしょう。そんなときは名前をつけてあげます。
+
+```dart
+GoRoute(
+  path: '/',
+  builder: (context, state) => const BookList(),
+  routes: [
+    GoRoute(
+      name: 'book',
+      path: 'book/:id',
+      builder: (context, state) => Book(state.params['id']),
+    ),
+  ],
+),
+```
+
+この例のように書籍のページのルーティングにパラメーターが含まれているので、URLとしてまとめて扱うよりも、ルーティングとパラメーターは分けてあげたほうが扱いやすいと思います。
+そこで、名前をつけてあげます。この例では 'book' という名前をつけました。そうすると、`go`のかわりに`goNamed`を使うことでページ遷移しつつパラメーターを提供することができます。
+
+```dart
+context.goNamed('book', params: {'id': 'id01234'})
+```
+
