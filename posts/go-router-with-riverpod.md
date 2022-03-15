@@ -77,7 +77,7 @@ ElevatedButton(
 ```
 
 さて、`context.go()` という実装がありますが、なんでこんなことができるのでしょう。
-context の役割を理解する必要がありますが、それは別の有用な記事たちに任せておき、結論んだけ書いておきます。
+context の役割を理解する必要がありますが、それは別の有用な記事たちに任せておき、結論だけ書いておきます。
 
 というかここに書いてあります。
 
@@ -119,7 +119,7 @@ static GoRouter of(BuildContext context) {
 dependOnInheritedWidgetOfExactType で `InheritedGoRouter` と同じ型のデータが流れていないか探してきてくれます。
 これによって、**go** という遷移用のメソッドが利用可能になります。
 
-では riverpod と併用する婆これをどう捉えるか。
+では riverpod と併用する場合これをどう捉えたらいいのか。
 そもそも riverpod は Provider の Widget Tree 依存を引っぺがしているところに特長があります。
 そんでもって Provider はそもそも InheritedWidget をベースとしています。つまりは Widget Tree にべったり。言い換えれば Context にべったりです。
 
