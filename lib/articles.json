@@ -2,6 +2,13 @@
   "articles": [
     {
       "type": "Post",
+      "title": "Software Design 2022年 4月号 第2特集 本質から学ぶGit",
+      "published": "2022-03-18T00:00.000Z",
+      "url": "https://gihyo.jp/magazine/SD/archive/2022/202204",
+      "category": "Tech"
+    },
+    {
+      "type": "Post",
       "title": "Flutter Japan LT - FormWidget",
       "published": "2021-12-26T00:00.000Z",
       "url": "https://sugitlab.github.io/FlutterJapan_LT_FormWidgetDeepDive",
