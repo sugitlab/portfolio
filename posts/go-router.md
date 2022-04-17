@@ -228,3 +228,48 @@ GoRoute(
 context.goNamed('book', params: {'id': 'id01234'})
 ```
 
+#### example/lib/push.dart
+
+GoRouterは宣言的にルーティングを指定できるところが特徴ですが、親しみのある(?) push/pop による手続的なルーティングにも対応しています。
+
+```dart
+context.push('PATH')
+```
+
+です。シンプルにスタックに積むことができます。基本的に宣言的な `go` で事足りそうですが、push/pop を使った方が良いユースケースがまだハッキリと思いついていません。
+
+:::message
+`go` も宣言的ではありますが、`push` 同様、スタックを積みますので、 `pop` は共通して動作します。`go`が優れているケースはいくらかありそうなものですが、 `push` が良いケースがよくわからない・・・ 🙄
+:::
+
+#### example/lib/redirection.dart
+
+リダイレクトの実装が簡単にできる。すばらしい。
+
+```dart
+_router = GoRouter(
+  routes: [
+    // ...
+  ],
+  redirect: (state) {
+    // if the user is not logged in, they need to login
+    final loggedIn = loginInfo.loggedIn;
+    final loggingIn = state.subloc == '/login';
+    if (!loggedIn) return loggingIn ? null : '/login';
+
+    // if the user is logged in but still on the login page, send them to
+    // the home page
+    if (loggingIn) return '/';
+
+    // no need to redirect at all
+    return null;
+  },
+)
+```
+
+条件付きでリダイレクトを指定できる。例にある通りログインのときとかとても使いやすそう。
+ログインが終わったかどうかはルーティングの情報やログインの状態に応じてよしなに決めるというやり方ができる。
+手続的にやろうとするとこの辺りの条件チェックなどアレコレ気をかけないといけないのでちょっと面倒。
+
+`state.location`とか`state.subloc`とかはセットでよく使うことになりそう。
+
