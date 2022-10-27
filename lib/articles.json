@@ -2,6 +2,13 @@
   "articles": [
     {
       "type": "Post",
+      "title": "Software Design 2022年 11月号 連載第一回 楽しいFlutter",
+      "published": "2022-10-19T00:00.000Z",
+      "url": "https://gihyo.jp/magazine/SD/archive/2022/202211",
+      "category": "Tech"
+    },
+    {
+      "type": "Post",
       "title": "Software Design 2022年 4月号 第2特集 本質から学ぶGit",
       "published": "2022-03-18T00:00.000Z",
       "url": "https://gihyo.jp/magazine/SD/archive/2022/202204",
