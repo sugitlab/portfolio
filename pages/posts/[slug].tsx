@@ -35,7 +35,7 @@ const Post = (props: PostDataType) => {
             <p className="text-4xl px-4">{props.title}</p>
           </div>
         </div>
-        <div className="flex justify-center p-4 text-md">{props.date}</div>
+        <div className="flex justify-center p-4 text-md">{props.date.toString()}</div>
         <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
       </article>
       <BackTo />
