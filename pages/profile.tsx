@@ -1,23 +1,23 @@
-import Image from 'next/image'
-import Layout from '../components/layout'
-import Seo from '../components/seo'
+import Image from "next/image";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 // MUI
-import Timeline from '@mui/lab/Timeline'
-import TimelineItem from '@mui/lab/TimelineItem'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import TimelineConnector from '@mui/lab/TimelineConnector'
-import TimelineContent from '@mui/lab/TimelineContent'
-import TimelineDot from '@mui/lab/TimelineDot'
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
-import { useLocale } from '../hooks/locale'
-import { seriousballoon_url, yaruhyaku_url } from '../lib/constants'
+import Timeline from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineDot from "@mui/lab/TimelineDot";
+import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import { useLocale } from "../hooks/locale";
+import { seriousballoon_url, yaruhyaku_url } from "../lib/constants";
 
 type ProfileContentProps = {
-  title: string
-  body: string
-  color: string
-  element?: React.ReactElement
-}
+  title: string;
+  body: string;
+  color: string;
+  element?: React.ReactElement;
+};
 
 const ProfileContent = (props: ProfileContentProps) => {
   return (
@@ -37,11 +37,11 @@ const ProfileContent = (props: ProfileContentProps) => {
         </span>
       </TimelineContent>
     </TimelineItem>
-  )
-}
+  );
+};
 
 const ProfileLine = () => {
-  const { t } = useLocale()
+  const { t } = useLocale();
   return (
     <Timeline>
       <ProfileContent
@@ -52,11 +52,9 @@ const ProfileLine = () => {
           <div className="relative filter drop-shadow-lg w-4/5 h-32 sm:h-48 sm:w-3/5 rounded-lg overflow-hidden">
             <Image
               alt="country"
-              style={
-                {
-                  objectFit: 'cover'
-                }
-              }
+              style={{
+                objectFit: "cover",
+              }}
               fill
               priority
               src="/media/country.jpg"
@@ -107,11 +105,9 @@ const ProfileLine = () => {
           <div className="relative filter drop-shadow-lg w-4/5 h-48 sm:h-48 sm:w-3/5 rounded-lg overflow-hidden">
             <Image
               alt="sr400"
-              style={
-                {
-                  objectFit: 'cover'
-                }
-              }
+              style={{
+                objectFit: "cover",
+              }}
               fill
               priority
               src="/media/sr400.jpg"
@@ -125,40 +121,80 @@ const ProfileLine = () => {
         color="bg-pink-500"
         element={
           <div className="px-8">
-            <ul className="list-disc text-lg">
-              <li>
-                <a href="https://kyo-waku.com" className="hover:text-blue-500">
-                  2020 ~ : Kyo-waku
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://techbowl.co.jp/techtrain/mentors/116"
-                  className="hover:text-blue-500"
-                >
-                  2021 ~ : TechTrain
-                </a>
-                ,Mentor (specialities: React, Flutter, C#)
-              </li>
-              <li>2014 ~ : Shimadzu Corp. Software Engineer.</li>
-              <li>
-                <a
-                  href="http://www-optima.amp.i.kyoto-u.ac.jp/"
-                  className="hover:text-blue-500"
-                >
-                  2012 ~ 2014: Graduate School of Kyoto University, Informatics.
-                </a>
-              </li>
-              <li>
-                2008 ~ 2012: Kyoto Institute of Technology, Informatics Science.
-              </li>
-            </ul>
+            <table>
+              <thead>
+                <tr>
+                  <td className="p-4">From</td>
+                  <td className="p-4">To</td>
+                  <td className="p-4">Details</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="p-2">
+                  <td>2023/1</td>
+                  <td>now</td>
+                  <td>
+                    <a
+                      href="https:/techtrain.dev"
+                      className="hover:text-blue-500"
+                    >
+                      TechBowl.Inc
+                    </a>
+                  </td>
+                </tr>
+                <tr className="p-2">
+                  <td>2021/4</td>
+                  <td>now</td>
+                  <td>
+                    <a
+                      href="https://techbowl.co.jp/techtrain/mentors/116"
+                      className="hover:text-blue-500"
+                    >
+                      TechTrain Mentor
+                    </a>
+                  </td>
+                </tr>
+                <tr className="p-2">
+                  <td>2022/2</td>
+                  <td>now</td>
+                  <td>
+                    <a
+                      href="https://kyo-waku.com"
+                      className="hover:text-blue-500"
+                    >
+                      Kyo-waku
+                    </a>
+                  </td>
+                </tr>
+                <tr className="p-2">
+                  <td>2014/4</td>
+                  <td>2023/1</td>
+                  <td>
+                    Shimadzu Corp. Software Engineer.
+                  </td>
+                </tr>
+                <tr className="p-2">
+                  <td>2012/4</td>
+                  <td>2014/3</td>
+                  <td>
+                    Graduate School of Kyoto University, Informatics.
+                  </td>
+                </tr>
+                <tr className="p-2">
+                  <td>2008/4</td>
+                  <td>2012/3</td>
+                  <td>
+                  Kyoto Institute of Technology, Informatics Science.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         }
       />
     </Timeline>
-  )
-}
+  );
+};
 
 const Profile = () => {
   return (
@@ -168,11 +204,11 @@ const Profile = () => {
         <ProfileLine />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
 
 Profile.getLayout = function getlayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>
-}
+  return <Layout>{page}</Layout>;
+};
