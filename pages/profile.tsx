@@ -145,7 +145,7 @@ const ProfileLine = () => {
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     <a
-                      href="https:/techtrain.dev"
+                      href="https://techtrain.dev"
                       className="hover:text-blue-500"
                     >
                       {t.TB}
