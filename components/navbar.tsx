@@ -177,6 +177,7 @@ export default function Navbar(props: NavbarProps) {
         <></>
       ) : (
         <>
+          <div className="flex flex-1" />
           <MenuList />
           <div className="flex flex-1" />
         </>
