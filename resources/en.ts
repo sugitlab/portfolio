@@ -21,6 +21,12 @@ const en = {
   PROFILE_3: "I love my SR-400",
   PROFILE_4_HEAD: "Experiences",
   PROFILE_4: "My history & experiences.",
+  KIT_U: "Kyoto Institute of Technology, Informatics Science.",
+  KU: "Graduate School of Kyoto University, Informatics.",
+  SHIM: "Shimadzu Corp.",
+  KYOWAKU: "Kyo-waku",
+  TT_MENTOR: "TechTrain Mentor",
+  TB: "TechBowl.Inc",
 };
 
 export default en;

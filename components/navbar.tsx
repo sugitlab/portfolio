@@ -38,20 +38,20 @@ const TranslateButton = () => {
           <div className="w-24 rounded-lg bg-white dark:bg-gray-600">
             <div className="grid grid-col-2">
               <Popover.Button as={Link} href="" locale="en">
-                <a
+                <div
                   onClick={() => close()}
                   className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                 >
                   English
-                </a>
+                </div>
               </Popover.Button>
               <Popover.Button as={Link} href="" locale="ja">
-                <a
+                <div
                   onClick={() => close()}
                   className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                 >
                   日本語
-                </a>
+                </div>
               </Popover.Button>
             </div>
           </div>
@@ -129,28 +129,28 @@ const MenuButton = () => {
               <div className="w-32 rounded-lg bg-white dark:bg-gray-600">
                 <div className="grid grid-col-2">
                   <Popover.Button as={Link} href="/">
-                    <a
+                    <div
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
                       {t.ARTICLES}
-                    </a>
+                    </div>
                   </Popover.Button>
                   <Popover.Button as={Link} href="/blog">
-                    <a
+                    <div
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
                       {t.BLOG}
-                    </a>
+                    </div>
                   </Popover.Button>
                   <Popover.Button as={Link} href="/profile">
-                    <a
+                    <div
                       onClick={() => close()}
                       className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                     >
                       {t.PROFILE}
-                    </a>
+                    </div>
                   </Popover.Button>
                 </div>
               </div>

@@ -120,71 +120,101 @@ const ProfileLine = () => {
         body={t.PROFILE_4}
         color="bg-pink-500"
         element={
-          <div className="px-8">
-            <table>
-              <thead>
+          <div className="px-2">
+            <table className="items-center w-full border-collapse text-blueGray-700">
+              <thead className="thead-light">
                 <tr>
-                  <td className="p-4">From</td>
-                  <td className="p-4">To</td>
-                  <td className="p-4">Details</td>
+                  <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    From
+                  </td>
+                  <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    To
+                  </td>
+                  <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Organization
+                  </td>
                 </tr>
               </thead>
               <tbody>
-                <tr className="p-2">
-                  <td>2023/1</td>
-                  <td>now</td>
-                  <td>
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2023/1
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    present
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     <a
                       href="https:/techtrain.dev"
                       className="hover:text-blue-500"
                     >
-                      TechBowl.Inc
+                      {t.TB}
                     </a>
                   </td>
                 </tr>
-                <tr className="p-2">
-                  <td>2021/4</td>
-                  <td>now</td>
-                  <td>
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2021/4
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    present
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     <a
                       href="https://techbowl.co.jp/techtrain/mentors/116"
                       className="hover:text-blue-500"
                     >
-                      TechTrain Mentor
+                      {t.TT_MENTOR}
                     </a>
                   </td>
                 </tr>
-                <tr className="p-2">
-                  <td>2022/2</td>
-                  <td>now</td>
-                  <td>
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2022/2
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    present
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     <a
                       href="https://kyo-waku.com"
                       className="hover:text-blue-500"
                     >
-                      Kyo-waku
+                      {t.KYOWAKU}
                     </a>
                   </td>
                 </tr>
-                <tr className="p-2">
-                  <td>2014/4</td>
-                  <td>2023/1</td>
-                  <td>
-                    Shimadzu Corp. Software Engineer.
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2014/4
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2023/1
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
+                    {t.SHIM}
                   </td>
                 </tr>
-                <tr className="p-2">
-                  <td>2012/4</td>
-                  <td>2014/3</td>
-                  <td>
-                    Graduate School of Kyoto University, Informatics.
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2012/4
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2014/3
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
+                    {t.KU}
                   </td>
                 </tr>
-                <tr className="p-2">
-                  <td>2008/4</td>
-                  <td>2012/3</td>
-                  <td>
-                  Kyoto Institute of Technology, Informatics Science.
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2008/4
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                    2012/3
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
+                    {t.KIT_U}
                   </td>
                 </tr>
               </tbody>

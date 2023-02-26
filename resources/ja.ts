@@ -21,6 +21,12 @@ const ja = {
   PROFILE_3: "SR-400が好き",
   PROFILE_4_HEAD: "経歴",
   PROFILE_4: "以下の通り",
+  KIT_U: "京都工芸繊維大学 情報工学",
+  KU: "京都大学大学院 情報学研究科",
+  SHIM: "(株)島津製作所",
+  KYOWAKU: "きょうわく",
+  TT_MENTOR: "TechTrain メンター",
+  TB: "(株)TechBowl",
 };
 
 export default ja;

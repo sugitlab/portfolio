@@ -44,7 +44,7 @@ const TechLinks = () => {
   return (
     <div className="flex flex-row gap-2">
       <Link href={github} passHref>
-        <SiGithub
+        <gd
           size={size}
           className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
         />
