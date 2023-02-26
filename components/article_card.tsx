@@ -47,7 +47,11 @@ const CardHeader = (props: CardHeaderProps) => {
       className="block m-auto"
       height={props.height}
       width={props.width}
-      objectFit="contain"
+      style={
+        {
+          objectFit: 'contain'
+        }
+      }
       src={path}
       alt="Icon"
     />
@@ -61,7 +65,6 @@ const ArticleCard = (props: Article) => {
   return (
     <div>
       <Link href={props.url} passHref>
-        <a>
           <div className="flex flex-row items-center container h-28 rounded-xl p-2">
             <div className="flex justify-center min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl">
               <CardHeader height={40} width={40} type={props.type} />
@@ -76,7 +79,6 @@ const ArticleCard = (props: Article) => {
               <Chip category={props.category} />
             </div>
           </div>
-        </a>
       </Link>
     </div>
   );

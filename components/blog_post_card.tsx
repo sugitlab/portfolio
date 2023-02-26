@@ -27,7 +27,6 @@ const BlogPostCard = (props: PostDataType) => {
   return (
     <div>
       <Link href={`/posts/${props.slug}`} locale="" passHref>
-        <a>
           <div className="flex flex-row items-center container h-28 rounded-xl p-2">
             <div className="flex justify-center min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl">
               <BlogPostCardHeader iconType={props.icon} />
@@ -37,11 +36,10 @@ const BlogPostCard = (props: PostDataType) => {
                 {props.title}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-300">
-                {props.date}
+                {props.date.toString()}
               </p>
             </div>
           </div>
-        </a>
       </Link>
     </div>
   );

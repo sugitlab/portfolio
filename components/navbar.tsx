@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Popover } from "@headlessui/react";
 import {
-  MenuIcon,
-  XIcon,
+  Bars3Icon,
+  XMarkIcon,
   MoonIcon,
   SunIcon,
-  TranslateIcon,
-} from "@heroicons/react/outline";
+  LanguageIcon,
+} from "@heroicons/react/24/outline";
 import { useDarkMode } from "../hooks/dark_mode";
 import { useLocale } from "../hooks/locale";
 
@@ -31,7 +31,7 @@ const TranslateButton = () => {
   return (
     <Popover className="relative px-2">
       <Popover.Button aria-label="translate button">
-        <TranslateIcon className="block h-6 w-6 dark:text-gray-100" />
+        <LanguageIcon className="block h-6 w-6 dark:text-gray-100" />
       </Popover.Button>
       <Popover.Panel className="origin-top-right absolute right-0 filter drop-shadow-md">
         {({ close }) => (
@@ -68,7 +68,7 @@ const MenuList = () => {
   return (
     <div className="hidden md:flex">
       <Link href="/" passHref>
-        <a className="px-2 font-bold text-base dark:text-gray-100">
+        <div className="px-2 font-bold text-base dark:text-gray-100">
           {router.pathname === "/" ? (
             <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
               {t.ARTICLES}
@@ -78,10 +78,10 @@ const MenuList = () => {
               {t.ARTICLES}
             </p>
           )}
-        </a>
+        </div>
       </Link>
       <Link href="/blog" passHref>
-        <a className="px-2 font-bold">
+        <div className="px-2 font-bold">
           {router.pathname === "/blog" ? (
             <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
               {t.BLOG}
@@ -91,10 +91,10 @@ const MenuList = () => {
               {t.BLOG}
             </p>
           )}
-        </a>
+        </div>
       </Link>
       <Link href="/profile" passHref>
-        <a className="px-2 font-bold text-base dark:text-gray-100">
+        <div className="px-2 font-bold text-base dark:text-gray-100">
           {router.pathname === "/profile" ? (
             <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
               {t.PROFILE}
@@ -104,7 +104,7 @@ const MenuList = () => {
               {t.PROFILE}
             </p>
           )}
-        </a>
+        </div>
       </Link>
     </div>
   );
@@ -119,9 +119,9 @@ const MenuButton = () => {
         <>
           <Popover.Button aria-label="menu button">
             {open ? (
-              <XIcon className="block h-6 w-6 dark:text-gray-100" />
+              <XMarkIcon className="block h-6 w-6 dark:text-gray-100" />
             ) : (
-              <MenuIcon className="block h-6 w-6 dark:text-gray-100" />
+              <Bars3Icon className="block h-6 w-6 dark:text-gray-100" />
             )}
           </Popover.Button>
           <Popover.Panel className="origin-top-right absolute right-0 filter drop-shadow-md">
@@ -169,9 +169,9 @@ export default function Navbar(props: NavbarProps) {
   return (
     <nav className="z-50 flex flex-rows py-4 px-4 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
       <Link href="/" passHref>
-        <a className="flex flex-1 font-bold text-xl dark:text-gray-100">
+        <div className="flex flex-1 font-bold text-xl dark:text-gray-100">
           SugitLab.
-        </a>
+        </div>
       </Link>
       {props.noLink ? (
         <></>

@@ -2,7 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import initTwitterScriptInner from "zenn-embed-elements/lib/init-twitter-script-inner";
+// import { initTwitterScriptInner } from "zenn-embed-elements/lib/index";
 import "../styles/globals.css";
 
 type NextPageWithLayout = NextPage & {
@@ -22,7 +22,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
+      {/** 
       <script dangerouslySetInnerHTML={{ __html: initTwitterScriptInner }} />
+      */}
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="viewport" property="og:title" />

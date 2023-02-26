@@ -13,10 +13,10 @@ const BackTo = () => {
     <>
       <div className="z-50 flex flex-rows py-4 px-4">
         <Link href={'/blog'} locale="" passHref>
-          <a className="flex font-bold text-xl dark:text-gray-100">
+          <div className="flex font-bold text-xl dark:text-gray-100">
             <TiArrowBack size={30} />
             <p className="px-2">Back</p>
-          </a>
+          </div>
         </Link>
       </div>
     </>

@@ -24,7 +24,7 @@ const Home = ({ allArticles }: { allArticles: Article[] }) => {
         pageTitle="Home"
         pageDescription="List of published articles on social medias."
       />
-      <Articles articles={allArticles} />;
+      <Articles articles={allArticles} />
     </>
   )
 }

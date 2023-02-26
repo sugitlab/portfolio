@@ -52,8 +52,12 @@ const ProfileLine = () => {
           <div className="relative filter drop-shadow-lg w-4/5 h-32 sm:h-48 sm:w-3/5 rounded-lg overflow-hidden">
             <Image
               alt="country"
-              objectFit="cover"
-              layout="fill"
+              style={
+                {
+                  objectFit: 'cover'
+                }
+              }
+              fill
               priority
               src="/media/country.jpg"
             />
@@ -103,8 +107,12 @@ const ProfileLine = () => {
           <div className="relative filter drop-shadow-lg w-4/5 h-48 sm:h-48 sm:w-3/5 rounded-lg overflow-hidden">
             <Image
               alt="sr400"
-              objectFit="cover"
-              layout="fill"
+              style={
+                {
+                  objectFit: 'cover'
+                }
+              }
+              fill
               priority
               src="/media/sr400.jpg"
             />
