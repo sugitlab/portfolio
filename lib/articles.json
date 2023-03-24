@@ -2,6 +2,20 @@
   "articles": [
     {
       "type": "Post",
+      "title": "Software Design 2023年 5月号 連載最終回 楽しいFlutter",
+      "published": "2023-04-17T00:00.000Z",
+      "url": "https://gihyo.jp/magazine/SD/archive/2023/202305",
+      "category": "Tech"
+    },
+    {
+      "type": "Post",
+      "title": "Software Design 2023年 4月号 連載第6回 楽しいFlutter",
+      "published": "2023-03-17T00:00.000Z",
+      "url": "https://gihyo.jp/magazine/SD/archive/2023/202304",
+      "category": "Tech"
+    },
+    {
+      "type": "Post",
       "title": "Software Design 2023年 3月号 連載第5回 楽しいFlutter",
       "published": "2023-02-17T00:00.000Z",
       "url": "https://gihyo.jp/magazine/SD/archive/2023/202303",
