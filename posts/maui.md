@@ -1,6 +1,6 @@
 ---
 title: "MAUI やってみるぞー"
-date: "202３-03-25"
+date: "2023-03-25"
 icon: "mobile"
 ---
 
@@ -32,8 +32,7 @@ https://learn.microsoft.com/ja-jp/training/paths/build-apps-with-dotnet-maui/
 
 ### MAUI の Youtube CH.
 
-https://www.youtube.com/playlist?list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY
-
+[.NET MAUI for Beginners](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY)
 
 # まとめ
 
