@@ -9,7 +9,6 @@ export default function Document() {
           name="description"
           content="Portfolio and tech blog by sugitlab. / Sugitのポートフォリオ兼技術ブログ"
         />
-        <script src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
       </Head>
       <body>
         <div className="bg-gray-100 dark:bg-gray-900 h-full w-full min-h-screen">
