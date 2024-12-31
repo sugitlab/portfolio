@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 // import { initTwitterScriptInner } from "zenn-embed-elements/lib/index";
+import 'zenn-content-css'
 import "../styles/globals.css";
 
 type NextPageWithLayout = NextPage & {

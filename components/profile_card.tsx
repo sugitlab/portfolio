@@ -5,15 +5,14 @@ import {
   SiDotnet,
   SiReact,
   SiFlutter,
-  SiCsharp,
   SiCplusplus,
   SiDart,
   SiTypescript,
   SiJavascript,
   SiPython,
-  SiGithub,
-  SiTwitter,
   SiLinkedin,
+  SiGithub,
+  SiX
 } from "react-icons/si";
 import { useLocale } from "../hooks/locale";
 
@@ -28,7 +27,6 @@ const SkillIcons = () => {
         <SiDart size={size} className="text-gray-600 dark:text-white" />
         <SiTypescript size={size} className="text-gray-600 dark:text-white" />
         <SiJavascript size={size} className="text-gray-600 dark:text-white" />
-        <SiCsharp size={size} className="text-gray-600 dark:text-white" />
         <SiCplusplus size={size} className="text-gray-600 dark:text-white" />
         <SiPython size={size} className="text-gray-600 dark:text-white" />
       </div>
@@ -50,7 +48,7 @@ const TechLinks = () => {
         />
       </Link>
       <Link href={t.TWITTER} passHref>
-        <SiTwitter
+        <SiX
           size={size}
           className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
         />
