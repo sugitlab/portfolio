@@ -6,6 +6,7 @@ import { TiArrowBack } from 'react-icons/ti'
 import { getAllPostSlugs, getPostData, PostDataType } from '../../lib/posts'
 import { getIcon } from '../../components/icon'
 import BlogLayout from '../../components/blog_layout'
+import 'zenn-content-css';
 
 const BackTo = () => {
   return (
