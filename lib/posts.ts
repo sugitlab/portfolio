@@ -68,7 +68,10 @@ export async function getPostData(slug: string): Promise<PostDataType> {
   const matterResult = matter(fileContents);
   const matterData = matterResult.data as MatterResultType;
 
-  const contentHtml = markdownToHtml(matterResult.content);
+  const contentHtml = markdownToHtml(matterResult.content, {
+    embedOrigin: 'https://embed.zenn.studio',
+  });
+
   // const processedContent = await remark()
   //   .use(html)
   //   .process(matterResult.content);
