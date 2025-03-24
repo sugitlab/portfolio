@@ -124,6 +124,13 @@ const MenuList = () => {
           )}
         </div>
       </Link>
+      <a href="https://sugitlab.github.io/slide-deck/" target="_blank" rel="noopener noreferrer">
+        <div className="px-2 font-bold text-base dark:text-gray-100">
+          <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+            {t.SLIDE_DECK}
+          </p>
+        </div>
+      </a>
     </div>
   );
 };
@@ -186,6 +193,14 @@ const MenuButton = () => {
                   {t.PROFILE}
                 </div>
               </Link>
+              <a href="https://sugitlab.github.io/slide-deck/" target="_blank" rel="noopener noreferrer">
+                <div
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                >
+                  {t.SLIDE_DECK}
+                </div>
+              </a>
             </div>
           </div>
         </div>

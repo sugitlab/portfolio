@@ -8,6 +8,7 @@ const en = {
   ARTICLES: "Articles",
   PROFILE: "Profile",
   BLOG: "Blog",
+  SLIDE_DECK: "Slide Deck",
   TWITTER: twitter_en,
   YARUHYAKU: "Yaruhyaku",
   SIRIBAL: "SeriousBalloon",

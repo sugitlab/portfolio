@@ -8,6 +8,7 @@ const ja = {
   ARTICLES: "書いたもの",
   PROFILE: "プロフィール",
   BLOG: "ブログ",
+  SLIDE_DECK: "スライド",
   TWITTER: twitter_ja,
   YARUHYAKU: "やるひゃく",
   SIRIBAL: "SeriousBalloon",
