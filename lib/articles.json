@@ -1,6 +1,13 @@
 {
   "articles": [
     {
+      "type": "note",
+      "title": "事業を進める越境マインド",
+      "published": "2025-01-15T00:00.000Z",
+      "url": "https://note.com/sugitlab/n/n6a16a873a384",
+      "category": "PM"
+    },
+    {
       "type": "Post",
       "title": "Software Design 2023年 5月号 連載最終回 楽しいFlutter",
       "published": "2023-04-17T00:00.000Z",
