@@ -7,6 +7,7 @@ type MetaData = {
   pageImg?: string
   pageImgWidth?: number
   pageImgHeight?: number
+  noIndex?: boolean
 }
 
 const twitterProfileImagePath =
@@ -19,6 +20,7 @@ const Seo = ({
   pageImg,
   pageImgWidth,
   pageImgHeight,
+  noIndex,
 }: MetaData) => {
   const defaultTitle = 'SugitLab.'
   const defaultDescription = 'Personal blog by sugit.'
@@ -35,6 +37,12 @@ const Seo = ({
       <title>{title}</title>
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <meta name="description" content={description} />
+      {noIndex && (
+        <>
+          <meta name="robots" content="noindex,nofollow" />
+          <meta name="googlebot" content="noindex,nofollow" />
+        </>
+      )}
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={title} />

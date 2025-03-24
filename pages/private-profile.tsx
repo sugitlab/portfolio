@@ -5,7 +5,11 @@ import Seo from "../components/seo";
 const PrivateProfile = () => {
     return (
         <>
-            <Seo pageTitle="Profile" pageDescription="Private Profile for sugit." />
+            <Seo 
+                pageTitle="Profile" 
+                pageDescription="Private Profile for sugit." 
+                noIndex={true} 
+            />
             <div className="p-1">
                 <h1 className="text-3xl font-bold text-center mb-4">🔐 プロフィールページ</h1>
                 <div className="text-center text-gray-500 mb-4">
