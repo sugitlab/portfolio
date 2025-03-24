@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Box from "@mui/material/Box";
 import { FcIdea } from "react-icons/fc";
 import Chip from "./article_chip";
 import { Article, ArticleType } from "../lib/article";
@@ -32,16 +31,9 @@ const CardHeader = (props: CardHeaderProps) => {
   }
 
   return path === undefined ? (
-    <Box
-      sx={{
-        margin: "auto",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="flex justify-center items-center m-auto">
       <FcIdea size="40" />
-    </Box>
+    </div>
   ) : (
     <Image
       className="block m-auto"

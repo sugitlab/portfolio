@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Box from "@mui/material/Box";
 import { getIcon } from "./icon";
 import { PostDataType } from "../lib/posts";
 
@@ -10,20 +9,22 @@ type BlogPostCardHeaderProps = {
 
 const BlogPostCardHeader = (props: BlogPostCardHeaderProps) => {
   return (
-    <Box
-      sx={{
-        margin: "auto",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="flex justify-center items-center m-auto">
       {getIcon(props.iconType, 40)}
-    </Box>
+    </div>
   );
 };
 
-const BlogPostCard = (props: PostDataType) => {
+// Extend PostDataType but make date accept string as well
+type BlogPostCardProps = Omit<PostDataType, 'date'> & {
+  date: Date | string;
+};
+
+const BlogPostCard = (props: BlogPostCardProps) => {
+  // Format the date - works with both Date objects and ISO strings
+  const dateObj = typeof props.date === 'string' ? new Date(props.date) : props.date;
+  const formattedDate = dateObj.toISOString().slice(0, 10); // YYYY-MM-DD format
+
   return (
     <div>
       <Link href={`/posts/${props.slug}`} locale="" passHref>
@@ -36,7 +37,7 @@ const BlogPostCard = (props: PostDataType) => {
                 {props.title}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-300">
-                {props.date.toString()}
+                {formattedDate}
               </p>
             </div>
           </div>

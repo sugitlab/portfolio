@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Popover } from "@headlessui/react";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -28,36 +27,55 @@ const DarkModeButton = () => {
 };
 
 const TranslateButton = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <Popover className="relative px-2">
-      <Popover.Button aria-label="translate button">
+    <div className="relative px-2" ref={dropdownRef}>
+      <button 
+        aria-label="translate button"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <LanguageIcon className="block h-6 w-6 dark:text-gray-100" />
-      </Popover.Button>
-      <Popover.Panel className="origin-top-right absolute right-0 filter drop-shadow-md">
-        {({ close }) => (
+      </button>
+      {isOpen && (
+        <div className="origin-top-right absolute right-0 filter drop-shadow-md">
           <div className="w-24 rounded-lg bg-white dark:bg-gray-600">
             <div className="grid grid-col-2">
-              <Popover.Button as={Link} href="" locale="en">
+              <Link href="" locale="en">
                 <div
-                  onClick={() => close()}
+                  onClick={() => setIsOpen(false)}
                   className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                 >
                   English
                 </div>
-              </Popover.Button>
-              <Popover.Button as={Link} href="" locale="ja">
+              </Link>
+              <Link href="" locale="ja">
                 <div
-                  onClick={() => close()}
+                  onClick={() => setIsOpen(false)}
                   className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
                 >
                   日本語
                 </div>
-              </Popover.Button>
+              </Link>
             </div>
           </div>
-        )}
-      </Popover.Panel>
-    </Popover>
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -111,54 +129,68 @@ const MenuList = () => {
 };
 
 const MenuButton = () => {
-  // Menu button willl hide when the media query is wider than "md" by the tailwind css 'md:hidden'
   const { t } = useLocale();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <Popover className="relative px-2 md:hidden">
-      {({ open }) => (
-        <>
-          <Popover.Button aria-label="menu button">
-            {open ? (
-              <XMarkIcon className="block h-6 w-6 dark:text-gray-100" />
-            ) : (
-              <Bars3Icon className="block h-6 w-6 dark:text-gray-100" />
-            )}
-          </Popover.Button>
-          <Popover.Panel className="origin-top-right absolute right-0 filter drop-shadow-md">
-            {({ close }) => (
-              <div className="w-32 rounded-lg bg-white dark:bg-gray-600">
-                <div className="grid grid-col-2">
-                  <Popover.Button as={Link} href="/">
-                    <div
-                      onClick={() => close()}
-                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                    >
-                      {t.ARTICLES}
-                    </div>
-                  </Popover.Button>
-                  <Popover.Button as={Link} href="/blog">
-                    <div
-                      onClick={() => close()}
-                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                    >
-                      {t.BLOG}
-                    </div>
-                  </Popover.Button>
-                  <Popover.Button as={Link} href="/profile">
-                    <div
-                      onClick={() => close()}
-                      className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                    >
-                      {t.PROFILE}
-                    </div>
-                  </Popover.Button>
+    <div className="relative px-2 md:hidden" ref={dropdownRef}>
+      <button 
+        aria-label="menu button"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? (
+          <XMarkIcon className="block h-6 w-6 dark:text-gray-100" />
+        ) : (
+          <Bars3Icon className="block h-6 w-6 dark:text-gray-100" />
+        )}
+      </button>
+      {isOpen && (
+        <div className="origin-top-right absolute right-0 filter drop-shadow-md">
+          <div className="w-32 rounded-lg bg-white dark:bg-gray-600">
+            <div className="grid grid-col-2">
+              <Link href="/">
+                <div
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                >
+                  {t.ARTICLES}
                 </div>
-              </div>
-            )}
-          </Popover.Panel>
-        </>
+              </Link>
+              <Link href="/blog">
+                <div
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                >
+                  {t.BLOG}
+                </div>
+              </Link>
+              <Link href="/profile">
+                <div
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                >
+                  {t.PROFILE}
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
       )}
-    </Popover>
+    </div>
   );
 };
 

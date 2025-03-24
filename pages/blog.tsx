@@ -33,9 +33,15 @@ export default Blog
 export async function getStaticProps() {
   const allPostsData: PostDataType[] = getAllPostsInfo()
 
+  // Convert Date objects to ISO strings for serialization
+  const serializablePostsData = allPostsData.map(post => ({
+    ...post,
+    date: post.date instanceof Date ? post.date.toISOString() : post.date
+  }))
+
   return {
     props: {
-      allPostsData,
+      allPostsData: serializablePostsData,
     },
   }
 }

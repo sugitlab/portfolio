@@ -24,7 +24,29 @@ const BackTo = () => {
   );
 };
 
-const Post = (props: PostDataType) => {
+// Modify Post component to accept string dates
+type PostProps = Omit<PostDataType, 'date'> & {
+  date: Date | string;
+};
+
+// Date formatting helper to ensure consistent output between server and client
+const formatDate = (date: Date | string): string => {
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  
+  // Use explicit options for consistent output
+  const options: Intl.DateTimeFormatOptions = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  };
+  
+  return dateObj.toLocaleDateString('en-US', options);
+};
+
+const Post = (props: PostProps) => {
+  // Use the consistent formatter instead of toString()
+  const formattedDate = formatDate(props.date);
+
   return (
     <>
       <Head>
@@ -40,7 +62,7 @@ const Post = (props: PostDataType) => {
           </div>
         </div>
         <div className="flex justify-center p-4 text-md">
-          {props.date.toString()}
+          {formattedDate}
         </div>
         <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
       </article>
@@ -67,11 +89,18 @@ interface Query extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const { slug } = context.params as Query; // Uhm....
+  const { slug } = context.params as Query;
   const postData: PostDataType = await getPostData(slug);
+  
+  // Convert Date object to ISO string for serialization
+  const serializablePostData = {
+    ...postData,
+    date: postData.date instanceof Date ? postData.date.toISOString() : postData.date
+  };
+  
   return {
     props: {
-      ...postData,
+      ...serializablePostData,
     },
   };
 };

@@ -1,9 +1,47 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
 import markdownToHtml from "zenn-markdown-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
+
+// Simple frontmatter parser to replace gray-matter
+function parseFrontmatter(fileContent: string): { content: string; data: any } {
+  const frontmatterRegex = /---\s*([\s\S]*?)\s*---\s*([\s\S]*)/;
+  const matches = frontmatterRegex.exec(fileContent);
+  
+  if (!matches) {
+    return { content: fileContent, data: {} };
+  }
+
+  const frontmatterText = matches[1];
+  const content = matches[2];
+  
+  // Parse the frontmatter data
+  const data: Record<string, any> = {};
+  const lines = frontmatterText.split('\n');
+  
+  for (const line of lines) {
+    const colonPos = line.indexOf(':');
+    if (colonPos !== -1) {
+      const key = line.slice(0, colonPos).trim();
+      let value = line.slice(colonPos + 1).trim();
+      
+      // Remove quotes if present
+      if (value.startsWith('"') && value.endsWith('"')) {
+        value = value.slice(1, -1);
+      }
+      
+      // Handle dates
+      if (key === 'date' && !isNaN(Date.parse(value))) {
+        data[key] = new Date(value);
+      } else {
+        data[key] = value;
+      }
+    }
+  }
+  
+  return { content, data };
+}
 
 interface MatterResultType {
   title: string;
@@ -26,9 +64,8 @@ export function getAllPostsInfo(): PostDataType[] {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // gray-matter
-    const matterResult = matter(fileContents);
-    const matterData = matterResult.data as MatterResultType;
+    // Custom frontmatter parser
+    const { data: matterData } = parseFrontmatter(fileContents);
 
     return {
       slug,
@@ -65,17 +102,11 @@ export async function getPostData(slug: string): Promise<PostDataType> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
-  const matterResult = matter(fileContents);
-  const matterData = matterResult.data as MatterResultType;
+  const { content, data: matterData } = parseFrontmatter(fileContents);
 
-  const contentHtml = markdownToHtml(matterResult.content, {
+  const contentHtml = markdownToHtml(content, {
     embedOrigin: 'https://embed.zenn.studio',
   });
-
-  // const processedContent = await remark()
-  //   .use(html)
-  //   .process(matterResult.content);
-  // const contentHtml = processedContent.toString();
 
   return {
     slug,

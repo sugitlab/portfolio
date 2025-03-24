@@ -1,14 +1,6 @@
 import Image from "next/image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-// MUI
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import { useLocale } from "../hooks/locale";
 import { seriousballoon_url, yaruhyaku_url } from "../lib/constants";
 
@@ -21,29 +13,26 @@ type ProfileContentProps = {
 
 const ProfileContent = (props: ProfileContentProps) => {
   return (
-    <TimelineItem>
-      <TimelineOppositeContent
-        style={{ flex: 0, marginLeft: -70 }}
-      ></TimelineOppositeContent>
-      <TimelineSeparator>
-        <TimelineDot className={props.color} />
-        <TimelineConnector />
-      </TimelineSeparator>
-      <TimelineContent style={{ marginRight: -40 }}>
+    <div className="flex flex-row">
+      <div className="flex flex-col items-center mr-4">
+        <div className={`w-4 h-4 rounded-full ${props.color}`}></div>
+        <div className="w-0.5 bg-gray-300 dark:bg-gray-600 flex-grow"></div>
+      </div>
+      <div className="flex-1">
         <span className="text-gray-900 dark:text-gray-100">
           <div className="text-lg font-bold">{props.title}</div>
           <div className="text-md">{props.body}</div>
           <div className="py-4">{props.element ?? <span></span>}</div>
         </span>
-      </TimelineContent>
-    </TimelineItem>
+      </div>
+    </div>
   );
 };
 
 const ProfileLine = () => {
   const { t } = useLocale();
   return (
-    <Timeline>
+    <div className="relative pl-4">
       <ProfileContent
         title={t.PROFILE_1_HEAD}
         body={t.PROFILE_1}
@@ -138,7 +127,7 @@ const ProfileLine = () => {
               <tbody>
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2023/1
+                    2023-01
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
                     present
@@ -154,7 +143,7 @@ const ProfileLine = () => {
                 </tr>
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2021/4
+                    2021-04
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
                     present
@@ -170,7 +159,7 @@ const ProfileLine = () => {
                 </tr>
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2022/2
+                    2022-02
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
                     present
@@ -186,10 +175,10 @@ const ProfileLine = () => {
                 </tr>
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2014/4
+                    2014-04
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2023/1
+                    2023-01
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     {t.SHIM}
@@ -197,10 +186,10 @@ const ProfileLine = () => {
                 </tr>
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2012/4
+                    2012-04
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2014/3
+                    2014-03
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     {t.KU}
@@ -208,10 +197,10 @@ const ProfileLine = () => {
                 </tr>
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2008/4
+                    2008-04
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2012/3
+                    2012-03
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
                     {t.KIT_U}
@@ -222,7 +211,7 @@ const ProfileLine = () => {
           </div>
         }
       />
-    </Timeline>
+    </div>
   );
 };
 
