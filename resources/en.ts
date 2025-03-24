@@ -24,7 +24,6 @@ const en = {
   KIT_U: "Kyoto Institute of Technology, Informatics Science.",
   KU: "Graduate School of Kyoto University, Informatics.",
   SHIM: "Shimadzu Corp.",
-  KYOWAKU: "Kyo-waku",
   TT_MENTOR: "TechTrain Mentor",
   TB: "TechBowl.Inc",
 };

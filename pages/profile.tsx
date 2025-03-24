@@ -31,6 +31,41 @@ const ProfileContent = (props: ProfileContentProps) => {
 
 const ProfileLine = () => {
   const { t } = useLocale();
+
+  const histories =
+    [
+      {
+        from: "2023-01",
+        to: "present",
+        org: t.TB,
+        link: "https://techtrain.dev"
+      },
+      {
+        from: "2021-04",
+        to: "present",
+        org: t.TT_MENTOR,
+        link: "https://techbowl.co.jp/techtrain/mentors/116"
+      },
+      {
+        from: "2014-04",
+        to: "2023-01",
+        org: t.SHIM,
+        link: null
+      },
+      {
+        from: "2012-04",
+        to: "2014-03",
+        org: t.KU,
+        link: null
+      },
+      {
+        from: "2008-04",
+        to: "2012-03",
+        org: t.KIT_U,
+        link: null
+      }
+    ];
+
   return (
     <div className="relative pl-4">
       <ProfileContent
@@ -99,7 +134,7 @@ const ProfileLine = () => {
               }}
               fill
               priority
-              src="/media/sr400.jpg"
+              src="/media/bike-and-car.jpg"
             />
           </div>
         }
@@ -125,87 +160,27 @@ const ProfileLine = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2023-01
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    present
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                    <a
-                      href="https://techtrain.dev"
-                      className="hover:text-blue-500"
-                    >
-                      {t.TB}
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2021-04
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    present
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                    <a
-                      href="https://techbowl.co.jp/techtrain/mentors/116"
-                      className="hover:text-blue-500"
-                    >
-                      {t.TT_MENTOR}
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2022-02
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    present
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                    <a
-                      href="https://kyo-waku.com"
-                      className="hover:text-blue-500"
-                    >
-                      {t.KYOWAKU}
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2014-04
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2023-01
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                    {t.SHIM}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2012-04
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2014-03
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                    {t.KU}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2008-04
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                    2012-03
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                    {t.KIT_U}
-                  </td>
-                </tr>
+                {
+                  histories.map((item, index) => (
+                    <tr key={index}>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                        {item.from}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
+                        {item.to}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
+                        {item.link ? (
+                          <a href={item.link} className="hover:text-blue-500">
+                            {item.org}
+                          </a>
+                        ) : (
+                          item.org
+                        )}
+
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
