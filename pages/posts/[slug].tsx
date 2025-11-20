@@ -47,12 +47,21 @@ const Post = (props: PostProps) => {
   // Use the consistent formatter instead of toString()
   const formattedDate = formatDate(props.date);
 
+  // Generate dynamic OGP image URL
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(props.title)}&icon=${encodeURIComponent(props.icon || 'info')}`;
+
   return (
     <>
       <Head>
         <script src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
       </Head>
-      <Seo pageTitle={props.title} pageDescription="Blog posts by sugit." />
+      <Seo 
+        pageTitle={props.title} 
+        pageDescription="Blog posts by sugit." 
+        pageImg={ogImageUrl}
+        pageImgWidth={1200}
+        pageImgHeight={630}
+      />
       <BackTo />
       <article className="text-gray-900 dark:text-gray-100 znc">
         <div className="flex flex-row justify-center items-center">
