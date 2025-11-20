@@ -8,6 +8,7 @@ import { getAllPostSlugs, getPostData, PostDataType } from "../../lib/posts";
 import { getIcon } from "../../components/icon";
 import BlogLayout from "../../components/blog_layout";
 import "zenn-content-css";
+import { SITE_URL } from "../../lib/constants";
 
 const BackTo = () => {
   return (
@@ -48,7 +49,7 @@ const Post = (props: PostProps) => {
   const formattedDate = formatDate(props.date);
 
   // Generate dynamic OGP image URL
-  const ogImageUrl = `/api/og?title=${encodeURIComponent(props.title)}&icon=${encodeURIComponent(props.icon || 'info')}`;
+  const ogImageUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(props.title)}&icon=${encodeURIComponent(props.icon || 'info')}`;
 
   return (
     <>
