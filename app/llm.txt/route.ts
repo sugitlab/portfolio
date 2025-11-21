@@ -13,7 +13,6 @@ Software Engineer based in SHIGA, Japan.(Next to Kyoto.)
 - ${SITE_URL}/: Home
 - ${SITE_URL}/profile: About me
 - ${SITE_URL}/blog: Technical articles
-- ${SITE_URL}/posts/id: Free blog posts
 
 ## Recent Posts
 `;
