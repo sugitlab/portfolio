@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -10,6 +11,8 @@ type ProfileContentProps = {
   color: string;
   element?: React.ReactElement;
 };
+
+
 
 const ProfileContent = (props: ProfileContentProps) => {
   return (
@@ -67,7 +70,7 @@ const ProfileLine = () => {
     ];
 
   return (
-    <div className="relative pl-4">
+    <div className="relative pl-2">
       <ProfileContent
         title={t.PROFILE_1_HEAD}
         body={t.PROFILE_1}
@@ -90,36 +93,6 @@ const ProfileLine = () => {
         title={t.PROFILE_2_HEAD}
         body={t.PROFILE_2}
         color="bg-yellow-500"
-        element={
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-row items-center gap-2">
-              <div className="static filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
-                <a href={yaruhyaku_url}>
-                  <Image
-                    alt="yaruhyaku"
-                    height={100}
-                    width={100}
-                    src="/media/yaruhyaku.png"
-                  />
-                </a>
-              </div>
-              <p className="text-md font-bold"> {t.YARUHYAKU} </p>
-            </div>
-            <div className="flex flex-row items-center gap-2">
-              <a href={seriousballoon_url}>
-                <div className="static filter drop-shadow-lg rounded-xl w-20 h-20 overflow-hidden">
-                  <Image
-                    alt="seriousballoon"
-                    height={100}
-                    width={100}
-                    src="/media/seriousballoon.png"
-                  />
-                </div>
-              </a>
-              <p className="text-md font-bold"> {t.SIRIBAL} </p>
-            </div>
-          </div>
-        }
       />
       <ProfileContent
         title={t.PROFILE_3_HEAD}
@@ -145,44 +118,28 @@ const ProfileLine = () => {
         color="bg-pink-500"
         element={
           <div className="px-2">
-            <table className="items-center w-full border-collapse text-blueGray-700">
-              <thead className="thead-light">
-                <tr>
-                  <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    From
-                  </td>
-                  <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    To
-                  </td>
-                  <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Organization
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  histories.map((item, index) => (
-                    <tr key={index}>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                        {item.from}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                        {item.to}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">
-                        {item.link ? (
-                          <a href={item.link} className="hover:text-blue-500">
-                            {item.org}
-                          </a>
-                        ) : (
-                          item.org
-                        )}
-
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+          <div className="px-2">
+            <div className="flex flex-col space-y-4">
+              {histories.map((item, index) => (
+                <div key={index} className="flex flex-col sm:flex-row sm:justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm">
+                  <div className="flex flex-col">
+                    <span className="font-bold text-gray-800 dark:text-gray-200">
+                      {item.link ? (
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 transition-colors">
+                          {item.org}
+                        </a>
+                      ) : (
+                        item.org
+                      )}
+                    </span>
+                  </div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
+                    {item.from} - {item.to}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           </div>
         }
       />

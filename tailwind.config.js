@@ -6,7 +6,6 @@ module.exports = {
     "./hooks/**/*.{ts,tsx}",
     "./resources/**/*.{ts,tsx}",
   ],
-  darkMode: "class", // 't/f' or 'media' or 'class'
   theme: {
     minWidth: {
       "mw": "4rem",
