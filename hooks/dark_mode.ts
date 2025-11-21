@@ -23,16 +23,21 @@ export const useDarkMode: UseDarkMode = () => {
   };
 
   useEffect(() => {
-    if (
-      value === Theme.Dark ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
+    const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isThemeInStorage = "theme" in localStorage;
+
+    if (value === Theme.Dark) {
       toggle(true);
-      setValue(Theme.Dark);
-    } else {
+    } else if (value === Theme.Light) {
       toggle(false);
-      setValue(Theme.Light);
+    } else if (!isThemeInStorage) {
+      if (isSystemDark) {
+        toggle(true);
+        setValue(Theme.Dark);
+      } else {
+        toggle(false);
+        setValue(Theme.Light);
+      }
     }
   }, [value, setValue, toggle]);
 

@@ -6,7 +6,6 @@ import {
   XMarkIcon,
   MoonIcon,
   SunIcon,
-  LanguageIcon,
 } from "@heroicons/react/24/outline";
 import { useDarkMode } from "../hooks/dark_mode";
 import { useLocale } from "../hooks/locale";
@@ -26,58 +25,7 @@ const DarkModeButton = () => {
   );
 };
 
-const TranslateButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  return (
-    <div className="relative px-2" ref={dropdownRef}>
-      <button 
-        aria-label="translate button"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <LanguageIcon className="block h-6 w-6 dark:text-gray-100" />
-      </button>
-      {isOpen && (
-        <div className="origin-top-right absolute right-0 filter drop-shadow-md">
-          <div className="w-24 rounded-lg bg-white dark:bg-gray-600">
-            <div className="grid grid-col-2">
-              <Link href="" locale="en">
-                <div
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                >
-                  English
-                </div>
-              </Link>
-              <Link href="" locale="ja">
-                <div
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                >
-                  日本語
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
 
 const MenuList = () => {
   const { t } = useLocale();
@@ -221,7 +169,7 @@ export default function Navbar(props: NavbarProps) {
         </div>
       </Link>
       {props.noLink ? (
-        <></>
+        <div className="flex flex-1" />
       ) : (
         <>
           <div className="flex flex-1" />
@@ -234,7 +182,6 @@ export default function Navbar(props: NavbarProps) {
         <></>
       ) : (
         <>
-          <TranslateButton />
           <MenuButton />
         </>
       )}
