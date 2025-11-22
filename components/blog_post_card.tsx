@@ -29,7 +29,7 @@ const BlogPostCard = (props: BlogPostCardProps) => {
     <div>
       <Link href={`/posts/${props.slug}`} locale="" passHref>
           <div className="flex flex-row items-center container h-28 rounded-xl p-2">
-            <div className="flex justify-center min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl">
+            <div className="flex justify-center flex-shrink-0 w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl">
               <BlogPostCardHeader iconType={props.icon} />
             </div>
             <div className="flex flex-col px-4 gap-1">
