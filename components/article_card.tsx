@@ -58,7 +58,7 @@ const ArticleCard = (props: Article) => {
     <div>
       <Link href={props.url} passHref>
           <div className="flex flex-row items-center container h-28 rounded-xl p-2">
-            <div className="flex justify-center min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl">
+            <div className="flex justify-center aspect-square min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl shrink-0">
               <CardHeader height={40} width={40} type={props.type} />
             </div>
             <div className="flex flex-col px-4 gap-1">
