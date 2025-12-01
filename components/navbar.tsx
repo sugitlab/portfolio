@@ -6,6 +6,7 @@ import {
   XMarkIcon,
   MoonIcon,
   SunIcon,
+  ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
 import { useDarkMode } from "../hooks/dark_mode";
 import { useLocale } from "../hooks/locale";
@@ -74,8 +75,9 @@ const MenuList = () => {
       </Link>
       <a href="https://sugitlab.github.io/slide-deck/" target="_blank" rel="noopener noreferrer">
         <div className="px-2 font-bold text-base dark:text-gray-100">
-          <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
+          <p className="rounded-md py-1 px-2 text-base dark:text-gray-100 flex items-center gap-1">
             {t.SLIDE_DECK}
+            <ArrowTopRightOnSquareIcon className="h-4 w-4" />
           </p>
         </div>
       </a>
@@ -144,9 +146,10 @@ const MenuButton = () => {
               <a href="https://sugitlab.github.io/slide-deck/" target="_blank" rel="noopener noreferrer">
                 <div
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
+                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500 flex items-center gap-1"
                 >
                   {t.SLIDE_DECK}
+                  <ArrowTopRightOnSquareIcon className="h-4 w-4" />
                 </div>
               </a>
             </div>
