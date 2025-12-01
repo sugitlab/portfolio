@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import markdownToHtml from "zenn-markdown-html";
+import * as cheerio from "cheerio";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -104,9 +105,23 @@ export async function getPostData(slug: string): Promise<PostDataType> {
 
   const { content, data: matterData } = parseFrontmatter(fileContents);
 
-  const contentHtml = markdownToHtml(content, {
-    embedOrigin: 'https://embed.zenn.studio',
-  });
+  let contentHtml = "";
+
+  if (matterData.url) {
+    try {
+      const res = await fetch(matterData.url);
+      const html = await res.text();
+      const $ = cheerio.load(html);
+      contentHtml = $("#shine-editor").html() || "";
+    } catch (e) {
+      console.error(`Failed to fetch content from ${matterData.url}`, e);
+      contentHtml = "<p>Failed to load content.</p>";
+    }
+  } else {
+    contentHtml = markdownToHtml(content, {
+      embedOrigin: 'https://embed.zenn.studio',
+    });
+  }
 
   return {
     slug,
