@@ -1,5 +1,5 @@
 // Shared icon type definitions
-export type IconType = 'idea' | 'vim' | 'news' | 'bio' | 'mobile' | 'stats' | 'book' | 'research' | 'info';
+export type IconType = 'idea' | 'vim' | 'news' | 'bio' | 'mobile' | 'stats' | 'book' | 'research' | 'info' | 'music';
 
 // Get SVG icon for OGP images (Edge runtime compatible)
 // These SVGs are directly from Icons8 Flat Color Icons repository
@@ -145,6 +145,16 @@ export function getIconSVG(type?: string) {
         </svg>
       );
     
+      case 'music':
+        // Music note icon (simple, Edge-runtime-safe SVG)
+        return (
+          <svg width="80" height="80" viewBox="0 0 48 48">
+            <path fill="#FF7043" d="M36,6L18,10v24c-1.2-0.5-2.5-0.8-4-0.8c-4.4,0-8,2.7-8,6s3.6,6,8,6s8-2.7,8-6V18l16-4V6H36z"/>
+            <circle fill="#FFAB91" cx="12" cy="40" r="4"/>
+            <circle fill="#FFAB91" cx="36" cy="34" r="4"/>
+          </svg>
+        );
+
     case 'info':
     default:
       // Info icon from Icons8

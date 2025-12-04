@@ -8,6 +8,7 @@ import {
   FcPositiveDynamic,
   FcReading,
   FcGraduationCap,
+  FcMusic,
 } from "react-icons/fc";
 
 /**
@@ -38,6 +39,8 @@ export function getIcon(type?: string, size?: number) {
       return <FcReading size={size} />;
     case "research":
       return <FcGraduationCap size={size} />;
+    case "music":
+      return <FcMusic size={size} />;
     default:
       return <FcInfo size={size} />;
   }
