@@ -51,6 +51,7 @@ const Seo = ({
       <meta property="og:image" content={imgUrl} />
       <meta property="og:image:width" content={String(imgWidth)} />
       <meta property="og:image:height" content={String(imgHeight)} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   )
 }
