@@ -20,7 +20,6 @@ export function generateRssXml(posts: PostDataType[]): string {
       <link>${postUrl}</link>
       <guid isPermaLink="true">${postUrl}</guid>
       <pubDate>${postDate}</pubDate>
-      <description><![CDATA[${post.title}]]></description>
     </item>`;
     })
     .join("");
