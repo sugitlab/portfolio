@@ -2,12 +2,15 @@ import { SITE_URL } from "./constants";
 import { PostDataType } from "./posts";
 
 export function generateRssXml(posts: PostDataType[]): string {
-  const latestPostDate = posts.length > 0 ? posts[0].date : new Date();
+  // Handle edge case of no posts or posts with missing dates
+  const validPosts = posts.filter(post => post.date && post.title && post.slug);
+  
+  const latestPostDate = validPosts.length > 0 ? validPosts[0].date : new Date();
   const lastBuildDate = latestPostDate instanceof Date 
     ? latestPostDate.toUTCString() 
     : new Date(latestPostDate).toUTCString();
 
-  const rssItemsXml = posts
+  const rssItemsXml = validPosts
     .map((post) => {
       const postDate = post.date instanceof Date 
         ? post.date.toUTCString() 
