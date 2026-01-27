@@ -9,6 +9,12 @@ export default function Document() {
           name="description"
           content="Portfolio and tech blog by sugitlab. / Sugitのポートフォリオ兼技術ブログ"
         />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed for sugitlab blog"
+          href="/api/rss.xml"
+        />
       </Head>
       <body>
         <div className="bg-gray-100 dark:bg-gray-900 h-full w-full min-h-screen min-w-[375px]">
