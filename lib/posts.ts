@@ -59,7 +59,10 @@ export interface PostDataType extends MatterResultType {
 export function getAllPostsInfo(): PostDataType[] {
   const fileNames = fs.readdirSync(postsDirectory);
 
-  const allPostsData = fileNames.map((fileName) => {
+  // Filter for .md files only
+  const mdFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+
+  const allPostsData = mdFiles.map((fileName) => {
     const slug = fileName.replace(/\.md$/, "");
 
     const fullPath = path.join(postsDirectory, fileName);
@@ -76,12 +79,11 @@ export function getAllPostsInfo(): PostDataType[] {
   });
 
   // Latest -> Old
+  // Handle cases where date might be undefined
   return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
+    const dateA = a.date ? new Date(a.date).getTime() : 0;
+    const dateB = b.date ? new Date(b.date).getTime() : 0;
+    return dateB - dateA;
   });
 }
 
