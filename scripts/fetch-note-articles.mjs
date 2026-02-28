@@ -38,11 +38,10 @@ function inferCategory(hashtagNotes, title) {
     ...hashtagNotes.map((h) => (h.hashtag?.name ?? "").toLowerCase()),
     title.toLowerCase(),
   ];
-  for (const t of targets) {
-    if (PM_KEYWORDS.some((kw) => t.includes(kw))) return "PM";
-    if (TECH_KEYWORDS.some((kw) => t.includes(kw))) return "Tech";
-    if (LIFEHACK_KEYWORDS.some((kw) => t.includes(kw))) return "LifeHack";
-  }
+  const hit = (kws) => targets.some((t) => kws.some((kw) => t.includes(kw)));
+  if (hit(PM_KEYWORDS)) return "PM";
+  if (hit(TECH_KEYWORDS)) return "Tech";
+  if (hit(LIFEHACK_KEYWORDS)) return "LifeHack";
   return "Other";
 }
 
