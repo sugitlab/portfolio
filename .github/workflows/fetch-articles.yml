@@ -1,4 +1,4 @@
-name: Fetch note articles
+name: Fetch articles
 
 on:
   schedule:
@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Fetch note articles
-        run: node scripts/fetch-note-articles.mjs
+      - name: Fetch note and Zenn articles
+        run: node scripts/fetch-articles.mjs
 
       - name: Commit and push if changed
         run: |
@@ -30,6 +30,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No new articles."
           else
-            git commit -m "chore: update note articles [skip ci]"
+            git commit -m "chore: update articles [skip ci]"
             git push
           fi
