@@ -1,0 +1,35 @@
+name: Fetch note articles
+
+on:
+  schedule:
+    # Daily at 00:00 UTC (09:00 JST)
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch note articles
+        run: node scripts/fetch-note-articles.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add lib/articles.json
+          if git diff --cached --quiet; then
+            echo "No new articles."
+          else
+            git commit -m "chore: update note articles [skip ci]"
+            git push
+          fi
