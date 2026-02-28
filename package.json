@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch-notes": "node scripts/fetch-note-articles.mjs"
+    "fetch-articles": "node scripts/fetch-articles.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.16",
