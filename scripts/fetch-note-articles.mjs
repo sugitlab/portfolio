@@ -29,13 +29,19 @@ const LIFEHACK_KEYWORDS = [
   "健康", "icl", "レーシック",
 ];
 
-/** @param {{ hashtag: { name: string } }[]} hashtagNotes */
-function inferCategory(hashtagNotes) {
-  const tags = hashtagNotes.map((h) => (h.hashtag?.name ?? "").toLowerCase());
-  for (const tag of tags) {
-    if (PM_KEYWORDS.some((kw) => tag.includes(kw))) return "PM";
-    if (TECH_KEYWORDS.some((kw) => tag.includes(kw))) return "Tech";
-    if (LIFEHACK_KEYWORDS.some((kw) => tag.includes(kw))) return "LifeHack";
+/**
+ * @param {{ hashtag: { name: string } }[]} hashtagNotes
+ * @param {string} title
+ */
+function inferCategory(hashtagNotes, title) {
+  const targets = [
+    ...hashtagNotes.map((h) => (h.hashtag?.name ?? "").toLowerCase()),
+    title.toLowerCase(),
+  ];
+  for (const t of targets) {
+    if (PM_KEYWORDS.some((kw) => t.includes(kw))) return "PM";
+    if (TECH_KEYWORDS.some((kw) => t.includes(kw))) return "Tech";
+    if (LIFEHACK_KEYWORDS.some((kw) => t.includes(kw))) return "LifeHack";
   }
   return "Other";
 }
@@ -91,7 +97,7 @@ async function main() {
       title: c.name,
       published: c.publishAt,
       url,
-      category: inferCategory(c.hashtag_notes ?? []),
+      category: inferCategory(c.hashtag_notes ?? [], c.name ?? ""),
     };
   });
 
