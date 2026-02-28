@@ -1,8 +1,12 @@
 // @ts-check
 /**
- * Fetch note and Zenn articles from their public APIs and update lib/articles.json.
- * Existing articles preserve their category; new articles get category
- * inferred from tags/hashtags and title.
+ * Fetch note and Zenn articles via their official RSS/Atom feeds
+ * and update lib/articles.json.
+ *
+ * - RSS feeds return only recent items, so existing articles are always
+ *   preserved; new items are appended.
+ * - Existing articles keep their manually assigned category.
+ * - New articles get category inferred from tags + title.
  *
  * Usage: node scripts/fetch-articles.mjs
  */
@@ -10,6 +14,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { load } from "cheerio";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ARTICLES_PATH = join(__dirname, "../lib/articles.json");
@@ -31,7 +36,7 @@ const LIFEHACK_KEYWORDS = [
 ];
 
 /**
- * @param {string[]} tags - tag/hashtag names (any case)
+ * @param {string[]} tags
  * @param {string} title
  */
 function inferCategory(tags, title) {
@@ -43,82 +48,51 @@ function inferCategory(tags, title) {
   return "Other";
 }
 
-// ---- note.com ----
+// ---- note.com (RSS 2.0) ----
 
-/** @param {number} page */
-async function fetchNotePage(page) {
-  const url = `https://note.com/api/v2/creators/${NOTE_USERNAME}/contents?kind=note&page=${page}`;
+async function fetchNoteRSS() {
+  const url = `https://note.com/${NOTE_USERNAME}/rss`;
   const res = await fetch(url, { headers: { "User-Agent": "portfolio-fetch-bot/1.0" } });
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
-  return /** @type {any} */ (await res.json());
-}
+  const xml = await res.text();
+  const $ = load(xml, { xmlMode: true });
 
-async function fetchAllNoteArticles() {
-  /** @type {any[]} */
-  const all = [];
-  let page = 1;
-  while (true) {
-    console.log(`[note] Fetching page ${page}…`);
-    const json = await fetchNotePage(page);
-    const contents = json?.data?.contents ?? [];
-    all.push(...contents.filter((c) => c.status === "published"));
-    if (json?.data?.isLastPage) break;
-    page++;
-  }
-  return all;
-}
-
-// ---- Zenn ----
-
-/** @param {number} page */
-async function fetchZennArticlesPage(page) {
-  const url = `https://zenn.dev/api/articles?username=${ZENN_USERNAME}&order=latest&page=${page}`;
-  const res = await fetch(url, { headers: { "User-Agent": "portfolio-fetch-bot/1.0" } });
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
-  return /** @type {any} */ (await res.json());
-}
-
-async function fetchZennBooks() {
-  const url = `https://zenn.dev/api/books?username=${ZENN_USERNAME}`;
-  const res = await fetch(url, { headers: { "User-Agent": "portfolio-fetch-bot/1.0" } });
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
-  return /** @type {any} */ (await res.json());
-}
-
-async function fetchAllZennItems() {
-  /** @type {{ title: string; published: string; url: string; tags: string[] }[]} */
-  const all = [];
-
-  let page = 1;
-  while (true) {
-    console.log(`[Zenn] Fetching articles page ${page}…`);
-    const json = await fetchZennArticlesPage(page);
-    const articles = json?.articles ?? [];
-    all.push(
-      ...articles.map((a) => ({
-        title: a.title,
-        published: a.published_at,
-        url: `https://zenn.dev${a.path}`,
-        tags: (a.topics ?? []).map((t) => t.name),
-      }))
-    );
-    if (!json?.next_page) break;
-    page++;
-  }
-
-  console.log(`[Zenn] Fetching books…`);
-  const booksJson = await fetchZennBooks();
-  const books = booksJson?.books ?? [];
-  all.push(
-    ...books.map((b) => ({
-      title: b.title,
-      published: b.published_at,
-      url: `https://zenn.dev/${ZENN_USERNAME}/books/${b.slug}`,
-      tags: (b.topics ?? []).map((t) => t.name),
+  return $("item")
+    .map((_, el) => ({
+      title: $(el).find("title").text(),
+      url: $(el).find("link").text().trim(),
+      // pubDate → ISO 8601
+      published: new Date($(el).find("pubDate").text()).toISOString(),
+      tags: $(el)
+        .find("category")
+        .map((_, cat) => $(cat).text())
+        .get(),
     }))
-  );
+    .get()
+    .filter((item) => item.url);
+}
 
-  return all;
+// ---- Zenn (Atom) ----
+
+async function fetchZennFeed() {
+  const url = `https://zenn.dev/${ZENN_USERNAME}/feed`;
+  const res = await fetch(url, { headers: { "User-Agent": "portfolio-fetch-bot/1.0" } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
+  const xml = await res.text();
+  const $ = load(xml, { xmlMode: true });
+
+  return $("entry")
+    .map((_, el) => ({
+      title: $(el).find("title").text(),
+      url: $(el).find("link").attr("href") ?? "",
+      published: $(el).find("published").text(),
+      tags: $(el)
+        .find("category")
+        .map((_, cat) => $(cat).attr("term") ?? "")
+        .get(),
+    }))
+    .get()
+    .filter((item) => item.url);
 }
 
 // ---- Main ----
@@ -128,54 +102,64 @@ async function main() {
   /** @type {Array<{ type: string; title: string; published: string; url: string; category: string }>} */
   const existing = current.articles;
 
-  const existingNoteByUrl = new Map(
+  // Build maps from existing articles (URL → article) to preserve categories
+  const noteByUrl = new Map(
     existing.filter((a) => a.type === "note").map((a) => [a.url, a])
   );
-  const existingZennByUrl = new Map(
+  const zennByUrl = new Map(
     existing.filter((a) => a.type === "Zenn").map((a) => [a.url, a])
   );
   const otherArticles = existing.filter(
     (a) => a.type !== "note" && a.type !== "Zenn"
   );
 
-  const [fetchedNotes, fetchedZenn] = await Promise.all([
-    fetchAllNoteArticles(),
-    fetchAllZennItems(),
+  console.log("[note] Fetching RSS feed…");
+  console.log("[Zenn] Fetching Atom feed…");
+  const [noteItems, zennItems] = await Promise.all([
+    fetchNoteRSS(),
+    fetchZennFeed(),
   ]);
-  console.log(`[note] ${fetchedNotes.length} articles fetched.`);
-  console.log(`[Zenn] ${fetchedZenn.length} items fetched.`);
+  console.log(`[note] ${noteItems.length} items in feed.`);
+  console.log(`[Zenn] ${zennItems.length} items in feed.`);
 
-  const updatedNotes = fetchedNotes.map((c) => {
-    const url = c.noteUrl ?? `https://note.com/${NOTE_USERNAME}/n/${c.key}`;
-    if (existingNoteByUrl.has(url)) return existingNoteByUrl.get(url);
-    return {
-      type: "note",
-      title: c.name,
-      published: c.publishAt,
-      url,
-      category: inferCategory(
-        (c.hashtag_notes ?? []).map((h) => h.hashtag?.name ?? ""),
-        c.name ?? ""
-      ),
-    };
-  });
+  // Add only new articles (RSS returns recent items only, so we accumulate)
+  let noteAdded = 0;
+  for (const item of noteItems) {
+    if (!noteByUrl.has(item.url)) {
+      noteByUrl.set(item.url, {
+        type: "note",
+        title: item.title,
+        published: item.published,
+        url: item.url,
+        category: inferCategory(item.tags, item.title),
+      });
+      noteAdded++;
+    }
+  }
 
-  const updatedZenn = fetchedZenn.map((item) => {
-    if (existingZennByUrl.has(item.url)) return existingZennByUrl.get(item.url);
-    return {
-      type: "Zenn",
-      title: item.title,
-      published: item.published,
-      url: item.url,
-      category: inferCategory(item.tags, item.title),
-    };
-  });
+  let zennAdded = 0;
+  for (const item of zennItems) {
+    if (!zennByUrl.has(item.url)) {
+      zennByUrl.set(item.url, {
+        type: "Zenn",
+        title: item.title,
+        published: item.published,
+        url: item.url,
+        category: inferCategory(item.tags, item.title),
+      });
+      zennAdded++;
+    }
+  }
 
-  const updated = { articles: [...updatedNotes, ...updatedZenn, ...otherArticles] };
+  const updated = {
+    articles: [
+      ...[...noteByUrl.values()],
+      ...[...zennByUrl.values()],
+      ...otherArticles,
+    ],
+  };
   writeFileSync(ARTICLES_PATH, JSON.stringify(updated, null, 2) + "\n", "utf8");
-  console.log(
-    `Done. note: ${updatedNotes.length} articles, Zenn: ${updatedZenn.length} items.`
-  );
+  console.log(`Done. note: +${noteAdded} new, Zenn: +${zennAdded} new.`);
 }
 
 main().catch((err) => {
