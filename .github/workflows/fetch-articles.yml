@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Fetch note and Zenn articles
         run: node scripts/fetch-articles.mjs
 
