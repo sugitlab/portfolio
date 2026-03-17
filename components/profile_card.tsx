@@ -66,7 +66,7 @@ const Profile = () => {
     <div className="w-full md:w-72 flex-shrink-0">
       <div className="bg-sg-dark-surface border border-sg-dark-muted rounded-sg-lg p-6 shadow-sg-md">{/* Avatar + Name */}
         <div className="flex items-center gap-3 pb-4 border-b border-white/10">
-          <div className="relative w-14 h-14 rounded-full overflow-hidden ring-2 ring-sg-blue-400/40 flex-shrink-0">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden ring-1 ring-sg-blue-400/30 flex-shrink-0">
             <Image
               className="block"
               fill

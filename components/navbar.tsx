@@ -129,7 +129,7 @@ const MenuButton = () => {
       </button>
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-2 z-50">
-          <div className="w-40 rounded-sg-md bg-sg-dark-surface border border-sg-dark-muted shadow-sg-md overflow-hidden">
+          <div className="w-40 rounded-sg-md bg-[#171F24] border border-[#2A3740] shadow-sg-md overflow-hidden">{/* Solid opaque background — no transparency */}
             <div className="flex flex-col py-1">
               {[
                 { href: "/", label: t.ARTICLES },
