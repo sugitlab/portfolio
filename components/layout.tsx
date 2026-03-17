@@ -8,13 +8,14 @@ export type LayoutProps = {
 
 export default function Layout(props: LayoutProps) {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="flex flex-col min-h-screen bg-sg-base dark:bg-sg-dark-base">
       <Navbar />
-      <div className="flex flex-col px-2 md:flex-row">
-        <div className="container w-4/5 md:w-3/5 mx-auto">{props.children}</div>
-        <div className="h-10" />
-        <Profile />
-      </div>
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 md:px-6 py-8">
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex-1 min-w-0">{props.children}</div>
+          <Profile />
+        </div>
+      </main>
       <Footer />
     </div>
   )

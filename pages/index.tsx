@@ -7,13 +7,11 @@ import { getArticles, Article } from '../lib/article'
 
 const Articles = ({ articles }: { articles: Article[] }) => {
   return (
-    <>
-      <div className="divide-solid divide-gray-200 divide-y-2 dark:divide-gray-800 flex flex-col">
-        {articles.map((data, index) => {
-          return <ArticleCard key={index} {...data} />
-        })}
-      </div>
-    </>
+    <div className="flex flex-col gap-3">
+      {articles.map((data, index) => {
+        return <ArticleCard key={index} {...data} />
+      })}
+    </div>
   )
 }
 
@@ -24,6 +22,15 @@ const Home = ({ allArticles }: { allArticles: Article[] }) => {
         pageTitle="Home"
         pageDescription="List of published articles on social medias."
       />
+      {/* Section header */}
+      <div className="mb-6">
+        <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
+          Latest
+        </p>
+        <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">
+          Articles
+        </h1>
+      </div>
       <Articles articles={allArticles} />
     </>
   )

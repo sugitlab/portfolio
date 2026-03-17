@@ -32,18 +32,14 @@ const CardHeader = (props: CardHeaderProps) => {
 
   return path === undefined ? (
     <div className="flex justify-center items-center m-auto">
-      <FcIdea size="40" />
+      <FcIdea size="36" />
     </div>
   ) : (
     <Image
       className="block m-auto"
       height={props.height}
       width={props.width}
-      style={
-        {
-          objectFit: 'contain'
-        }
-      }
+      style={{ objectFit: "contain" }}
       src={path}
       alt="Icon"
     />
@@ -51,28 +47,29 @@ const CardHeader = (props: CardHeaderProps) => {
 };
 
 const ArticleCard = (props: Article) => {
-  // 雑に YYYY-MM-DD で切り取る
   const dateStr = props.published.slice(0, 10);
 
   return (
-    <div>
-      <Link href={props.url} passHref>
-          <div className="flex flex-row items-center container h-28 rounded-xl p-2">
-            <div className="flex justify-center aspect-square min-w-mw w-16 h-16 bg-gray-200 dark:bg-white rounded-2xl shrink-0">
-              <CardHeader height={40} width={40} type={props.type} />
-            </div>
-            <div className="flex flex-col px-4 gap-1">
-              <p className="flex-1 line-clamp-2 leading-tight text-md font-bold dark:text-gray-200">
-                {props.title}
-              </p>
-              <p className="text-sm text-gray-500 dark:text-gray-300">
-                {dateStr}
-              </p>
-              <Chip category={props.category} />
-            </div>
+    <Link href={props.url} passHref>
+      <div className="group flex flex-row items-center gap-4 p-4 rounded-sg-lg border border-sg-color-border-default bg-sg-color-bg-surface dark:bg-sg-dark-surface dark:border-sg-dark-muted hover:border-sg-blue-400/40 hover:shadow-sg-md transition-all duration-200 cursor-pointer">
+        {/* Icon */}
+        <div className="flex justify-center items-center w-12 h-12 rounded-sg-md bg-sg-gray-100 dark:bg-sg-dark-subtle flex-shrink-0">
+          <CardHeader height={32} width={32} type={props.type} />
+        </div>
+        {/* Content */}
+        <div className="flex flex-col gap-1 min-w-0 flex-1">
+          <p className="font-body font-bold text-sg-base text-sg-gray-950 dark:text-sg-gray-100 line-clamp-2 leading-snug group-hover:text-sg-blue-400 transition-colors duration-200">
+            {props.title}
+          </p>
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="font-display text-sg-xs text-sg-gray-500 tracking-wide">
+              {dateStr}
+            </span>
+            <Chip category={props.category} />
           </div>
-      </Link>
-    </div>
+        </div>
+      </div>
+    </Link>
   );
 };
 

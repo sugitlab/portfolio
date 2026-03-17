@@ -15,9 +15,15 @@ export default function Document() {
           title="RSS Feed for sugitlab blog"
           href="/api/rss.xml"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Space+Mono:wght@400;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
-        <div className="bg-gray-100 dark:bg-gray-900 h-full w-full min-h-screen min-w-[375px]">
+        <div className="bg-sg-base dark:bg-sg-dark-base h-full w-full min-h-screen min-w-[375px]">
           <Main />
           <NextScript />
         </div>

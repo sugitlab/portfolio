@@ -12,68 +12,59 @@ import { SITE_URL } from "../../lib/constants";
 
 const BackTo = () => {
   return (
-    <>
-      <div className="z-50 flex flex-rows py-4 px-4">
-        <Link href={"/blog"} locale="" passHref>
-          <div className="flex font-bold text-xl dark:text-gray-100">
-            <TiArrowBack size={30} />
-            <p className="px-2">Back</p>
-          </div>
-        </Link>
-      </div>
-    </>
+    <div className="flex py-4">
+      <Link href={"/blog"} locale="" passHref>
+        <span className="flex items-center gap-2 font-display text-sg-sm text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-blue-400 dark:hover:text-sg-blue-300 transition-colors duration-200 cursor-pointer">
+          <TiArrowBack size={20} />
+          Back to Blog
+        </span>
+      </Link>
+    </div>
   );
 };
 
-// Modify Post component to accept string dates
-type PostProps = Omit<PostDataType, 'date'> & {
+type PostProps = Omit<PostDataType, "date"> & {
   date: Date | string;
 };
 
-// Date formatting helper to ensure consistent output between server and client
 const formatDate = (date: Date | string): string => {
-  const dateObj = typeof date === 'string' ? new Date(date) : date;
-  
-  // Use explicit options for consistent output
-  const options: Intl.DateTimeFormatOptions = { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  const dateObj = typeof date === "string" ? new Date(date) : date;
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   };
-  
-  return dateObj.toLocaleDateString('en-US', options);
+  return dateObj.toLocaleDateString("en-US", options);
 };
 
 const Post = (props: PostProps) => {
-  // Use the consistent formatter instead of toString()
   const formattedDate = formatDate(props.date);
-
-  // Generate dynamic OGP image URL
-  const ogImageUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(props.title)}&icon=${encodeURIComponent(props.icon || 'info')}`;
+  const ogImageUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(props.title)}&icon=${encodeURIComponent(props.icon || "info")}`;
 
   return (
     <>
       <Head>
         <script src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
       </Head>
-      <Seo 
-        pageTitle={props.title} 
-        pageDescription="Blog posts by sugit." 
+      <Seo
+        pageTitle={props.title}
+        pageDescription="Blog posts by sugit."
         pageImg={ogImageUrl}
         pageImgWidth={1200}
         pageImgHeight={630}
       />
       <BackTo />
-      <article className="text-gray-900 dark:text-gray-100 znc">
-        <div className="flex flex-row justify-center items-center">
-          <div className="w-20">{getIcon(props.icon, 80)}</div>
-          <div className="flex-row">
-            <p className="text-4xl px-4">{props.title}</p>
-          </div>
+      <article className="text-sg-gray-950 dark:text-sg-gray-100 znc">
+        {/* Post header */}
+        <div className="flex flex-row items-center gap-4 mb-4">
+          <div className="w-16 flex-shrink-0">{getIcon(props.icon, 64)}</div>
+          <h1 className="font-display font-bold text-sg-2xl md:text-sg-3xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight leading-tight">
+            {props.title}
+          </h1>
         </div>
-        <div className="flex justify-center p-4 text-md">
+        <p className="font-display text-sg-xs text-sg-gray-500 tracking-wide mb-8 border-b border-sg-gray-200 dark:border-sg-dark-muted pb-4">
           {formattedDate}
-        </div>
+        </p>
         <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
       </article>
       <BackTo />
@@ -85,7 +76,6 @@ export default Post;
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPostSlugs();
-
   return {
     paths,
     fallback: false,
@@ -101,13 +91,15 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   const { slug } = context.params as Query;
   const postData: PostDataType = await getPostData(slug);
-  
-  // Convert Date object to ISO string for serialization
+
   const serializablePostData = {
     ...postData,
-    date: postData.date instanceof Date ? postData.date.toISOString() : postData.date
+    date:
+      postData.date instanceof Date
+        ? postData.date.toISOString()
+        : postData.date,
   };
-  
+
   return {
     props: {
       ...serializablePostData,
@@ -116,9 +108,5 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 Post.getLayout = function getlayout(page: React.ReactElement) {
-  return (
-    <>
-      <BlogLayout>{page}</BlogLayout>
-    </>
-  );
+  return <BlogLayout>{page}</BlogLayout>;
 };

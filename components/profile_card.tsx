@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// ICONS
 import {
   SiDotnet,
   SiReact,
@@ -12,51 +11,49 @@ import {
   SiPython,
   SiLinkedin,
   SiGithub,
-  SiX
+  SiX,
 } from "react-icons/si";
 import { useLocale } from "../hooks/locale";
 
 const SkillIcons = () => {
-  const size = "15";
+  const size = "14";
   return (
-    <div>
-      <div className="flex flex-row flex-wrap items-center justify-center mx-auto py-2 gap-4">
-        <SiFlutter size={size} className="text-gray-600 dark:text-white" />
-        <SiReact size={size} className="text-gray-600 dark:text-white" />
-        <SiDotnet size="25" className="text-gray-600 dark:text-white" />
-        <SiDart size={size} className="text-gray-600 dark:text-white" />
-        <SiTypescript size={size} className="text-gray-600 dark:text-white" />
-        <SiJavascript size={size} className="text-gray-600 dark:text-white" />
-        <SiCplusplus size={size} className="text-gray-600 dark:text-white" />
-        <SiPython size={size} className="text-gray-600 dark:text-white" />
-      </div>
+    <div className="flex flex-row flex-wrap items-center justify-center gap-3 pt-3">
+      <SiFlutter size={size} className="text-sg-gray-400" />
+      <SiReact size={size} className="text-sg-gray-400" />
+      <SiDotnet size="22" className="text-sg-gray-400" />
+      <SiDart size={size} className="text-sg-gray-400" />
+      <SiTypescript size={size} className="text-sg-gray-400" />
+      <SiJavascript size={size} className="text-sg-gray-400" />
+      <SiCplusplus size={size} className="text-sg-gray-400" />
+      <SiPython size={size} className="text-sg-gray-400" />
     </div>
   );
 };
 
 const TechLinks = () => {
   const { t } = useLocale();
-  const size = "20";
+  const size = "18";
   const github = "https://github.com/sugitlab";
   const linkedin = "https://www.linkedin.com/in/shinjisugimoto";
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-3">
       <Link href={github} passHref>
         <SiGithub
           size={size}
-          className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
+          className="text-sg-gray-400 hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer"
         />
       </Link>
       <Link href={t.TWITTER} passHref>
         <SiX
           size={size}
-          className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
+          className="text-sg-gray-400 hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer"
         />
       </Link>
       <Link href={linkedin} passHref>
         <SiLinkedin
           size={size}
-          className="text-gray-600 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-500"
+          className="text-sg-gray-400 hover:text-sg-blue-400 transition-colors duration-200 cursor-pointer"
         />
       </Link>
     </div>
@@ -66,24 +63,42 @@ const TechLinks = () => {
 const Profile = () => {
   const { t } = useLocale();
   return (
-    <div className="container max-w-sm w-4/5 md:w-1/3 h-full px-8 py-4 rounded-3xl bg-gray-200 mx-auto dark:bg-gray-600">
-      <div className="flex items-center pb-4">
-        <Image
-          className="block mx-auto rounded-full bg-white"
-          height={80}
-          width={80}
-          src="/avatar.png"
-          alt="Icon"
-        />
-        <div className="flex flex-col px-4">
-          <p className="py-2 text-2xl font-semibold dark:text-gray-100">
-            {t.PROFILE_NAME}
-          </p>
+    <div className="w-full md:w-72 flex-shrink-0">
+      <div className="bg-sg-dark-surface border border-sg-dark-muted rounded-sg-lg p-6 shadow-sg-md">{/* Avatar + Name */}
+        <div className="flex items-center gap-3 pb-4 border-b border-white/10">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden ring-2 ring-sg-blue-400/40 flex-shrink-0">
+            <Image
+              className="block"
+              fill
+              sizes="56px"
+              src="/avatar.png"
+              alt="Avatar"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <p className="font-display font-bold text-sg-base text-sg-gray-100 tracking-tight">
+              {t.PROFILE_NAME}
+            </p>
+            <p className="font-body text-sg-xs text-sg-gray-500 mt-0.5">
+              Creative Technologist
+            </p>
+          </div>
+        </div>
+
+        {/* Bio */}
+        <p className="font-body text-sg-sm text-sg-gray-400 leading-relaxed pt-4 pb-3">
+          {t.INTRODUCTION}
+        </p>
+
+        {/* Social links */}
+        <div className="pb-3 border-b border-white/10">
           <TechLinks />
         </div>
+
+        {/* Skills */}
+        <SkillIcons />
       </div>
-      <p className="text-sm dark:text-gray-100">{t.INTRODUCTION}</p>
-      <SkillIcons />
     </div>
   );
 };
