@@ -129,7 +129,7 @@ const MenuButton = () => {
       </button>
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-2 z-50">
-          <div className="w-40 rounded-sg-md bg-[#171F24] border border-[#2A3740] shadow-sg-md overflow-hidden">{/* Solid opaque background — no transparency */}
+          <div className="w-40 rounded-sg-md bg-white dark:bg-[#171F24] border border-sg-gray-200 dark:border-[#2A3740] shadow-sg-md overflow-hidden">
             <div className="flex flex-col py-1">
               {[
                 { href: "/", label: t.ARTICLES },
@@ -142,7 +142,7 @@ const MenuButton = () => {
                     className={`px-4 py-2 font-display text-sg-xs tracking-wider uppercase transition-colors duration-150 cursor-pointer ${
                       router.pathname === href
                         ? "text-sg-gray-950 bg-sg-lime-200"
-                        : "text-sg-gray-300 hover:text-sg-lime-200 hover:bg-sg-dark-subtle"
+                        : "text-sg-gray-600 dark:text-sg-gray-300 hover:text-sg-gray-950 dark:hover:text-sg-lime-200 hover:bg-sg-gray-100 dark:hover:bg-sg-dark-subtle"
                     }`}
                   >
                     {label}
@@ -156,7 +156,7 @@ const MenuButton = () => {
               >
                 <div
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 font-display text-sg-xs tracking-wider uppercase text-sg-gray-300 hover:text-sg-lime-200 hover:bg-sg-dark-subtle transition-colors duration-150 flex items-center gap-1 cursor-pointer"
+                  className="px-4 py-2 font-display text-sg-xs tracking-wider uppercase text-sg-gray-600 dark:text-sg-gray-300 hover:text-sg-gray-950 dark:hover:text-sg-lime-200 hover:bg-sg-gray-100 dark:hover:bg-sg-dark-subtle transition-colors duration-150 flex items-center gap-1 cursor-pointer"
                 >
                   {t.SLIDE_DECK}
                   <ArrowTopRightOnSquareIcon className="h-3 w-3" />
