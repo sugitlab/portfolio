@@ -15,141 +15,151 @@ const DarkModeButton = () => {
   const { isDarkMode, toggle } = useDarkMode();
   return (
     <div className="px-2">
-      <button aria-label="darkmode button" onClick={() => toggle(!isDarkMode)}>
+      <button
+        aria-label="darkmode button"
+        onClick={() => toggle(!isDarkMode)}
+        className="text-sg-gray-400 hover:text-sg-lime-200 transition-colors duration-200"
+      >
         {isDarkMode ? (
-          <SunIcon className="block h-6 w-6 dark:text-gray-100" />
+          <SunIcon className="block h-5 w-5" />
         ) : (
-          <MoonIcon className="block h-6 w-6" />
+          <MoonIcon className="block h-5 w-5" />
         )}
       </button>
     </div>
   );
 };
 
+const NavLink = ({
+  href,
+  active,
+  children,
+  external,
+}: {
+  href: string;
+  active?: boolean;
+  children: React.ReactNode;
+  external?: boolean;
+}) => {
+  const base =
+    "font-display text-sg-xs tracking-wider uppercase px-3 py-1 rounded-sg-sm transition-all duration-200 flex items-center gap-1";
+  const activeClass = "text-sg-gray-950 bg-sg-lime-200";
+  const inactiveClass =
+    "text-sg-gray-400 hover:text-sg-gray-100 dark:text-sg-gray-300 dark:hover:text-sg-gray-100";
 
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${base} ${inactiveClass}`}
+      >
+        {children}
+        <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} passHref>
+      <span className={`${base} ${active ? activeClass : inactiveClass} cursor-pointer`}>
+        {children}
+      </span>
+    </Link>
+  );
+};
 
 const MenuList = () => {
   const { t } = useLocale();
   const router = useRouter();
 
   return (
-    <div className="hidden md:flex">
-      <Link href="/" passHref>
-        <div className="px-2 font-bold text-base dark:text-gray-100">
-          {router.pathname === "/" ? (
-            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
-              {t.ARTICLES}
-            </p>
-          ) : (
-            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
-              {t.ARTICLES}
-            </p>
-          )}
-        </div>
-      </Link>
-      <Link href="/blog" passHref>
-        <div className="px-2 font-bold">
-          {router.pathname === "/blog" ? (
-            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
-              {t.BLOG}
-            </p>
-          ) : (
-            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
-              {t.BLOG}
-            </p>
-          )}
-        </div>
-      </Link>
-      <Link href="/profile" passHref>
-        <div className="px-2 font-bold text-base dark:text-gray-100">
-          {router.pathname === "/profile" ? (
-            <p className="bg-indigo-500 rounded-md py-1 px-2 text-gray-100 dark:text-base ">
-              {t.PROFILE}
-            </p>
-          ) : (
-            <p className="rounded-md py-1 px-2 text-base dark:text-gray-100">
-              {t.PROFILE}
-            </p>
-          )}
-        </div>
-      </Link>
-      <a href="https://sugitlab.github.io/slide-deck/" target="_blank" rel="noopener noreferrer">
-        <div className="px-2 font-bold text-base dark:text-gray-100">
-          <p className="rounded-md py-1 px-2 text-base dark:text-gray-100 flex items-center gap-1">
-            {t.SLIDE_DECK}
-            <ArrowTopRightOnSquareIcon className="h-4 w-4" />
-          </p>
-        </div>
-      </a>
+    <div className="hidden md:flex items-center gap-1">
+      <NavLink href="/" active={router.pathname === "/"}>
+        {t.ARTICLES}
+      </NavLink>
+      <NavLink href="/blog" active={router.pathname === "/blog"}>
+        {t.BLOG}
+      </NavLink>
+      <NavLink href="/profile" active={router.pathname === "/profile"}>
+        {t.PROFILE}
+      </NavLink>
+      <NavLink
+        href="https://sugitlab.github.io/slide-deck/"
+        external
+      >
+        {t.SLIDE_DECK}
+      </NavLink>
     </div>
   );
 };
 
 const MenuButton = () => {
   const { t } = useLocale();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div className="relative px-2 md:hidden" ref={dropdownRef}>
-      <button 
+      <button
         aria-label="menu button"
         onClick={() => setIsOpen(!isOpen)}
+        className="text-sg-gray-300 hover:text-sg-lime-200 transition-colors duration-200"
       >
         {isOpen ? (
-          <XMarkIcon className="block h-6 w-6 dark:text-gray-100" />
+          <XMarkIcon className="block h-5 w-5" />
         ) : (
-          <Bars3Icon className="block h-6 w-6 dark:text-gray-100" />
+          <Bars3Icon className="block h-5 w-5" />
         )}
       </button>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 filter drop-shadow-md">
-          <div className="w-32 rounded-lg bg-white dark:bg-gray-600">
-            <div className="grid grid-col-2">
-              <Link href="/">
+        <div className="origin-top-right absolute right-0 mt-2 z-50">
+          <div className="w-40 rounded-sg-md bg-white dark:bg-[#171F24] border border-sg-gray-200 dark:border-[#2A3740] shadow-sg-md overflow-hidden">
+            <div className="flex flex-col py-1">
+              {[
+                { href: "/", label: t.ARTICLES },
+                { href: "/blog", label: t.BLOG },
+                { href: "/profile", label: t.PROFILE },
+              ].map(({ href, label }) => (
+                <Link key={href} href={href}>
+                  <div
+                    onClick={() => setIsOpen(false)}
+                    className={`px-4 py-2 font-display text-sg-xs tracking-wider uppercase transition-colors duration-150 cursor-pointer ${
+                      router.pathname === href
+                        ? "text-sg-gray-950 bg-sg-lime-200"
+                        : "text-sg-gray-600 dark:text-sg-gray-300 hover:text-sg-gray-950 dark:hover:text-sg-lime-200 hover:bg-sg-gray-100 dark:hover:bg-sg-dark-subtle"
+                    }`}
+                  >
+                    {label}
+                  </div>
+                </Link>
+              ))}
+              <a
+                href="https://sugitlab.github.io/slide-deck/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                >
-                  {t.ARTICLES}
-                </div>
-              </Link>
-              <Link href="/blog">
-                <div
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                >
-                  {t.BLOG}
-                </div>
-              </Link>
-              <Link href="/profile">
-                <div
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500"
-                >
-                  {t.PROFILE}
-                </div>
-              </Link>
-              <a href="https://sugitlab.github.io/slide-deck/" target="_blank" rel="noopener noreferrer">
-                <div
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg dark:text-white hover:bg-indigo-300 dark:hover:bg-indigo-500 flex items-center gap-1"
+                  className="px-4 py-2 font-display text-sg-xs tracking-wider uppercase text-sg-gray-600 dark:text-sg-gray-300 hover:text-sg-gray-950 dark:hover:text-sg-lime-200 hover:bg-sg-gray-100 dark:hover:bg-sg-dark-subtle transition-colors duration-150 flex items-center gap-1 cursor-pointer"
                 >
                   {t.SLIDE_DECK}
-                  <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+                  <ArrowTopRightOnSquareIcon className="h-3 w-3" />
                 </div>
               </a>
             </div>
@@ -163,31 +173,28 @@ const MenuButton = () => {
 type NavbarProps = {
   noLink?: boolean;
 };
+
 export default function Navbar(props: NavbarProps) {
   return (
-    <nav className="z-50 flex flex-rows py-4 px-4 sticky top-0 backdrop-blur-sm bg-gray-100 dark:bg-gray-900 bg-opacity-60 dark:bg-opacity-60">
+    <nav className="z-50 flex flex-row items-center py-3 px-6 sticky top-0 backdrop-blur-sm bg-sg-gray-950/90 border-b border-sg-dark-muted">
       <Link href="/" passHref>
-        <div className="flex flex-1 font-bold text-xl dark:text-gray-100">
-          SugitLab.
-        </div>
+        <span className="flex-shrink-0 font-display font-bold text-sg-base tracking-tight text-sg-gray-100 hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer">
+          sugitlab<span className="text-sg-lime-200">.</span>
+        </span>
       </Link>
+
       {props.noLink ? (
-        <div className="flex flex-1" />
+        <div className="flex-1" />
       ) : (
         <>
-          <div className="flex flex-1" />
+          <div className="flex-1" />
           <MenuList />
-          <div className="flex flex-1" />
+          <div className="flex-1" />
         </>
       )}
+
       <DarkModeButton />
-      {props.noLink ? (
-        <></>
-      ) : (
-        <>
-          <MenuButton />
-        </>
-      )}
+      {!props.noLink && <MenuButton />}
     </nav>
   );
 }

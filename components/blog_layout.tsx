@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
@@ -8,13 +7,11 @@ export type BlogLayoutProps = {
 
 const BlogLayout = (props: BlogLayoutProps) => {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="flex flex-col min-h-screen bg-sg-base dark:bg-sg-dark-base">
       <Navbar noLink />
-      <div className="flex flex-col px-2 md:flex-row">
-        <div className="container w-4/5 md:w-3/5 mx-auto">
-          {props.children}
-        </div>
-      </div>
+      <main className="flex-1 w-full max-w-3xl mx-auto px-4 md:px-6 py-10">
+        {props.children}
+      </main>
       <Footer />
     </div>
   );

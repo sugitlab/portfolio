@@ -13,13 +13,22 @@ const Blog = (props: BlogProps) => {
   return (
     <>
       <Seo pageTitle="Blog" pageDescription="Blog posts by sugit." />
-      <div className="divide-solid divide-gray-200 divide-y-2 dark:divide-gray-800 flex flex-col">
+      {/* Section header */}
+      <div className="mb-6">
+        <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
+          Writing
+        </p>
+        <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">
+          {t.BLOG}
+        </h1>
+      </div>
+      <div className="flex flex-col gap-3">
         {props.allPostsData.length > 0 ? (
           props.allPostsData.map((data, index) => {
             return <BlogPostCard key={index} {...data} />
           })
         ) : (
-          <div className="flex justify-center items-center h-64 text-xl dark:text-gray-100">
+          <div className="flex justify-center items-center h-64 font-display text-sg-base text-sg-gray-500">
             No Post
           </div>
         )}
@@ -33,7 +42,6 @@ export default Blog
 export async function getStaticProps() {
   const allPostsData: PostDataType[] = getAllPostsInfo()
 
-  // Convert Date objects to ISO strings for serialization
   const serializablePostsData = allPostsData.map(post => ({
     ...post,
     date: post.date instanceof Date ? post.date.toISOString() : post.date
