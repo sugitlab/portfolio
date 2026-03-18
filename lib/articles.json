@@ -2,6 +2,13 @@
   "articles": [
     {
       "type": "note",
+      "title": "（タイトル未取得）",
+      "published": "2026-03-18T00:00:00.000Z",
+      "url": "https://note.com/sugitlab/n/n6f4097c5c1be",
+      "category": "PM"
+    },
+    {
+      "type": "note",
       "title": "日本酒記録アプリを作ろうとして、壁打ちしたら2時間で中止した話",
       "published": "2026-02-04T23:43:51+09:00",
       "url": "https://note.com/sugitlab/n/nb6ea3c2501f8",
