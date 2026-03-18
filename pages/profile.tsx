@@ -154,10 +154,10 @@ const Profile = () => {
       {/* Section header */}
       <div className="mb-8">
         <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
-          About me
+          Profile
         </p>
         <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">
-          Profile
+          プロフィール
         </h1>
       </div>
       <ProfileLine />
