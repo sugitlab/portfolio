@@ -16,7 +16,7 @@ const Blog = (props: BlogProps) => {
       {/* Section header */}
       <div className="mb-6">
         <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
-          Writing
+          Blog
         </p>
         <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">
           {t.BLOG}

@@ -25,10 +25,10 @@ const Home = ({ allArticles }: { allArticles: Article[] }) => {
       {/* Section header */}
       <div className="mb-6">
         <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
-          Latest
+          Articles
         </p>
         <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">
-          Articles
+          書いたもの
         </h1>
       </div>
       <Articles articles={allArticles} />
