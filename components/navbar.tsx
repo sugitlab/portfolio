@@ -18,7 +18,7 @@ const DarkModeButton = () => {
       <button
         aria-label="darkmode button"
         onClick={() => toggle(!isDarkMode)}
-        className="text-sg-gray-400 hover:text-sg-lime-200 transition-colors duration-200"
+        className="text-sg-gray-500 hover:text-sg-blue-600 dark:text-sg-gray-400 dark:hover:text-sg-lime-200 transition-colors duration-200"
       >
         {isDarkMode ? (
           <SunIcon className="block h-5 w-5" />
@@ -45,7 +45,7 @@ const NavLink = ({
     "font-display text-sg-xs tracking-wider uppercase px-3 py-1 rounded-sg-sm transition-all duration-200 flex items-center gap-1";
   const activeClass = "text-sg-gray-950 bg-sg-lime-200";
   const inactiveClass =
-    "text-sg-gray-400 hover:text-sg-gray-100 dark:text-sg-gray-300 dark:hover:text-sg-gray-100";
+    "text-sg-gray-500 hover:text-sg-gray-950 dark:text-sg-gray-300 dark:hover:text-sg-gray-100";
 
   if (external) {
     return (
@@ -119,7 +119,7 @@ const MenuButton = () => {
       <button
         aria-label="menu button"
         onClick={() => setIsOpen(!isOpen)}
-        className="text-sg-gray-300 hover:text-sg-lime-200 transition-colors duration-200"
+        className="text-sg-gray-500 hover:text-sg-blue-600 dark:text-sg-gray-300 dark:hover:text-sg-lime-200 transition-colors duration-200"
       >
         {isOpen ? (
           <XMarkIcon className="block h-5 w-5" />
@@ -176,10 +176,10 @@ type NavbarProps = {
 
 export default function Navbar(props: NavbarProps) {
   return (
-    <nav className="z-50 flex flex-row items-center py-3 px-6 sticky top-0 backdrop-blur-sm bg-sg-gray-950/90 border-b border-sg-dark-muted">
+    <nav className="z-50 flex flex-row items-center py-3 px-6 sticky top-0 backdrop-blur-sm bg-white/90 dark:bg-sg-gray-950/90 border-b border-sg-gray-200 dark:border-sg-dark-muted">
       <Link href="/" passHref>
-        <span className="flex-shrink-0 font-display font-bold text-sg-base tracking-tight text-sg-gray-100 hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer">
-          sugitlab<span className="text-sg-lime-200">.</span>
+        <span className="flex-shrink-0 font-display font-bold text-sg-base tracking-tight text-sg-gray-950 dark:text-sg-gray-100 hover:text-sg-blue-600 dark:hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer">
+          sugitlab<span className="text-sg-blue-500 dark:text-sg-lime-200">.</span>
         </span>
       </Link>
 
