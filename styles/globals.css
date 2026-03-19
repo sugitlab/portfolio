@@ -2,6 +2,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ── Font Utilities ── */
+@theme {
+  --font-accent: 'Grape Nuts', cursive;
+  --font-display: 'Space Mono', 'Courier New', monospace;
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+}
+
 /* ── Design Tokens ── */
 :root {
   /* Colors: Primitives */
