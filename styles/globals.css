@@ -2,12 +2,33 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Font Utilities ── */
+/* ── Font & Size Utilities ── */
 @theme {
   --font-accent: 'Grape Nuts', cursive;
   --font-display: 'Space Mono', 'Courier New', monospace;
   --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
   --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  --text-sg-xs:   0.6875rem;
+  --text-sg-xs--line-height: 1.5;
+  --text-sg-sm:   0.8125rem;
+  --text-sg-sm--line-height: 1.5;
+  --text-sg-base: 0.9375rem;
+  --text-sg-base--line-height: 1.5;
+  --text-sg-md:   1.0625rem;
+  --text-sg-md--line-height: 1.5;
+  --text-sg-lg:   1.25rem;
+  --text-sg-lg--line-height: 1.35;
+  --text-sg-xl:   1.5rem;
+  --text-sg-xl--line-height: 1.35;
+  --text-sg-2xl:  1.875rem;
+  --text-sg-2xl--line-height: 1.2;
+  --text-sg-3xl:  2.25rem;
+  --text-sg-3xl--line-height: 1.2;
+  --text-sg-4xl:  3rem;
+  --text-sg-4xl--line-height: 1.1;
+  --text-sg-5xl:  3.75rem;
+  --text-sg-5xl--line-height: 1.1;
 }
 
 /* ── Design Tokens ── */
