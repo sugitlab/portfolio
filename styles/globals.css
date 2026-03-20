@@ -118,8 +118,8 @@
   --sg-color-brand-accent-hover:   var(--color-sg-lime-300);
 
   /* Borders */
-  --sg-color-border-default: var(--color-sg-gray-200);
-  --sg-color-border-strong:  var(--color-sg-gray-300);
+  --sg-color-border-default: rgba(13,13,13,0.10);
+  --sg-color-border-strong:  rgba(13,13,13,0.20);
   --sg-color-border-accent:  var(--color-sg-lime-200);
 
   /* Motion */
