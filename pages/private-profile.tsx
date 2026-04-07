@@ -1,8 +1,11 @@
 import Layout from "../components/layout";
 import Image from "next/image";
 import Seo from "../components/seo";
+import WorkHistoryTimeline from "../components/work_history_timeline";
+import { getWorkHistory } from "../lib/work-history";
 
 const PrivateProfile = () => {
+    const workHistory = getWorkHistory();
     return (
         <>
             <Seo 
@@ -35,6 +38,7 @@ const PrivateProfile = () => {
                         <p className="text-gray-600">ライフサイエンス系の研究開発職からキャリアをスタート。オフショアとの共同開発を中心にエンジニアとPMを8年間兼任。2023年にエンジニア向け教育・キャリア支援事業を行うTechBowlにPMとしてJOINし、現在は嬉々としてPullRequestを投げたがるCOO兼CPOとして奔走中。</p>
                     </div>
                 </div>
+                <WorkHistoryTimeline entries={workHistory} />
             </div>
         </>
     );
