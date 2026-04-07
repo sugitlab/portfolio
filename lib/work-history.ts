@@ -4,9 +4,7 @@ export type WorkHistoryEntry = {
     period: string;
     organization: string;
     role: string;
-    challenge: string;
-    approach: string;
-    result: string;
+    summary: string;
 };
 
 export const getWorkHistory = (): WorkHistoryEntry[] => {

@@ -23,32 +23,14 @@ const WorkHistoryTimeline = ({ entries }: Props) => {
                             <div className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                                 {entry.role}
                             </div>
-                            <dl className="flex flex-col gap-2 text-sm">
-                                <div>
-                                    <dt className="font-semibold text-sg-blue-500 dark:text-sg-blue-300">
-                                        課題
-                                    </dt>
-                                    <dd className="text-gray-700 dark:text-gray-200 whitespace-pre-wrap">
-                                        {entry.challenge}
-                                    </dd>
+                            <div className="text-sm">
+                                <div className="font-semibold text-sg-blue-500 dark:text-sg-blue-300 mb-1">
+                                    主な役割と実績
                                 </div>
-                                <div>
-                                    <dt className="font-semibold text-sg-blue-500 dark:text-sg-blue-300">
-                                        アプローチ
-                                    </dt>
-                                    <dd className="text-gray-700 dark:text-gray-200 whitespace-pre-wrap">
-                                        {entry.approach}
-                                    </dd>
-                                </div>
-                                <div>
-                                    <dt className="font-semibold text-sg-blue-500 dark:text-sg-blue-300">
-                                        成果
-                                    </dt>
-                                    <dd className="text-gray-700 dark:text-gray-200 whitespace-pre-wrap">
-                                        {entry.result}
-                                    </dd>
-                                </div>
-                            </dl>
+                                <p className="text-gray-700 dark:text-gray-200 whitespace-pre-wrap leading-relaxed">
+                                    {entry.summary}
+                                </p>
+                            </div>
                         </div>
                     </li>
                 ))}
