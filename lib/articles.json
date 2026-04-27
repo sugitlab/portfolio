@@ -2,15 +2,29 @@
   "articles": [
     {
       "type": "note",
-      "title": "問いを定める技術 - 「考えることを、減らす」",
+      "title": "良い迷い方をするために、問いを定める - 問いを定める技術 #4",
+      "published": "2026-04-23T00:00:00.000Z",
+      "url": "https://note.com/sugitlab/n/nb3b7c18d14a2",
+      "category": "PM"
+    },
+    {
+      "type": "note",
+      "title": "視座を上げるとは、問いを遡ること - 問いを定める技術 #3",
+      "published": "2026-04-14T00:00:00.000Z",
+      "url": "https://note.com/sugitlab/n/nbcbcbd197abf",
+      "category": "PM"
+    },
+    {
+      "type": "note",
+      "title": "変数と定数を決めると、問いは小さくなる - 問いを定める技術 #2",
       "published": "2026-03-21T00:00:00.000Z",
       "url": "https://note.com/sugitlab/n/n1d91db355e28",
       "category": "PM"
     },
     {
       "type": "note",
-      "title": "問いを定める技術 - 「ヒアリングの上手さって？」",
-      "published": "2026-03-18T00:00:00.000Z",
+      "title": "ヒアリングは「聞く」より「観る」 - 問いを定める技術 #1",
+      "published": "2026-03-17T00:00:00.000Z",
       "url": "https://note.com/sugitlab/n/n6f4097c5c1be",
       "category": "PM"
     },
