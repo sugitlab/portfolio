@@ -25,7 +25,7 @@ const BlogPostCard = (props: BlogPostCardProps) => {
 
   return (
     <Link href={`/posts/${props.slug}`} locale="" passHref>
-      <div className="group flex flex-row items-center gap-4 p-4 rounded-sg-lg border border-sg-color-border-default bg-sg-color-bg-surface dark:bg-sg-dark-surface dark:border-sg-dark-muted hover:border-sg-blue-400/40 hover:shadow-sg-md transition-all duration-200 cursor-pointer">
+      <div className="group flex flex-row items-center gap-4 p-4 rounded-sg-lg border border-sg-gray-200 bg-sg-color-bg-surface dark:bg-sg-dark-surface dark:border-sg-dark-muted hover:border-sg-blue-400/40 hover:shadow-sg-md transition-all duration-200 cursor-pointer">
         {/* Icon */}
         <div className="flex justify-center items-center w-12 h-12 rounded-sg-md bg-sg-gray-100 dark:bg-sg-dark-subtle flex-shrink-0">
           <BlogPostCardHeader iconType={props.icon} />
