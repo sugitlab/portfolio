@@ -57,3 +57,5 @@ Then run:
 ```sh
 npm run deploy:hook
 ```
+
+Deploy is also triggered automatically when the `blog-post` label is added to an issue. Set `VERCEL_DEPLOY_HOOK_URL` as a GitHub Actions repository secret.
