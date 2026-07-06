@@ -42,20 +42,3 @@ Post body in Markdown.
 ```
 
 Run `npm run migrate-posts-to-issues -- --apply` to migrate local `posts/*.md` files into GitHub Issues.
-
-### Trigger Deploy
-
-Create a Vercel Deploy Hook:
-
-1. Open Vercel project settings.
-2. Go to `Git` > `Deploy Hooks`.
-3. Create a hook for the production branch.
-4. Set the hook URL as `VERCEL_DEPLOY_HOOK_URL`.
-
-Then run:
-
-```sh
-npm run deploy:hook
-```
-
-Deploy is also triggered automatically when the `blog-post` label is added to an issue. Set `VERCEL_DEPLOY_HOOK_URL` as a GitHub Actions repository secret.
