@@ -55,6 +55,19 @@ function parseFrontmatter(fileContent: string): {
   return { content, data };
 }
 
+function normalizeGitHubIssueMarkdown(content: string): string {
+  return content.replace(/<img\b([^>]*)\/?>/gi, (match, attrs: string) => {
+    const src = attrs.match(/\bsrc=(["'])(.*?)\1/i)?.[2];
+
+    if (!src) {
+      return match;
+    }
+
+    const alt = attrs.match(/\balt=(["'])(.*?)\1/i)?.[2] || "Image";
+    return `![${alt}](${src})`;
+  });
+}
+
 interface MatterResultType {
   title: string;
   date: Date;
@@ -124,12 +137,13 @@ async function fetchPostIssues(): Promise<GitHubIssue[]> {
 function issueToPost(issue: GitHubIssue, includeContent: boolean): PostDataType {
   const body = issue.body ?? "";
   const { content, data } = parseFrontmatter(body);
+  const normalizedContent = normalizeGitHubIssueMarkdown(content);
   const slug = typeof data.slug === "string" ? data.slug : `issue-${issue.number}`;
   const title = typeof data.title === "string" ? data.title : issue.title;
   const date = data.date instanceof Date ? data.date : new Date(issue.created_at);
   const icon = typeof data.icon === "string" ? data.icon : undefined;
   const contentHtml = includeContent
-    ? markdownToHtml(content, {
+    ? markdownToHtml(normalizedContent, {
         embedOrigin: "https://embed.zenn.studio",
       })
     : "";
