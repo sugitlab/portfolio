@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "fetch-articles": "node scripts/fetch-articles.mjs",
-    "migrate-posts-to-issues": "node scripts/migrate-posts-to-issues.mjs"
+    "migrate-posts-to-issues": "node scripts/migrate-posts-to-issues.mjs",
+    "deploy:hook": "node scripts/trigger-vercel-deploy.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.16",
