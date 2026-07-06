@@ -10,8 +10,8 @@
 @theme {
   /* ── Font Families ── */
   --font-accent:  'Grape Nuts', cursive;
-  --font-display: 'Space Mono', 'Courier New', monospace;
-  --font-body:    'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-display: 'Zen Maru Gothic', 'Zen Kaku Gothic New', sans-serif;
+  --font-body:    'Zen Maru Gothic', 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
   --font-mono:    'Space Mono', 'Courier New', monospace;
 
   /* ── Font Sizes ── */
@@ -37,56 +37,56 @@
   --text-sg-5xl--line-height: 1.1;
 
   /* ── Colors ── */
-  --color-sg-gray-50:  #F5F7F9;
-  --color-sg-gray-100: #E9EEF2;
-  --color-sg-gray-200: #D0D9E0;
-  --color-sg-gray-300: #A8B8C4;
-  --color-sg-gray-400: #7E96A5;
-  --color-sg-gray-500: #5A7485;
-  --color-sg-gray-600: #3E5A6B;
-  --color-sg-gray-700: #2A3F4D;
-  --color-sg-gray-800: #1A2730;
-  --color-sg-gray-950: #0D0D0D;
+  --color-sg-gray-50:  #F8FBFA;
+  --color-sg-gray-100: #EEF6F4;
+  --color-sg-gray-200: #DBE9E6;
+  --color-sg-gray-300: #BDD4CF;
+  --color-sg-gray-400: #8FAFAA;
+  --color-sg-gray-500: #648782;
+  --color-sg-gray-600: #486C68;
+  --color-sg-gray-700: #31504D;
+  --color-sg-gray-800: #203A38;
+  --color-sg-gray-950: #142927;
 
-  --color-sg-blue-100: #D8ECF7;
-  --color-sg-blue-200: #B5D9EF;
-  --color-sg-blue-300: #91C5E7;
-  --color-sg-blue-400: #71B1D9;
-  --color-sg-blue-500: #4E97C5;
-  --color-sg-blue-600: #3278A4;
-  --color-sg-blue-700: #1F5A80;
-  --color-sg-blue-900: #072035;
+  --color-sg-blue-100: #E8F7FF;
+  --color-sg-blue-200: #C9EDFB;
+  --color-sg-blue-300: #9DDDF3;
+  --color-sg-blue-400: #73C9E5;
+  --color-sg-blue-500: #45AFCF;
+  --color-sg-blue-600: #238BAA;
+  --color-sg-blue-700: #176D85;
+  --color-sg-blue-900: #123B47;
 
-  --color-sg-green-100: #EDF0CB;
-  --color-sg-green-200: #D4DB96;
-  --color-sg-green-300: #BAC862;
-  --color-sg-green-400: #98A62D;
-  --color-sg-green-500: #7A8522;
-  --color-sg-green-600: #5D6519;
+  --color-sg-green-100: #E8FAF3;
+  --color-sg-green-200: #C9F1E4;
+  --color-sg-green-300: #A1E4D1;
+  --color-sg-green-400: #72D0BA;
+  --color-sg-green-500: #43AF99;
+  --color-sg-green-600: #278A78;
 
-  --color-sg-lime-50:  #F7FCC0;
-  --color-sg-lime-100: #EEF97E;
-  --color-sg-lime-200: #DEF249;
-  --color-sg-lime-300: #C8DC1E;
+  --color-sg-lime-50:  #FFFBEA;
+  --color-sg-lime-100: #FFF3C4;
+  --color-sg-lime-200: #FFE59B;
+  --color-sg-lime-300: #FFD173;
 
-  --color-sg-base:         #F5F7F9;
+  --color-sg-base:         #F8FBFA;
   --color-sg-surface:      #FFFFFF;
-  --color-sg-dark-base:    #0F1518;
-  --color-sg-dark-surface: #171F24;
-  --color-sg-dark-subtle:  #1E282E;
-  --color-sg-dark-muted:   #2A3740;
+  --color-sg-dark-base:    #10201F;
+  --color-sg-dark-surface: #162B2A;
+  --color-sg-dark-subtle:  #1D3634;
+  --color-sg-dark-muted:   #294B48;
 
   /* ── Border Radius ── */
-  --radius-sg-sm: 4px;
-  --radius-sg-md: 8px;
-  --radius-sg-lg: 12px;
+  --radius-sg-sm: 8px;
+  --radius-sg-md: 14px;
+  --radius-sg-lg: 24px;
 
   /* ── Box Shadows ── */
-  --shadow-sg-sm: 0 2px 6px rgba(13,13,13,0.08), 0 1px 2px rgba(13,13,13,0.04);
-  --shadow-sg-md: 0 4px 16px rgba(13,13,13,0.10), 0 2px 4px rgba(13,13,13,0.06);
-  --shadow-sg-lg: 0 8px 32px rgba(13,13,13,0.12), 0 4px 8px rgba(13,13,13,0.08);
-  --shadow-sg-glow-primary: 0 0 24px rgba(113,177,217,0.35);
-  --shadow-sg-glow-accent:  0 0 24px rgba(222,242,73,0.45);
+  --shadow-sg-sm: 0 8px 24px rgba(67, 120, 112, 0.08);
+  --shadow-sg-md: 0 16px 40px rgba(67, 120, 112, 0.10);
+  --shadow-sg-lg: 0 24px 64px rgba(67, 120, 112, 0.14);
+  --shadow-sg-glow-primary: 0 0 32px rgba(115, 201, 229, 0.30);
+  --shadow-sg-glow-accent:  0 0 32px rgba(255, 209, 115, 0.35);
 }
 
 /* ────────────────────────────────────────────────
@@ -96,10 +96,10 @@
    ──────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --sg-color-bg-base:    var(--color-sg-gray-50);
+  --sg-color-bg-base:    #F8FBFA;
   --sg-color-bg-surface: #FFFFFF;
   --sg-color-bg-subtle:  var(--color-sg-gray-100);
-  --sg-color-bg-muted:   var(--color-sg-gray-200);
+  --sg-color-bg-muted:   #E1F0EC;
   --sg-color-bg-inverse: var(--color-sg-gray-950);
 
   /* Text */
@@ -108,13 +108,13 @@
   --sg-color-text-tertiary:  var(--color-sg-gray-500);
   --sg-color-text-disabled:  var(--color-sg-gray-300);
   --sg-color-text-inverse:   var(--color-sg-gray-100);
-  --sg-color-text-link:      var(--color-sg-blue-700);
-  --sg-color-text-accent:    var(--color-sg-green-600);
+  --sg-color-text-link:      var(--color-sg-green-600);
+  --sg-color-text-accent:    var(--color-sg-blue-600);
 
   /* Brand */
-  --sg-color-brand-primary:        var(--color-sg-blue-400);
-  --sg-color-brand-primary-hover:  var(--color-sg-blue-500);
-  --sg-color-brand-accent:         var(--color-sg-lime-200);
+  --sg-color-brand-primary:        var(--color-sg-green-400);
+  --sg-color-brand-primary-hover:  var(--color-sg-green-500);
+  --sg-color-brand-accent:         var(--color-sg-blue-200);
   --sg-color-brand-accent-hover:   var(--color-sg-lime-300);
 
   /* Borders */
@@ -132,10 +132,10 @@
 
 /* ── Dark Mode Overrides ── */
 .dark {
-  --sg-color-bg-base:    #0F1518;
-  --sg-color-bg-surface: #171F24;
-  --sg-color-bg-subtle:  #1E282E;
-  --sg-color-bg-muted:   #2A3740;
+  --sg-color-bg-base:    #10201F;
+  --sg-color-bg-surface: #162B2A;
+  --sg-color-bg-subtle:  #1D3634;
+  --sg-color-bg-muted:   #294B48;
   --sg-color-bg-inverse: var(--color-sg-gray-100);
 
   --sg-color-text-primary:   var(--color-sg-gray-100);
@@ -143,12 +143,12 @@
   --sg-color-text-tertiary:  var(--color-sg-gray-400);
   --sg-color-text-disabled:  var(--color-sg-gray-600);
   --sg-color-text-inverse:   var(--color-sg-gray-950);
-  --sg-color-text-link:      var(--color-sg-blue-300);
-  --sg-color-text-accent:    var(--color-sg-lime-200);
+  --sg-color-text-link:      var(--color-sg-green-300);
+  --sg-color-text-accent:    var(--color-sg-blue-200);
 
-  --sg-color-brand-primary:        var(--color-sg-blue-300);
-  --sg-color-brand-primary-hover:  var(--color-sg-blue-400);
-  --sg-color-brand-accent:         var(--color-sg-lime-200);
+  --sg-color-brand-primary:        var(--color-sg-green-300);
+  --sg-color-brand-primary-hover:  var(--color-sg-green-400);
+  --sg-color-brand-accent:         var(--color-sg-blue-200);
   --sg-color-brand-accent-hover:   var(--color-sg-lime-100);
 
   --sg-color-border-default: rgba(233,238,242,0.10);
@@ -171,9 +171,19 @@
     font-size: 0.9375rem;
     line-height: 1.5;
     color: var(--sg-color-text-primary);
-    background: var(--sg-color-bg-base);
+    background:
+      radial-gradient(circle at 10% 0%, rgba(201, 241, 228, 0.55), transparent 32rem),
+      radial-gradient(circle at 90% 8%, rgba(201, 237, 251, 0.60), transparent 34rem),
+      linear-gradient(180deg, #FDFEFC 0%, var(--sg-color-bg-base) 42%, #F4FAF8 100%);
     -webkit-font-smoothing: antialiased;
-    @apply text-[#0D0D0D] dark:text-[#E9EEF2];
+    @apply text-sg-gray-950 dark:text-sg-gray-100;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(circle at 12% 0%, rgba(67, 175, 153, 0.16), transparent 30rem),
+      radial-gradient(circle at 88% 8%, rgba(115, 201, 229, 0.14), transparent 34rem),
+      linear-gradient(180deg, #0F1D1C 0%, var(--sg-color-bg-base) 60%, #0B1817 100%);
   }
 
   *:focus-visible {

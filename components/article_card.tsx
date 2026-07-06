@@ -51,18 +51,18 @@ const ArticleCard = (props: Article) => {
 
   return (
     <Link href={props.url} passHref>
-      <div className="group flex flex-row items-center gap-4 p-4 rounded-sg-lg border border-sg-gray-200 bg-sg-color-bg-surface dark:bg-sg-dark-surface dark:border-sg-dark-muted hover:border-sg-blue-400/40 hover:shadow-sg-md transition-all duration-200 cursor-pointer">
+      <div className="group flex flex-row items-center gap-4 p-4 rounded-sg-lg border border-white/80 bg-white/80 dark:bg-sg-dark-surface/80 dark:border-white/10 hover:border-sg-green-300/70 hover:shadow-sg-md transition-all duration-300 cursor-pointer backdrop-blur-sm">
         {/* Icon */}
-        <div className="flex justify-center items-center w-12 h-12 rounded-sg-md bg-sg-gray-100 dark:bg-sg-dark-subtle flex-shrink-0">
+        <div className="flex justify-center items-center w-12 h-12 rounded-2xl bg-sg-green-100/80 dark:bg-sg-dark-subtle flex-shrink-0 ring-1 ring-sg-green-200/70 dark:ring-white/10">
           <CardHeader height={32} width={32} type={props.type} />
         </div>
         {/* Content */}
         <div className="flex flex-col gap-1 min-w-0 flex-1">
-          <p className="font-body font-bold text-sg-base text-sg-gray-950 dark:text-sg-gray-100 line-clamp-2 leading-snug group-hover:text-sg-blue-400 transition-colors duration-200">
+          <p className="font-body font-bold text-sg-base text-sg-gray-950 dark:text-sg-gray-100 line-clamp-2 leading-snug group-hover:text-sg-green-600 dark:group-hover:text-sg-green-300 transition-colors duration-200">
             {props.title}
           </p>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-display text-sg-xs text-sg-gray-500 tracking-wide">
+            <span className="font-mono text-sg-xs text-sg-gray-500 tracking-wide">
               {dateStr}
             </span>
             <Chip category={props.category} />

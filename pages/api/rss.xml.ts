@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getAllPostsInfo } from "../../lib/posts";
 import { generateRssXml } from "../../lib/rss";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const posts = getAllPostsInfo();
+    const posts = await getAllPostsInfo();
     const rssXml = generateRssXml(posts);
 
     res.setHeader("Content-Type", "application/xml; charset=utf-8");

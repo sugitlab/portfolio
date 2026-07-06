@@ -19,7 +19,7 @@ const ProfileContent = (props: ProfileContentProps) => {
         <div
           className={`w-3 h-3 rounded-full mt-1 ${props.accentColor}`}
         />
-        <div className="w-px bg-sg-gray-200 dark:bg-sg-dark-muted flex-grow mt-2" />
+        <div className="w-px bg-sg-green-200 dark:bg-sg-dark-muted flex-grow mt-2" />
       </div>
       {/* Content */}
       <div className="flex-1 pb-8">
@@ -76,7 +76,7 @@ const ProfileLine = () => {
       <ProfileContent
         title={t.PROFILE_1_HEAD}
         body={t.PROFILE_1}
-        accentColor="bg-sg-blue-400"
+        accentColor="bg-sg-green-400"
         element={
           <div className="relative filter drop-shadow-lg w-4/5 h-32 sm:h-48 sm:w-3/5 rounded-sg-lg overflow-hidden">
             <Image
@@ -92,12 +92,12 @@ const ProfileLine = () => {
       <ProfileContent
         title={t.PROFILE_2_HEAD}
         body={t.PROFILE_2}
-        accentColor="bg-sg-lime-200"
+        accentColor="bg-sg-blue-300"
       />
       <ProfileContent
         title={t.PROFILE_3_HEAD}
         body={t.PROFILE_3}
-        accentColor="bg-sg-green-400"
+        accentColor="bg-sg-lime-300"
         element={
           <div className="relative filter drop-shadow-lg w-4/5 h-48 sm:h-48 sm:w-3/5 rounded-sg-lg overflow-hidden">
             <Image
@@ -113,13 +113,13 @@ const ProfileLine = () => {
       <ProfileContent
         title={t.PROFILE_4_HEAD}
         body={t.PROFILE_4}
-        accentColor="bg-sg-blue-300"
+        accentColor="bg-sg-green-300"
         element={
           <div className="flex flex-col gap-2">
             {histories.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 rounded-sg-md bg-sg-gray-50 dark:bg-sg-dark-subtle border border-sg-gray-200 dark:border-sg-dark-muted"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 rounded-sg-md bg-white/75 dark:bg-sg-dark-subtle border border-white/80 dark:border-white/10"
               >
                 <span className="font-body font-semibold text-sg-sm text-sg-gray-700 dark:text-sg-gray-200">
                   {item.link ? (
@@ -127,7 +127,7 @@ const ProfileLine = () => {
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-sg-blue-400 dark:hover:text-sg-blue-300 transition-colors duration-200"
+                      className="hover:text-sg-green-600 dark:hover:text-sg-green-300 transition-colors duration-200"
                     >
                       {item.org}
                     </a>
@@ -153,7 +153,7 @@ const Profile = () => {
       <Seo pageTitle="Profile" pageDescription="Profile for sugit." />
       {/* Section header */}
       <div className="mb-8">
-        <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
+        <p className="font-display font-bold text-sg-xs text-sg-green-600 dark:text-sg-green-300 tracking-widest uppercase mb-1">
           Profile
         </p>
         <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">

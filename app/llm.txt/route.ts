@@ -2,7 +2,7 @@ import { getAllPostsInfo } from '../../lib/posts';
 import { SITE_URL } from '../../lib/constants';
 
 export async function GET() {
-  const posts = getAllPostsInfo();
+  const posts = await getAllPostsInfo();
   
   const header = `# sugitlab.dev
 
