@@ -68,15 +68,24 @@ export interface PostDataType extends MatterResultType {
   issueUrl: string;
 }
 
+function githubToken(): string | undefined {
+  return (
+    process.env.BLOG_GITHUB_TOKEN ||
+    process.env.GITHUB_TOKEN ||
+    process.env.GH_TOKEN
+  );
+}
+
 function githubHeaders(): HeadersInit {
   const headers: HeadersInit = {
     Accept: "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
     "User-Agent": "sugitlab-portfolio",
   };
+  const token = githubToken();
 
-  if (process.env.GITHUB_TOKEN) {
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
   }
 
   return headers;
@@ -97,7 +106,12 @@ async function fetchPostIssues(): Promise<GitHubIssue[]> {
   const url = `https://api.github.com/repos/${owner}/${repo}/issues?${params}`;
   postIssuesPromise = fetch(url, { headers: githubHeaders() }).then(async (res) => {
     if (!res.ok) {
-      throw new Error(`Failed to fetch blog issues: ${res.status} ${res.statusText}`);
+      const tokenHint = githubToken()
+        ? "A token is present, but it may not have access to this repository's issues."
+        : "No GitHub token was found. Set BLOG_GITHUB_TOKEN, GITHUB_TOKEN, or GH_TOKEN.";
+      throw new Error(
+        `Failed to fetch blog issues: ${res.status} ${res.statusText}. ${tokenHint}`
+      );
     }
 
     const issues = (await res.json()) as GitHubIssue[];
