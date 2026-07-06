@@ -14,7 +14,7 @@ const BackTo = () => {
   return (
     <div className="flex py-4">
       <Link href={"/blog"} locale="" passHref>
-        <span className="flex items-center gap-2 font-display text-sg-sm text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-blue-400 dark:hover:text-sg-blue-300 transition-colors duration-200 cursor-pointer">
+        <span className="flex items-center gap-2 font-display font-bold text-sg-sm text-sg-gray-500 dark:text-sg-gray-300 hover:text-sg-green-600 dark:hover:text-sg-green-300 transition-colors duration-200 cursor-pointer">
           <TiArrowBack size={20} />
           Back to Blog
         </span>
@@ -54,7 +54,7 @@ const Post = (props: PostProps) => {
         pageImgHeight={630}
       />
       <BackTo />
-      <article className="text-sg-gray-950 dark:text-sg-gray-100 znc">
+      <article className="text-sg-gray-950 dark:text-sg-gray-100 znc bg-white/70 dark:bg-sg-dark-surface/60 rounded-sg-lg border border-white/80 dark:border-white/10 px-5 py-6 md:px-8 md:py-8 shadow-sg-sm backdrop-blur-sm">
         {/* Post header */}
         <div className="flex flex-row items-center gap-4 mb-4">
           <div className="w-16 flex-shrink-0">{getIcon(props.icon, 64)}</div>
@@ -62,7 +62,7 @@ const Post = (props: PostProps) => {
             {props.title}
           </h1>
         </div>
-        <p className="font-display text-sg-xs text-sg-gray-500 tracking-wide mb-8 border-b border-sg-gray-200 dark:border-sg-dark-muted pb-4">
+        <p className="font-mono text-sg-xs text-sg-gray-500 tracking-wide mb-8 border-b border-sg-green-100 dark:border-white/10 pb-4">
           {formattedDate}
         </p>
         <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
@@ -74,8 +74,8 @@ const Post = (props: PostProps) => {
 
 export default Post;
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = getAllPostSlugs();
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = await getAllPostSlugs();
   return {
     paths,
     fallback: false,

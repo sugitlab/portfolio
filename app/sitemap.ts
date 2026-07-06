@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 import { getAllPostsInfo } from '../lib/posts';
 import { SITE_URL } from '../lib/constants';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPostsInfo();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPostsInfo();
   const baseUrl = SITE_URL;
 
   const postsUrls = posts.map((post) => ({

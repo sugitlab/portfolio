@@ -15,7 +15,7 @@ const Blog = (props: BlogProps) => {
       <Seo pageTitle="Blog" pageDescription="Blog posts by sugit." />
       {/* Section header */}
       <div className="mb-6">
-        <p className="font-display text-sg-xs text-sg-blue-400 tracking-widest uppercase mb-1">
+        <p className="font-display font-bold text-sg-xs text-sg-green-600 dark:text-sg-green-300 tracking-widest uppercase mb-1">
           Blog
         </p>
         <h1 className="font-display font-bold text-sg-2xl text-sg-gray-950 dark:text-sg-gray-100 tracking-tight">
@@ -28,7 +28,7 @@ const Blog = (props: BlogProps) => {
             return <BlogPostCard key={index} {...data} />
           })
         ) : (
-          <div className="flex justify-center items-center h-64 font-display text-sg-base text-sg-gray-500">
+          <div className="flex justify-center items-center h-64 font-display text-sg-base text-sg-gray-500 dark:text-sg-gray-300">
             No Post
           </div>
         )}
@@ -40,7 +40,7 @@ const Blog = (props: BlogProps) => {
 export default Blog
 
 export async function getStaticProps() {
-  const allPostsData: PostDataType[] = getAllPostsInfo()
+  const allPostsData: PostDataType[] = await getAllPostsInfo()
 
   const serializablePostsData = allPostsData.map(post => ({
     ...post,

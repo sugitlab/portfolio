@@ -1,46 +1,57 @@
-import fs from "fs";
-import path from "path";
 import markdownToHtml from "zenn-markdown-html";
-import * as cheerio from "cheerio";
 
-const postsDirectory = path.join(process.cwd(), "posts");
+const owner = "sugitlab";
+const repo = "portfolio";
+const blogPostLabel = "blog-post";
+let postIssuesPromise: Promise<GitHubIssue[]> | undefined;
 
-// Simple frontmatter parser to replace gray-matter
-function parseFrontmatter(fileContent: string): { content: string; data: any } {
-  const frontmatterRegex = /---\s*([\s\S]*?)\s*---\s*([\s\S]*)/;
+type FrontmatterValue = string | Date;
+type FrontmatterData = Record<string, FrontmatterValue>;
+
+type GitHubIssue = {
+  number: number;
+  title: string;
+  body: string | null;
+  created_at: string;
+  html_url: string;
+  pull_request?: unknown;
+};
+
+function parseFrontmatter(fileContent: string): {
+  content: string;
+  data: FrontmatterData;
+} {
+  const frontmatterRegex = /^---\s*([\s\S]*?)\s*---\s*([\s\S]*)/;
   const matches = frontmatterRegex.exec(fileContent);
-  
+
   if (!matches) {
     return { content: fileContent, data: {} };
   }
 
   const frontmatterText = matches[1];
   const content = matches[2];
-  
-  // Parse the frontmatter data
-  const data: Record<string, any> = {};
-  const lines = frontmatterText.split('\n');
-  
-  for (const line of lines) {
-    const colonPos = line.indexOf(':');
-    if (colonPos !== -1) {
-      const key = line.slice(0, colonPos).trim();
-      let value = line.slice(colonPos + 1).trim();
-      
-      // Remove quotes if present
-      if (value.startsWith('"') && value.endsWith('"')) {
-        value = value.slice(1, -1);
-      }
-      
-      // Handle dates
-      if (key === 'date' && !isNaN(Date.parse(value))) {
-        data[key] = new Date(value);
-      } else {
-        data[key] = value;
-      }
+  const data: FrontmatterData = {};
+
+  for (const line of frontmatterText.split("\n")) {
+    const colonPos = line.indexOf(":");
+    if (colonPos === -1) {
+      continue;
+    }
+
+    const key = line.slice(0, colonPos).trim();
+    let value = line.slice(colonPos + 1).trim();
+
+    if (value.startsWith('"') && value.endsWith('"')) {
+      value = value.slice(1, -1);
+    }
+
+    if (key === "date" && !Number.isNaN(Date.parse(value))) {
+      data[key] = new Date(value);
+    } else {
+      data[key] = value;
     }
   }
-  
+
   return { content, data };
 }
 
@@ -53,81 +64,104 @@ interface MatterResultType {
 export interface PostDataType extends MatterResultType {
   slug: string;
   contentHtml: string;
+  issueNumber: number;
+  issueUrl: string;
+}
+
+function githubHeaders(): HeadersInit {
+  const headers: HeadersInit = {
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "User-Agent": "sugitlab-portfolio",
+  };
+
+  if (process.env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+
+  return headers;
+}
+
+async function fetchPostIssues(): Promise<GitHubIssue[]> {
+  if (postIssuesPromise) {
+    return postIssuesPromise;
+  }
+
+  const params = new URLSearchParams({
+    state: "open",
+    labels: blogPostLabel,
+    sort: "created",
+    direction: "desc",
+    per_page: "100",
+  });
+  const url = `https://api.github.com/repos/${owner}/${repo}/issues?${params}`;
+  postIssuesPromise = fetch(url, { headers: githubHeaders() }).then(async (res) => {
+    if (!res.ok) {
+      throw new Error(`Failed to fetch blog issues: ${res.status} ${res.statusText}`);
+    }
+
+    const issues = (await res.json()) as GitHubIssue[];
+    return issues.filter((issue) => !issue.pull_request);
+  });
+
+  return postIssuesPromise;
+}
+
+function issueToPost(issue: GitHubIssue, includeContent: boolean): PostDataType {
+  const body = issue.body ?? "";
+  const { content, data } = parseFrontmatter(body);
+  const slug = typeof data.slug === "string" ? data.slug : `issue-${issue.number}`;
+  const title = typeof data.title === "string" ? data.title : issue.title;
+  const date = data.date instanceof Date ? data.date : new Date(issue.created_at);
+  const icon = typeof data.icon === "string" ? data.icon : undefined;
+  const contentHtml = includeContent
+    ? markdownToHtml(content, {
+        embedOrigin: "https://embed.zenn.studio",
+      })
+    : "";
+
+  return {
+    slug,
+    title,
+    date,
+    icon,
+    contentHtml,
+    issueNumber: issue.number,
+    issueUrl: issue.html_url,
+  };
 }
 
 // without contentHtml
-export function getAllPostsInfo(): PostDataType[] {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getAllPostsInfo(): Promise<PostDataType[]> {
+  const issues = await fetchPostIssues();
+  const allPostsData = issues.map((issue) => issueToPost(issue, false));
 
-  // Filter for .md files only
-  const mdFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
-
-  const allPostsData = mdFiles.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, "");
-
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-
-    // Custom frontmatter parser
-    const { data: matterData } = parseFrontmatter(fileContents);
-
-    return {
-      slug,
-      contentHtml: "",
-      ...matterData,
-    };
-  });
-
-  // Latest -> Old
-  // Handle cases where date might be undefined
   return allPostsData.sort((a, b) => {
-    const dateA = a.date ? (a.date instanceof Date ? a.date.getTime() : new Date(a.date).getTime()) : 0;
-    const dateB = b.date ? (b.date instanceof Date ? b.date.getTime() : new Date(b.date).getTime()) : 0;
+    const dateA = a.date ? new Date(a.date).getTime() : 0;
+    const dateB = b.date ? new Date(b.date).getTime() : 0;
     return dateB - dateA;
   });
 }
 
-export function getAllPostSlugs() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getAllPostSlugs() {
+  const posts = await getAllPostsInfo();
 
-  const paths = fileNames.map((fileName) => {
-    return {
-      params: {
-        slug: fileName.replace(/\.md$/, ""),
-      },
-    };
-  });
-
-  return paths;
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
 }
 
 export async function getPostData(slug: string): Promise<PostDataType> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const issues = await fetchPostIssues();
+  const issue = issues.find((issue) => issueToPost(issue, false).slug === slug);
 
-  const { content, data: matterData } = parseFrontmatter(fileContents);
-
-  let contentHtml = "";
-
-  if (matterData.url) {
-    try {
-      const res = await fetch(matterData.url);
-      const html = await res.text();
-      const $ = cheerio.load(html);
-      contentHtml = $("#shine-editor").html() || "";
-    } catch (e) {
-      console.error(`Failed to fetch content from ${matterData.url}`, e);
-      contentHtml = "<p>Failed to load content.</p>";
-    }
-  } else {
-    contentHtml = markdownToHtml(content, {
-      embedOrigin: 'https://embed.zenn.studio',
-    });
+  if (!issue) {
+    throw new Error(`Post not found: ${slug}`);
   }
 
-  return {
-    slug,
-    contentHtml,
-    ...matterData,
-  };
+  return issueToPost(issue, true);
 }
+
+export { blogPostLabel };

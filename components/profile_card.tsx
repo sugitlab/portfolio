@@ -19,14 +19,14 @@ const SkillIcons = () => {
   const size = "14";
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-3 pt-3">
-      <SiFlutter size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiReact size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiDotnet size="22" className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiDart size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiTypescript size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiJavascript size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiCplusplus size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
-      <SiPython size={size} className="text-sg-gray-500 dark:text-sg-gray-400" />
+      <SiFlutter size={size} className="text-sg-green-600 dark:text-sg-green-300" />
+      <SiReact size={size} className="text-sg-blue-600 dark:text-sg-blue-300" />
+      <SiDotnet size="22" className="text-sg-gray-500 dark:text-sg-gray-300" />
+      <SiDart size={size} className="text-sg-blue-600 dark:text-sg-blue-300" />
+      <SiTypescript size={size} className="text-sg-green-600 dark:text-sg-green-300" />
+      <SiJavascript size={size} className="text-sg-gray-500 dark:text-sg-gray-300" />
+      <SiCplusplus size={size} className="text-sg-gray-500 dark:text-sg-gray-300" />
+      <SiPython size={size} className="text-sg-green-600 dark:text-sg-green-300" />
     </div>
   );
 };
@@ -41,19 +41,19 @@ const TechLinks = () => {
       <Link href={github} passHref>
         <SiGithub
           size={size}
-          className="text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-blue-600 dark:hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer"
+          className="text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-green-600 dark:hover:text-sg-green-200 transition-colors duration-200 cursor-pointer"
         />
       </Link>
       <Link href={t.TWITTER} passHref>
         <SiX
           size={size}
-          className="text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-blue-600 dark:hover:text-sg-lime-200 transition-colors duration-200 cursor-pointer"
+          className="text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-green-600 dark:hover:text-sg-green-200 transition-colors duration-200 cursor-pointer"
         />
       </Link>
       <Link href={linkedin} passHref>
         <SiLinkedin
           size={size}
-          className="text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-blue-600 dark:hover:text-sg-blue-400 transition-colors duration-200 cursor-pointer"
+          className="text-sg-gray-500 dark:text-sg-gray-400 hover:text-sg-blue-600 dark:hover:text-sg-blue-300 transition-colors duration-200 cursor-pointer"
         />
       </Link>
     </div>
@@ -64,10 +64,10 @@ const Profile = () => {
   const { t } = useLocale();
   return (
     <div className="w-full md:w-72 flex-shrink-0">
-      <div className="bg-sg-surface dark:bg-sg-dark-surface border border-sg-gray-200 dark:border-sg-dark-muted rounded-sg-lg p-6 shadow-sg-md">
+      <div className="bg-white/80 dark:bg-sg-dark-surface/80 border border-white/80 dark:border-white/10 rounded-sg-lg p-6 shadow-sg-md backdrop-blur-sm">
         {/* Avatar + Name */}
-        <div className="flex items-center gap-3 pb-4 border-b border-sg-gray-200 dark:border-white/10">
-          <div className="relative w-14 h-14 rounded-full overflow-hidden ring-1 ring-sg-blue-400/30 flex-shrink-0">
+        <div className="flex items-center gap-3 pb-4 border-b border-sg-green-100 dark:border-white/10">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden ring-4 ring-sg-green-100 dark:ring-sg-dark-subtle flex-shrink-0">
             <Image
               className="block"
               fill
@@ -93,7 +93,7 @@ const Profile = () => {
         </p>
 
         {/* Social links */}
-        <div className="pb-3 border-b border-sg-gray-200 dark:border-white/10">
+        <div className="pb-3 border-b border-sg-green-100 dark:border-white/10">
           <TechLinks />
         </div>
 
