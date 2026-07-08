@@ -1,27 +1,5 @@
 # Portfolio
 
-This page has built by Next.js
-
-## Core Libraries
-
-- React
-- Next.js
-- Tailwindcss
-- HeadlessUI
-
-## Coding
-
-### Commit Prefix
-
-- feat
-- fix
-- docs
-- style
-- refactor
-- perf
-- test
-- chore
-
 ## Blog Posts
 
 Blog posts are sourced from GitHub Issues in `sugitlab/portfolio`.
@@ -42,3 +20,5 @@ Post body in Markdown.
 ```
 
 Run `npm run migrate-posts-to-issues -- --apply` to migrate local `posts/*.md` files into GitHub Issues.
+
+`type IconType = 'idea' | 'vim' | 'news' | 'bio' | 'mobile' | 'stats' | 'book' | 'research' | 'info' | 'music';`
